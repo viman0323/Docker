@@ -1,0 +1,27 @@
+.iMay-con{ width: 100%;}
+.imay_server{ background-color: #FFF; margin:0 auto 20px; width: 1200px;}
+.server_text p{ margin: 15px 20px; font-size: 12px; text-align: left !important;}
+.imay_server h3{ font-size: 18px; font-weight: bold; text-align: center; padding: 20px 0 0 0 ;}
+.server_text p b{ font-weight: bold;}
+.g-txt-f{ margin: 2px 2px 2px 0; font-size: 10px; color: #a7a7a7; display: inline-block;}
+.iMay-header{ background-color: #FFF;}
+.logo{ background: url("../images/g-index.png") 0 0 no-repeat; display: block; width: 140px; height: 38px;}
+.iMay-header{ border-bottom: 2px solid #5f3395; margin-bottom: 20px;}
+.header-bar{ height: 65px; width: 1200px;}
+.g-f-bot{ width: 1200px; margin-bottom: 8px;}
+.imay_server{ padding-bottom: 20px;}
+#g-footer:after{ content: ''; clear: both; display: block;}
+.g-txt-f a,.g-txt-f a:active,.g-txt-f a:visited,.g-txt-f a:hover{ color: #a7a7a7;}
+.g-txt-f a:hover{ text-decoration: underline;}
+
+@media screen and (max-width: 800px) {
+    .header-bar,.imay_server{ width: 100%;}
+    .server_text p img{ width: 100%; height: 100%;}
+    .iMay-header{ margin-bottom: 10px;}
+    .g-txt-f{ display: block;}
+    .g-f-bot{ width: 100%; text-align: center;}
+    #g-footer{ padding: 0;}
+    .imay-dec{ height: 30px; line-height: 30px; display: block; margin: 0 auto;}
+    .imay-dec img,.imay-dec span{ display: block; float: left;}
+    .imay-dec img{ margin: 5px 5px 0 0;}
+}

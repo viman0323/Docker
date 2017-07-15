@@ -1,0 +1,108 @@
+body{font-size: 14px;color: #383f46;text-decoration: none;margin:0;overflow-x:hidden; width:100%; height:100%; position:relative; }
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,
+menu,nav,section,iframe{margin:0;padding:0}
+div{margin:0 auto;}
+article,aside,details,figcaption,figure,footer,header,menu,nav,section{display:block}
+body,button,input,select,textarea{font:12px/1.5 tahoma,Microsoft Yahei;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500}
+input,select,textarea{font-size:100%;vertical-align:middle; border:0;background:none; cursor:pointer;}
+input{cursor:pointer; outline: none;}
+ol,ul{list-style:none;}
+b{ font-weight:normal;}
+table{border-collapse:collapse;border-spacing:0}
+img{border:none}
+em,i,code,cite,address,th{font-style:normal;font-weight:500}
+.clear{clear:both;line-height:0;font-size:0}
+q:before,q:after{ content:''}
+a{text-decoration:none}
+a:link,a:visited,a:active{color: #383f46;text-decoration: none; outline:none;}
+a:hover{text-decoration: none;}
+a { -webkit-tap-highlight-color: transparent; -webkit-touch-callout: none; -webkit-user-select: none;}
+
+#h1-bg{ background: url("../images/h1-bg01.jpg") no-repeat; width: 100%; height: 100%; background-size: cover;}
+.h1-top{ position: relative; width: 100%;}
+.tab-scroll{animation-duration:1s;-webkit-animation-duration:1s; -moz-animation-duration: 1s; -o-animation-duration: 1s; left: 0 ; top: 0}
+.h1-top-d1,.h1-top-d2,.h1-top-d3,.h1-con-m1,.h1-m2-but{position: absolute; width: 100%}
+.h1-top-d1 img{ width: 14%;}
+.h1-top-d2 img{ width: 41%;}
+.h1-top-d3 img{ width: 31%;}
+.h1-top-d1{ z-index: 3; margin-left: 18.2%; margin-top: 9%;}
+.h1-top-d2{ z-index: 2;margin-left: 25%; margin-top: 5%;}
+.h1-top-d3{ z-index: 2; margin-left: 52%; margin-top: 19%;}
+.h1-con-m1 img{ width: 92%; }
+.h1-con-m1{margin-top: 27%; text-align: center;}
+.h1-m2-but img{ width: 40%;}
+.h1-m2-but { margin-top: 146%; text-align: center;}
+.h1-but-txt{ display: block; color: #8339c9;}
+.h1-footer{ position: fixed; bottom: 2px; width: 100%; text-align: center; font-size: 11px;}
+.h1-footer span{ line-height: 12px; color: #fde8f5;display: block; }
+.h1-m1-get{ position: absolute; width: 100%; margin-top: -42%; }
+.h1-get-i{width: 14%; margin-right: 13%; margin-bottom: 3%; cursor: pointer; }
+.h1-get-i img{ width: 100%; }
+.aniInLeft{ animation-name: aniInLeft;-webkitanimation-name: aniInLeft; -moz-animation-name: aniInLeft; -o-animation-name:aniInLeft; }
+.aniInTop{ animation-name: aniInTop;-webkitanimation-name: aniInTop; -moz-animation-name: aniInTop; -o-animation-name:aniInTop; }
+.aniInRight{ animation-name: aniInRight;-webkitanimation-name: aniInRight; -moz-animation-name: aniInRight; -o-animation-name:aniInRight; }
+.aniInBottom{ animation-name: aniInBottom;-webkitanimation-name: aniInBottom; -moz-animation-name: aniInBottom; -o-animation-name:aniInBottom; }
+.twinkling{ animation: twinkling 1s 1 ease-in-out;-moz-animation: twinkling 1s 1 ease-in-out ;-webkit-animation: twinkling 1s 1 ease-in-out ;-o-animation: twinkling 1s 1 ease-in-out ;}
+.twinkling1{ animation: twinkling 1s infinite ease-in-out 2s;-moz-animation: twinkling 1s infinite ease-in-out 2s;-webkit-animation: twinkling 1s infinite ease-in-out 2s;-o-animation: twinkling 1s infinite ease-in-out 2s;}
+.h1-alert{ position: fixed; z-index: 1000; width: 100%; height: 100%; top: 37%; left: 18%;}
+.h1-a-ocn{ width: 62%; position: absolute; height: 26%; background-color: #FFF; border-radius: 5px; border: 2px solid #bb374c; }
+.h1-a-close{ width: 10%; height: 10%; position: absolute; display: block; right: 10px;top: 10px;}
+.h1-a-close img{ width: 100%;}
+.h1-s-i{ width: 53%; margin: 28% 0 0 24%;}
+.h1-success{ display: none;}
+@keyframes aniInLeft {
+    0% {
+        opacity: 0;
+        transform: translate3d(-600px, 0px, 0px);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+@keyframes aniInTop {
+    0% {
+        opacity: 0;
+        transform: translate3d(0px, -10px, 0px);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+@keyframes aniInRight {
+    0% {
+        opacity: 0;
+        transform: translate3d(500px, 0px, 0px);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+@keyframes aniInBottom {
+    0% {
+        opacity: 0;
+        transform: translate3d(0px, 3000px, 0px);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+@keyframes twinkling {
+    0% {
+        opacity: 0;
+        transform: none;
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .h1-get-i{ margin-bottom: 4%}
+    .h1-m1-get{ margin-top: -41%;}
+}

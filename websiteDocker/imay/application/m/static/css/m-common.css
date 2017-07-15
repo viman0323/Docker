@@ -1,0 +1,54 @@
+*{-webkit-tap-highlight-color:rgba(0, 0, 0, 0);}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,iframe{margin:0;padding:0;border:0; word-wrap: break-word; -webkit-text-size-adjust:none; -webkit-tap-highlight-color:rgba(0,0,0,0);}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+body,button,input,select,textarea{font:12px/1.5 tahoma,arial;font-family:\5FAE\8F6F\96C5\9ED1,Arial,sans-serif;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500}
+input,select,textarea{font-size:100%; vertical-align:middle; border:0;background:none;box-shadow:none; -moz-appearance:none; appearance:none; outline:none; -webkit-outline:none;-webkit-appearance:searchfield;-webkit-rtl-ordering:logical;-webkit-user-select:text;-webkit-appearance:none;-webkit-tap-highlight-color:rgba(255,0,0,0);}
+input:focus,textarea:focus{outline:none}
+ol,ul{list-style:none}
+table{border-collapse:collapse;border-spacing:0}
+img{border:0 none}
+img, object {max-width: 100%;}
+em,i,code,cite,address,th{font-style:normal;font-weight:500}
+.clear{clear:both;line-height:0;font-size:0}
+.clearfix{*zoom:1;_height:1px}
+.clearfix:after{content:" ";display:block;height:0;clear:both;visibility:hidden}
+q:before,q:after{ content:''}
+abbr,acronym{ border:0}
+a{text-decoration:none;-webkit-user-select:none;}
+.none{ display:none;}
+.hr_10{clear:both;height:10px;line-height:1px;font-size:1px}
+.hr_5{clear:both;height:5px;line-height:1px;font-size:1px}
+.hr_1{clear:both;height:1px;line-height:1px;font-size:0}
+.wb{clear:both; border:none; height:1px; line-height:1px; background:#FFF; font-size:0; overflow:hidden}
+a:link,a:visited,a:hover,a:active{color:#999;text-shadow:none}
+
+
+body { background-color: #ecf0f1; }
+.m-pay-d1{ height: 45px; background-color: #FFF; width: 100%; position: relative;}
+.m-pay-i{ width: 82%; height: 45px; line-height: 45px; cursor: text; padding: 0 2%; }
+.m-pay-but{ width: 100%; text-align: center; margin-top: 26px;}
+.m-pay-a1{ width: 10%; text-align: center;}
+.pay-but-a{ width: 88%; border-radius: 25px; display: inline-block; height: 42px; text-align: center; line-height: 42px; font-size: 14px;}
+.pay-but-yes{ background-color: #38d94f; color: #FFF !important;}
+.pay-but-no{ background-color: #ced4d4;}
+.m-pay-no{ display: none;}
+.g-mask{ position: fixed;background: rgba(1, 0, 12, .5);  width: 100%; height: 100%; top: 0; left: 0; z-index: 1; display: none;}
+#mPop{ z-index: 10; position: absolute; background-color: #FFF;  border-radius: 5px; display: none;}
+.m-pop{ width: 80%; min-height: 200px; top: 25%; left: 10%; z-index: 3;}
+.m-pop-close{width:50%;  }
+.m-pop-sus{ width: 30px; height: 30px; padding-right: 15px;}
+.sus-txt{ color: #3cbe0f; font-size: 16px;}
+.pop-c-d{  cursor: pointer; padding: 10px; position: absolute;  right: 0; top:2%; z-index: 12;}
+.sus-txt-d{text-align: center; margin: 70px auto; width: 82px; }
+.sus-txt{ display: block; }
+.i-m-txt{ display: block; position: fixed; z-index: 2;  top: 0;}
+.m-wechat-mes{ max-width: 480px; display: none;}
+.m-i-w{  color: #e9deff; font-size: 18px; float: left; margin: 10% 0 0 12%;}
+.m-i-w span{ display: block;}
+.m-i-ar{ float: right; width: 15%; margin-right: 2%}
+.m-i-ar img{ width: 100%;}
+.g-loading{ position: absolute; width:10%; top: 50%; left: 50%; z-index: 2; margin-left: -5%; margin-top: -5%; display: none;}
+.draw-agree-i{display: inline-block; margin-top: -2px;}
+.draw-agree label{ display: inline-block !important; float: none !important;}
+.guide{ width: 100%; height: 100%;}

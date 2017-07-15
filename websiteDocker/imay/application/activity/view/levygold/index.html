@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>金币管理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="__CSS__/building.css">
+</head>
+<body>
+    <div class="b-nav clearfix">
+        <div class="b-nav-l">我的盖楼卡</div>
+        {php} if ($page['show'] == 1) { {/php}
+        <div class="b-nav-r">
+            <div class="b-nav-t clearfix">
+                {php} if ($page['MyCard1'] == 1) { {/php}
+                    <img src="__IMG__/levygold/ico_zxfp_jianloukaliwu1.png" class="m-i01">
+                {php} } else if ($page['MyCard2'] == 1) { {/php}
+                    <img src="__IMG__/levygold/ico_zxfp_jianloukaliwu2.png" class="m-i01">
+                {php} } else if ($page['MyCard3'] == 1) { {/php}
+                    <img src="__IMG__/levygold/ico_zxfp_jianloukaliwu3.png" class="m-i01">
+                {php} } {/php}
+                <span class="b-t-txt">X1</span>
+            </div>
+            <div class="b-nav-b clearfix">
+                <img src="__IMG__/levygold/m-i02.png" class="m-i02">
+                <span id="countdown" class="b-t-txt"></span>
+            </div>
+        </div>
+        {php} } else { {/php}
+            <!--默认显示小平房卡图片-->
+            <div class="b-nav-r">
+                <div class="b-nav-t clearfix">
+                    <img src="__IMG__/levygold/ico_zxfp_jianloukaliwu1.png" class="m-i01">
+                    <span class="b-t-txt">X0</span>
+                </div>
+            </div>
+        {php} } {/php}
+    </div>
+    <div class="b-txt">
+        <span>进入直播间礼物背包把盖楼卡送给主播，</span>
+        <span>主播收到礼物时你可以分到房租</span>
+    </div>
+    <div class="b-nav clearfix">
+        <div class="b-nav-l">剩余金币</div>
+        <div class="b-nav-r">
+            <div class="b-nav-t b-txt-a clearfix">
+                <img src="__IMG__/levygold/m-i03.png" class="m-i03">
+                <span class="b-t-txt">{$page['UserGoldMoney']}</span>
+            </div>
+            {php} if ($page['UserGoldMoney'] != 0) { {/php}
+                <div class="b-nav-b b-txt-b clearfix">
+                    <img src="__IMG__/levygold/m-i02.png" class="m-i02">
+                    <span id="week" class="b-t-txt"></span>
+                </div>
+            {php} } {/php}
+        </div>
+    </div>
+    <div class="b-nav clearfix b-nav-a">
+        <div class="b-nav-l">本周获得金币</div>
+        <div class="b-nav-r">
+            <div class="b-nav-t b-txt-c clearfix">
+                <img src="__IMG__/levygold/m-i03.png" class="m-i03">
+                <span class="b-t-txt">{$page['total']}</span>
+            </div>
+        </div>
+    </div>
+    {php} if ($type == 1) { {/php}
+    <div class="b-con">
+        {volist name="list" id="vo" key="i"}
+        <ul class="b-ul">
+            <li>
+                {php} if ($vo['imgHead']) { {/php}
+                    <img src="{$vo.imgHead}" class="b-ul-i">
+                {php} } else { {/php}
+                    <img src="__IMG__/no.png" class="b-ul-i">
+                {php} } {/php}
+                <div class="b-li-l">
+                    <h5 class="b-pli">{$vo.nick}</h5>
+                    <span class="b-ul-txt">{$vo.FloorNum}楼层</span>
+                </div>
+                <div class="b-li-m">
+                    <h6>{$vo.content}</h6>
+                    <div class="b-nav-t">
+                        <img src="__IMG__/levygold/m-i03.png" class="m-i03">
+                        <span class="b-t-txt">{$vo.SumDevote}</span>
+                    </div>
+                </div>
+                <div class="b-li-r">
+                    {php} if ($vo['liveStatus'] == 1) { {/php}
+                        <a href="{$vo.url}">
+                            <img src="__IMG__/levygold/m-i04.png" class="m-i05">
+                        </a>
+                    {php} } else { {/php}
+                        <img src="__IMG__/levygold/m-i05.png" class="m-i05">
+                    {php} } {/php}
+                </div>
+            </li>
+        </ul>
+        {/volist}
+    </div>
+    {php} } else { {/php}
+        <div class="b-bot">
+            <span>快快去为心爱的主播送上你的盖楼卡吧，成为她的包租公！</span>
+        </div>
+    {php} } {/php}
+    <div class="b-m-con b-pos">
+        <div class="b-mask"></div>
+        <div class="b-pop b-pos b-pop-a">
+            <a class="b-close">
+                <img src="__IMG__/levygold/m-i06.png">
+            </a>
+            <div class="b-pop-t">
+                <span>你的盖楼卡马上就要过期啦</span>
+                <span>快去使用吧！</span>
+            </div>
+            <div class="b-pop-b">
+                <a class="b-but-a b-h-c">我知道啦</a>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript" src="__JS__/building.js"></script>
+
+<script type="text/javascript">
+    var img = "__IMG__/levygold";
+    var time = new Date();
+    var year = "{$year}";
+    var month = "{$month}";
+    var day = "{$day}";
+    var type = "{$type}";
+    var show = "{$page['show']}";
+    var week = "{$page['UserGoldMoney']}";
+    if (show != 0) {
+        ShowCountDown(time.getFullYear(),time.getMonth(),time.getDate()+1,'countdown');
+    }
+
+    if (week != 0) {
+        ShowWeekCountDown(year, month, day, 'week');
+    }
+
+    if (type == 1) {
+        showTip();
+    }
+</script>
+
+<script type="text/javascript">
+    var _hmt = _hmt || [];
+    $(function () {
+
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?92271316ab45db908e0b6763467fea57";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })
+</script>
+</body>
+</html>

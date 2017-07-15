@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>iMay直播双旦活动</title>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="__CSS__/h3-i01.css">
+    <script type="text/javascript" src="__JS__/jquery.js"></script>
+</head>
+<body id="h3-bg">
+<header>
+    <div id="h3-header">
+        <h5 class="h3-h-h5 nick_name"></h5>
+        <div class="h3-h-d1" id="h3NacSc" ><!-- iMay直播|不播不疯狂，开播拿豪奖-->
+            <div class="h3-h-txt news_show" style="left: 0px;" id="h3Scroll">
+              
+            </div>
+        </div>
+        <div class="h3-h-but">
+            <a class="h3-h-a">
+                <img class="h3-a-01">
+            </a>
+        </div>
+    </div>
+</header>
+<article>
+    <section>
+        <div class="h3-info1 h3-pos">
+            <img class="h3-j-i42 h3-pos tab-scroll">
+            <!--<img src="__IMG__/h3-i41.png" class="h3-j-i41 h3-pos">-->
+            <img class="h3-j-i01">
+            <img class="h3-p-i02 h3-pos enlarge">
+            <img class="h3-p-i03 h3-pos aniInTop1">
+            <img class="h3-p-i05 h3-pos aniInLeft">
+            <img class="h3-p-i06 h3-pos aniInRight">
+            <div class="h3-info1-t1 h3-pos aniInLeft">
+                <div class="h3-info1-red h3-pos">
+                    <b class="h3-pk red_gold">
+                        0
+                    </b>
+                </div>
+            </div>
+            <div class="h3-info1-t2 h3-pos aniInRight">
+                <div class="h3-info1-yellow h3-pos">
+                    <b class="h3-pk1 yellow_gold">
+                        0
+                    </b>
+                </div>
+            </div>
+            <img class="h3-p-i10 h3-pos aniInBottom">
+        </div>
+    </section>
+    <section>
+        <!-- pk 榜单-->
+        <div class="h3-info2 h3-pos">
+            <!--<img src="image/h3-i26.png" class="h3-j-i02 h3-pos">-->
+            <img class="h3-j-i34 h3-pos">
+            <div class="h3-info2-c1 h3-pos aniInBottom">
+                <ul class="h3-c1-ul">
+                    {if condition="$count gt 1"}
+                    <li class="click_btn" yellow_gold="{$activityData['0']['SideBInfo']['MeiliGain']}" red_gold="{$activityData['0']['SideAInfo']['MeiliGain']}">
+                        {else /}
+                    <li class="h3-ul-checked click_btn"  yellow_gold="{$activityData['0']['SideBInfo']['MeiliGain']}" red_gold="{$activityData['0']['SideAInfo']['MeiliGain']}">
+                        {/if}
+                        <span class="h3-c1-t1">第<b>1</b>天</span>
+                        <span class="h3-c1-t2">
+                        {if condition="$count gt 1"}
+                            {if condition="$activityData['0']['SideAInfo']['MeiliGain'] gt $activityData['0']['SideBInfo']['MeiliGain']"}
+                                红帽胜
+                            {else /}
+                                紫帽胜
+                            {/if}
+                        {elseif condition="$count eq 0" /}
+                        {else /}
+                            今天
+                        {/if}
+                    </span>
+                        <img class="h3-p-i11 h3-pos">
+                    </li>
+                    <!-- 第一天  end-->
+
+                    {if condition="$count eq 2"}
+                    <li class="h3-ul-checked click_btn"  yellow_gold="{$activityData['1']['SideBInfo']['MeiliGain']}" red_gold="{$activityData['1']['SideAInfo']['MeiliGain']}">
+                        {elseif condition="$count gt 2" /}
+                    <li class="click_btn"  yellow_gold="{$activityData['1']['SideBInfo']['MeiliGain']}" red_gold="{$activityData['1']['SideAInfo']['MeiliGain']}">
+                        {else /}
+                    <li  yellow_gold="" red_gold="">
+                        {/if}
+                        <span class="h3-c1-t1">第<b>2</b>天</span>
+                        <span class="h3-c1-t2">
+                        {if condition="$count eq 2"}
+                            今天
+                        {elseif condition="$count lt 2" /}
+                        {else /}
+                            {if condition="$activityData['1']['SideAInfo']['MeiliGain'] gt $activityData['1']['SideBInfo']['MeiliGain']"}
+                                红帽胜
+                            {else /}
+                                紫帽胜
+                            {/if}
+                        {/if}
+                    </span>
+                        <img class="h3-p-i11 h3-pos">
+                    </li>
+                </ul>
+                <div class="h3-c1-con h3-pos">
+                    <img class="h3-p-i27">
+                    <!-- tab切换数据-->
+                    <div class="h3-c1-b">
+                        <!-- 第一天 -->
+                        {if condition="$count lt 2"}
+                        <div class="h3-c1-c date_show1" style="display:block;">
+                        {else /}
+                        <div class="h3-c1-c date_show1" style="display:none;">
+                        {/if}
+                            <div class="h3-tab1 clearfix">
+                                <ul class="h3-tab1-ul">
+                                    <li class="h3-tab1-check">
+                                        <a class="tab1-a"></a>
+                                    </li>
+                                    <li>
+                                        <a class="tab1-b"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="h3-tab-con clearfix">
+                                <div class="h3-tab-c1">
+                                    <table class="h3-table1">
+                                        <thead>
+                                        <tr>
+                                            <th width="80px">排名</th>
+                                            <th>昵称</th>
+                                            <th>魅力</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="show_data_one">
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="h3-tab-c1">
+                                    <table class="h3-table1">
+                                        <thead>
+                                        <tr>
+                                            <th width="80px">排名</th>
+                                            <th>昵称</th>
+                                            <th>魅力</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="show_data_one_r">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!--<div class="h3-c1-mes h3-pos">*以上均为当天数据  单位：魅力</div>-->
+                        </div>
+                        <!-- 第二天 -->
+                        {if condition="$count eq 2"}
+                        {if condition="$count eq 2"}
+                        <div class="h3-c1-c date_show2" style="display: block;">
+                        {else /}
+                        <div class="h3-c1-c date_show2" style="display: none;">
+                        {/if}
+                            <div class="h3-tab1 clearfix">
+                                <ul class="h3-tab1-ul">
+                                    <li class="h3-tab1-check">
+                                        <a class="tab1-a"></a>
+                                    </li>
+                                    <li>
+                                        <a class="tab1-b"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="h3-tab-con clearfix">
+                                <div class="h3-tab-c1">
+                                    <table class="h3-table1">
+                                        <thead>
+                                        <tr>
+                                            <th width="80px">排名</th>
+                                            <th>昵称</th>
+                                            <th>魅力</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="show_data_two">
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="h3-tab-c1">
+                                    <table class="h3-table1">
+                                        <thead>
+                                        <tr>
+                                            <th width="80px">排名</th>
+                                            <th>昵称</th>
+                                            <th>魅力</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="show_data_two_r">
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!--<div class="h3-c1-mes h3-pos">*以上均为当天数据  单位：魅力</div>-->
+                        </div>
+                        {/if}
+                    </div>
+                            </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="h3-info3 h3-pos">
+            <img class="h3-p-i12 h3-pos h3-info3-ani">
+            <img class="h3-p-i26 h3-pos h3-info3-ani">
+            <img class="h3-p-i13 h3-pos aniInTop h3-info3-ani" >
+            <img class="h3-p-i40 h3-pos aniInTop1 h3-info3-ani">
+            <div class="h3-info3-c2 h3-pos h3-info3-ani aniInTop">
+                <div class="h2-c2-t1 h3-pos total_list">
+                    <img class="h3-p-i36 h3-pos">
+                    <div class="h2-t1-c">
+                        <div class="h2-t1-t">
+                            <img class="h3-logo" src="">
+                            <label></label>
+                        </div>
+                        <div class="h2-t1-b">
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="h2-c2-t2 h3-pos total_list">
+                    <img class="h3-p-i35 h3-pos">
+                    <div class="h2-t1-c">
+                        <div class="h2-t1-t">
+                            <img class="h3-logo" src="">
+                            <label></label>
+                        </div>
+                        <div class="h2-t1-b">
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="h2-c2-t3 h3-pos total_list">
+                    <img class="h3-p-i37 h3-pos">
+                    <div class="h2-t1-c">
+                        <div class="h2-t1-t">
+                            <img class="h3-logo" src="">
+                            <label></label>
+                        </div>
+                        <div class="h2-t1-b">
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="h3-info3-c3 h3-pos aniInBottom h3-info3-ani">
+                <img class="h3-p-i15">
+                <div class="h3-c1-b">
+                    <div class="h3-c1-c h3-c1-c1">
+                        <div class="h3-tab1 clearfix">
+                            <ul class="h3-tab1-ul">
+                                <li class="h3-tab1-check">
+                                    <a class="tab2-a"></a>
+                                </li>
+                                <li>
+                                    <a class="tab2-b"></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="h3-tab-con clearfix">
+                            <div class="h3-tab-c1">
+                                <table class="h3-table1">
+                                    <thead>
+                                    <tr>
+                                        <th width="80px">排名</th>
+                                        <th>昵称</th>
+                                        <th>魅力</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="totalData_list">
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="h3-tab-c1">
+                                <img class="h3-p-i38">
+                                <label class="h3-i38-t1">我的累计魅力值：</label>
+                                <b class="myMeiliGainTotal"></b>
+                                <label class="h3-i38-t2">当前排名：</label>
+                                <b class="myRank"></b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</article>
+<footer>
+    <div class="h3-footer">
+        <div class="h3-f-t1">注：关注“IMay服务中心”公众号，充值有惊喜！</div>
+        <div class="h3-f-t1">本活动最终解释权归iMay所有</div>
+        <div class="h3-f-t1">QQ：<span>3383498099</span></div>
+    </div>
+</footer>
+<script type="text/javascript" src="__JS__/h3-default.js"></script>
+
+<script type="text/javascript">
+    var count = '{$count}';
+    var day = '{$day}'; //当天时间20161223
+    /**
+     * js 定时刷新
+     */
+    var img = "__IMG__";
+    function loctionUrl(){
+        var  url = "{:url('activity/FestivalActivity/ajaxlist')}";
+        var uid = "{$uid}";
+        var accessToken = "{$accessToken}";
+        $.post(url, { "uid": uid,"accessToken": accessToken },
+                function(data_list){
+                    if(data_list['status']== '1'){
+                        //转点数据自动刷新
+                        var data = data_list.data;
+
+                        if(day != data.day){
+                            window.location.reload();
+                        }
+
+                        var str = '';
+                        for(var i=0;i<data.SideAInfo_list.length;i++){
+                            var num= i+1;
+                            str +="<tr>";
+                            str +='<td width="80px">'+num+'</td>';
+                            str +='<td><img src="'+data.SideAInfo_list[i]['HeadImg']+'?imageView2/2/w/200" class="h3-tab1-i"><span class="h3-tab1-s">'+data.SideAInfo_list[i]['Nick']+'</span></td>';
+                            str +='<td>'+data.SideAInfo_list[i]['MeiliGain']+'</td>';
+                            str +="</tr>";
+                        }
+
+                        //alert(str);
+                        var str_r = '';
+                        for(var i=0;i<data.SideBInfo_list.length;i++){
+                            var num= i+1;
+                        	str_r +="<tr>";
+                        	str_r +='<td width="80px">'+num+'</td>';
+                        	str_r +='<td><img src="'+data.SideBInfo_list[i]['HeadImg']+'?imageView2/2/w/200" class="h3-tab1-i"><span class="h3-tab1-s">'+data.SideBInfo_list[i]['Nick']+'</span></td>';
+                        	str_r +='<td>'+data.SideBInfo_list[i]['MeiliGain']+'</td>';
+                        	str_r +="</tr>";
+                        }
+                        //alert(str_r);
+                        //str +='<div class="h3-c1-mes h3-pos">*以上均为当天数据  单位：魅力</div>';
+                        if(data.day =='20161228'){
+                            $(".h3-c1-ul .click_btn").eq(0).attr("red_gold",data.SideAInfo_MeiliGain);
+                            $(".h3-c1-ul .click_btn").eq(0).attr("yellow_gold",data.SideBInfo_MeiliGain);
+
+                            $(".show_data_one").html(str);
+                            $(".show_data_one_r").html(str_r);
+                            //alert($(".date_show1").html());
+                        }else if(data.day =='20161229'){
+                            $(".h3-c1-ul .click_btn").eq(1).attr("red_gold",data.SideAInfo_MeiliGain);
+                            $(".h3-c1-ul .click_btn").eq(1).attr("yellow_gold",data.SideBInfo_MeiliGain);
+                            $(".show_data_two").html(str);
+                            $(".show_data_two_r").html(str_r);
+                            
+                        }/* else if(data.day =='20161225'){
+                         $(".h3-c1-ul .click_btn").eq(2).attr("red_gold",data.SideAInfo_MeiliGain);
+                         $(".h3-c1-ul .click_btn").eq(2).attr("yellow_gold",data.SideBInfo_MeiliGain);
+                         $(".date_show3").html(str);
+                         } */
+
+                        //红紫双方
+                        $(".red_gold").html(data.SideAInfo_MeiliGain);
+                        $(".yellow_gold").html(data.SideBInfo_MeiliGain);
+
+                        //总榜
+
+                        $(".h2-c2-t1").find("label").html(data.total[1]['Nick']);
+                        $(".h2-c2-t1").find("span").html(data.total[1]['MeiliGain']);
+                        $(".h2-c2-t1").find(".h3-logo").attr('src',data.total[1]['HeadImg']);
+
+                        $(".h2-c2-t2").find("label").html(data.total[0]['Nick']);
+                        $(".h2-c2-t2").find("span").html(data.total[0]['MeiliGain']);
+                        $(".h2-c2-t2").find(".h3-logo").attr('src',data.total[0]['HeadImg']);
+
+                        $(".h2-c2-t3").find("label").html(data.total[2]['Nick']);
+                        $(".h2-c2-t3").find("span").html(data.total[2]['MeiliGain']);
+                        $(".h2-c2-t3").find(".h3-logo").attr('src',data.total[2]['HeadImg']);
+
+                        //alert($(".h3-info3-c2").html());
+                        //前五排行榜
+                        var total_str = '';
+                        for(var p=0;p<data.totalData.length;p++){
+                        	var num = p+4;
+                            total_str += "<tr>";
+                              total_str += '<td width="80px">'+num+'</td>';
+                              total_str += '<td><img src="'+data.totalData[p]['HeadImg']+'?imageView2/2/w/200" class="h3-tab1-i"><span class="h3-tab1-s">'+data.totalData[p]['Nick']+'</span></td>';
+                              total_str += '<td>'+data.totalData[p]['MeiliGain']+'</td>';
+                            total_str += "</tr>"
+                        }
+
+                        $(".totalData_list").html(total_str);
+                        //个人魅力值
+                        $(".myMeiliGainTotal").html(data['today']['myMeiliGainTotal']);
+                        $(".myRank").html(data['today']['myRank']);
+                        
+                        /**信息提示**/
+                         var xin_str='';
+                         for(var i=0; i<data.news.length;i++){
+                        	 xin_str += "当天阵营:";
+                        	if(data.news[i]['num'] == 1){
+                        		xin_str +='<b class="h3-t-red">红帽 </b>';
+                        	}else if(data.news[i]['num'] == 2){
+                        		xin_str +='<b class="h3-t-yellow">紫帽 </b>';
+                        	}
+                        	xin_str += " "+data.news[i]['MyMeiliGain'];
+                         } 
+                         $(".news_show").html(xin_str);
+                         
+                         /**昵称**/
+                         $(".nick_name").html(data['today']['nick']);
+
+
+                    }else{
+                        alert('数据异常！');
+                    }
+                    //alert(data.name); // John
+                    //console.log(data.time); //  2pm
+                }, "json");
+        //window.location.reload();
+    }
+    loctionUrl();
+    setInterval("loctionUrl()",3000);
+    window.onload=function () {
+        addAni(img)
+    }
+
+    $(function() {
+        $('.h3-h-a').click(function () {
+            loctionUrl();
+        });
+
+        loctionUrl();
+
+    });
+
+    $(window).scroll(function () {
+        var cWidth = document.body.clientWidth;
+        var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+        if(cWidth>370){
+            if(scrollTop>300){
+                getInA(img);
+            }
+        }
+        if(cWidth>300){
+            if(scrollTop>200){
+                getInA(img);
+            }
+        }
+        if(cWidth>600){
+            if(scrollTop>600){
+                getInA(img);
+            }
+        }
+
+
+    });
+
+
+</script>
+</body>
+
+<script type="text/javascript">
+    var _hmt = _hmt || [];
+    $(function () {
+
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?92271316ab45db908e0b6763467fea57";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })
+</script>
+</html>

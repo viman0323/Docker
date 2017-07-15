@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="utf-8">
+    <title>
+        {if condition="$room['room']['title'] != '0' "}
+            {$room.room.title}
+        {else /}
+            {$room.room.info.nick}的直播间
+        {/if}
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="__CSS__/share.css">
+</head>
+<body>
+<header>
+    <div class="s-header tab-scroll aniInTop">
+        <div class="s-header-c clearfix">
+            <div class=s-h-l>
+                <img src="__IMG__/superlive/z-i-i01.png" class="s-logo-i">
+                <div class="s-h-txt">
+                    <h1>玩咖直播</h1>
+                    <h5>可以玩的直播</h5>
+                </div>
+            </div>
+            <div class=s-h-r>
+                <a class="s-o-a openIMay"><img src="__IMG__/superlive/z-i-i02.png" class="s-open"></a>
+            </div>
+        </div>
+    </div>
+</header>
+<article>
+    <section>
+        <div class="s-mid">
+            <div class="s-mid-c">
+                <!-- video播放器 -->
+                <div class="s-mid-video" id="top">
+                    {if condition="$room['room']['imgFace'] != '0'"}
+                        <div class="s-v-bg"  style='background: url("{$room.room.imgFace}") no-repeat'></div>
+                        <img src="{$room.room.imgFace}" class="s-i-d">
+                    {elseif condition="$room['room']['info']['imgHead']" /}
+                        <div class="s-v-bg"  style='background: url("{$room.room.info.imgHead}") no-repeat'></div>
+                        <img src="{$room.room.info.imgHead}" class="s-i-d">
+                    {else /}
+                        <div class="s-v-bg"  style='background: url(/application/index/static/images/no.jpg) no-repeat'></div>
+                        <img src="__IMG__/no.jpg" class="s-i-d">
+                    {/if}
+                    <video class="s-video-a share-video s-pos" id="iMayVideo" src="{$room.room.url}" preload="auto" playsinline webkit-playsinline></video>
+                </div>
+                <!-- video播放器按钮 -->
+                <div class="s-play s-pos s-share-p">
+                    <a class="s-play-a" id="iMayPlay"><img src="__IMG__/share/s-play.png" class="s-play-i"></a>
+                </div>
+                <div class="s-v-over">
+                    <span>直播已结束</span>
+                </div>
+                <div class="s-loading" >
+                    <img src="__IMG__/share/loading.gif">
+                </div>
+                <!-- 头像bar -->
+                {if condition="$room['status'] != 0"}
+                <div class="s-d-bar clearfix">
+                    <div class="s-bar-top">
+                        <a class="s-bar-a s-pos">
+                            {if condition="$room['room']['info']['imgHead']" /}
+                            <img src="{$room.room.info.imgHead}" class="s-bar-i">
+                            {else /}
+                            <img src="__IMG__/no.jpg" class="s-bar-i">
+                            {/if}
+                        </a>
+                        <div class="s-bar-tit s-pos">
+                            <div class="s-tit-t1 clearfix">
+                                <h5>{$room.room.info.nick}</h5>
+                                {if condition="$room['room']['info']['sex'] == '1'"}
+                                <em class="s-sex s-sex-m"></em>
+                                {elseif condition="$room['room']['info']['sex'] == '2'" /}
+                                <em class="s-sex s-sex-g"></em>
+                                {/if}
+                                {php} if ($room['room']['info']['LiveLv'] > 39) { {/php}
+                                <b class="z-level z-level-e">{$room.room.info.LiveLv}</b>
+                                {php} } else if ($room['room']['info']['LiveLv'] > 29) { {/php}
+                                <b class="z-level z-level-d">{$room.room.info.LiveLv}</b>
+                                {php} } else if ($room['room']['info']['LiveLv'] > 19) { {/php}
+                                <b class="z-level z-level-c">{$room.room.info.LiveLv}</b>
+                                {php} } else if ($room['room']['info']['LiveLv'] > 9) { {/php}
+                                <b class="z-level z-level-b">{$room.room.info.LiveLv}</b>
+                                {php} } else { {/php}
+                                <b class="z-level z-level-a">{$room.room.info.LiveLv}</b>
+                                {php} } {/php}
+                            </div>
+                            <div class="s-tit-t2">
+                                魅号：{$room.room.roomId}
+                            </div>
+                        </div>
+                        <a class="s-inter s-pos openIMay">
+                            <img src="__IMG__/share/s-inter.png" class="s-inter-a">
+                        </a>
+                    </div>
+                </div>
+                {/if}
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="s-list">
+            <div class="s-list-tit">
+                <h2>热门直播</h2>
+            </div>
+            <div class="s-list-c">
+                <ul class="s-list-ul clearfix s-share-ul">
+                    {volist name="room_hot['rooms']" id="vo"}
+                    <li>
+                        <div class="li-d-top">
+                            {if condition="$vo['imgFace'] != '0'"}
+                                <a href="/share.html?uid={$vo.info.uid}&room_id={$vo.roomId}&scheme={$scheme}&host={$host}" class="s-list-b" style="background-image: url('{$vo.imgFace}')"></a>
+                            {elseif condition="$vo['info']['imgHead'] != '0'" /}
+                                <a href="/share.html?uid={$vo.info.uid}&room_id={$vo.roomId}&scheme={$scheme}&host={$host}" class="s-list-b" style="background-image: url('{$vo.info.imgHead}')"></a>
+                            {else /}
+                                <a href="/share.html?uid={$vo.info.uid}&room_id={$vo.roomId}&scheme={$scheme}&host={$host}" class="s-list-b" style="background-image: url(/application/index/static/images/no.jpg)"></a>
+                            {/if}
+                            <div class="s-list-bg s-pos">
+                                <span class="s-list-t1">
+                                    {if condition="$vo['title'] != '0'"}
+                                        {$vo['title']}
+                                    {else /}
+                                        {$vo['info']['nick']}
+                                    {/if}
+                                </span>
+                                <span class="s-list-t2">
+                                    <img src="__IMG__/share/s-f02.png" class="s-f02">
+                                    {if condition="$vo['current'] != '0'"}
+                                        {$vo['current']}
+                                    {else /}
+                                        0
+                                    {/if}
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    {/volist}
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div id="imay-mask">
+            <div class="iMay-shadow"></div>
+            <div class="w-mes">
+                <img src="__IMG__/superlive/z-i-i10.png" class="w-mes-img">
+            </div>
+        </div>
+    </section>
+</article>
+<footer>
+    <!-- 底部 -->
+    <div class="z-footer clearfix">
+        <img src="__IMG__/superlive/z-i-i05.png" class="z-i-i05">
+        <div class="z-footer-r">
+            <h6>都翻到这了，就下载个玩咖体验一下吧</h6>
+            <a class="t-footer-challenge openIMay">
+                <img src="__IMG__/share/s-down.png" class="z-i-i06">
+            </a>
+        </div>
+    </div>
+</footer>
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript" src="__JS__/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="__JS__/share.js"></script>
+<script type="text/javascript">
+    var imgURL = '__IMG__/no.jpg';
+    var roomId = '{$room.room.roomId}';
+    var uid = '{$room.room.info.uid}';
+    var imgFace = '{$room.room.imgFace}';
+    var imgHead = '{$room.room.info.imgHead}';
+    var nick = '{$room.room.info.nick}' + '的玩咖直播';
+    var desc = '这里是' + '{$room.room.info.nick}' + '的直播间，去拿个炸鸡啤酒慢慢看~';
+    var url = "{$url}" + "/share";
+    var val = '?room_id=' + roomId + '&uid=' + uid + '&scheme=' + '{$scheme}' + '&host=' + '{$host}';
+    var wxURL ='{:url("Capturemonster/getJsapiTicket")}';
+    var liveUrl= '{$room.room.urlStr}';
+    var picture = '{$room.room.picture}';
+    var ifrSrc = '{$scheme}' + '://' + '{$host}' + '/openwith?type=1&liveType='+'{$room.room.OpenLiveType}'+'&roomId='+roomId+'&liveUrl='+liveUrl+'&uid='+uid+'&picture='+picture;
+    var parameter = '&roomId=' + roomId + '&type=1&liveType='+'{$room.room.OpenLiveType}' +'&liveUrl=' + liveUrl + '&scheme=' + '{$scheme}' + '&host=' + '{$host}'+'&uid='+uid+'&picture='+picture;
+    if (imgFace != 0) {
+        imgURL = imgFace;
+    } else if (imgHead != 0) {
+        imgURL = imgHead;
+    }
+
+    var jsApiList = [
+        'onMenuShareTimeline', //分享到朋友圈
+        'onMenuShareAppMessage',//分享到朋友
+        'onMenuShareQQ',//分享到QQ
+        'onMenuShareQZone'//分享到QQ空间
+    ];
+
+
+
+    $(function () {
+        setImg();
+        setIMayHeight();
+        getWXData(wxURL, nick, desc, url + val, imgURL);
+        loadPlay();
+        $(".openIMay").click(function () {
+            openApp(ifrSrc);
+        });
+    });
+    setTimeout(getLive(), 1000);
+    //查询主播直播是否已结束
+    function getLive() {
+        if (uid != '0') {
+            $.post("{:url('m/share/live')}", {'uid': uid}, function (data) { //查询是否直播结束
+                if (data.status == '1') { // 直播未结束就继续请求
+                    setTimeout("getLive();", 10000);
+                } else if (data.status == '2') { // 如果结束，则将提示浮在上面并将获取到的动态放到固定位置
+                    $(".s-loading").hide();
+                    $("#iMayPlay").hide();
+                    $('.s-v-over').show(); // 显示直播已结束
+                    if (data.type == '1') {
+                        var src = "background: url('" + data.content + "') no-repeat";
+                        $('.s-mid-video').find('div').attr('style', src); //显示最新动态图片
+                    } else if (data.type == '2') {
+                        var vedioUrl = "background: url('" + data.content + "?vframe/jpg/offset/0/w/450') no-repeat";
+                        $('.s-mid-video').find('div').attr('style', vedioUrl); //显示最新动态图片
+                    }
+                } else { // 没有动态显示封面图或者头像图
+                    $(".s-loading").hide();
+                    $("#iMayPlay").hide();
+                    $('.s-v-over').show(); // 显示直播已结束
+                    if (imgFace != '0') {
+                        $('.s-mid-video').find('img').attr('src', imgFace); //显示直播封面图
+                    } else if (imgHead != '0') {
+                        $('.s-mid-video').find('img').attr('src', imgHead); // 显示头像图
+                    }
+                }
+            }, 'json');
+        }
+    }
+</script>
+
+<script type="text/javascript">
+    var _hmt = _hmt || [];
+    $(function () {
+
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?92271316ab45db908e0b6763467fea57";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })
+
+</script>
+</body>
+</html>

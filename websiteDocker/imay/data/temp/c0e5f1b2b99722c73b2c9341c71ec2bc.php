@@ -1,0 +1,47 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:53:"/home/web/imay/application/m/view/download/index.html";i:1486463787;}*/ ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>下载页</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <link type="text/css" rel="stylesheet" href="__CSS__/m-common.css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/m-default.css">
+    <script>
+        var ThinkPHP = window.Think = {
+            "ROOT": "__ROOT__",
+            "IMG" : "__IMG__"
+        };
+    </script>
+</head>
+<body>
+<section>
+    <div class="g-mask"></div>
+</section>
+<div class="m-wechat-mes">
+    <div class="g-mask" id="iMask"></div>
+    <div class="i-m-txt">
+        <div class="m-i-w">
+            <span>点击这里选择“在浏览器中打开”</span>
+            <!--<span>体验更多互动!!!</span>-->
+        </div>
+        <div class="m-i-ar">
+            <img src="__IMG__/m-img04.png">
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/common.js"></script>
+<script type="text/javascript" src="__PUBLIC__/plugins/plugins.js"></script>
+<script type="text/javascript" src="__JS__/m-index.js"></script>
+<script>
+    $(function(){
+        $(".m-wechat-mes").show();
+        $(".g-mask").show();
+    });
+</script>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>艺人管理</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <link type="text/css" rel="stylesheet" href="__PC_CSS__/common.css">
+    <link type="text/css" rel="stylesheet" href="__PC_CSS__/artist.css">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+</head>
+<body>
+<!--头部信息-->
+{include file="../../common/view/default/header" /}
+<article>
+    <!--展示个人信息的banner-->
+    {include file="../../common/view/default/infoBanner" /}
+    <section>
+        <div class="art-warp">
+            <ul class="art-w-ul">
+                <li class="art-ul-f">
+                    <span>今日</span>
+                    <span>本月</span>
+                </li>
+                <li>
+                    <div class="art-ul-l">
+                        <span class="art-ul-tit">直播时长：</span>
+                        <span class="art-red art-txt-a"><b>{$overview['livetimeday']['hour']|default=0}</b>小时<b>{$overview['livetimeday']['min']|default=0}</b>分</span>
+                    </div>
+                    <div class="art-ul-c">
+                        <span class="art-ul-tit">直播时长：</span>
+                        <span class="art-red art-txt-a"><b>{$overview['livetimemonth']['hour'] |default=0}</b>小时<b>{$overview['livetimemonth']['hour']|default=0}</b>分</span>
+                    </div>
+                    <div class="art-ul-r">
+                        <a href="{:url('Broker/Actor/statLive')}" class="art-det-link">
+                            <span>直播间详情</span>
+                            <b></b>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="art-ul-l">
+                        <span class="art-ul-tit">魅力收入：</span>
+                        <span class="art-green art-txt-a"><b>{$overview['incomeday']|default=0}</b></span>
+                    </div>
+                    <div class="art-ul-c">
+                        <span class="art-ul-tit">魅力收入：</span>
+                        <span class="art-green art-txt-a"><b>{$overview['incomemonth']|default=0}</b></span>
+                    </div>
+                    <div class="art-ul-r">
+                        <a href="{:url('Broker/Actor/statIncome')}" class="art-det-link">
+                            <span>收入详情</span>
+                            <b></b>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="art-ul-l">
+                        <span class="art-ul-tit">新增粉丝：</span>
+                        <span class="art-txt-a"><b>{$overview['fansincrday']|default=0}</b></span>
+                    </div>
+                    <div class="art-ul-c">
+                        <span class="art-ul-tit">新增粉丝：</span>
+                        <span class="art-txt-a"><b>{$overview['fansincrmonth']|default=0}</b></span>
+                    </div>
+                    <div class="art-ul-r">
+                        <a href="{:url('Broker/Actor/statFans')}" class="art-det-link">
+                            <span>粉丝详情</span>
+                            <b></b>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="art-ul-la">
+                        <div class="art-ul-l art-la-w">
+                            <span class="art-ul-tit">发布图片：</span>
+                            <span class="art-txt-a"><b>{$overview['imgfeedcount']|default=0}</b></span>
+                        </div>
+                        <div class="art-ul-c art-la-w">
+                            <span class="art-ul-tit">发布视频：</span>
+                            <span class="art-txt-a"><b>{$overview['vediofeedcount']|default=0}</b></span>
+                        </div>
+                        <div class="art-ul-r">
+                            <a href="{:url('Broker/Actor/statFeed')}" class="art-det-link">
+                                <span>动态详情</span>
+                                <b></b>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section>
+        <div class="art-warp art-bot">
+            <div class="art-tab-tri">
+                <ul class="tab-tri-ul">
+                    <li class="tri-default">今日贡献榜</li>
+                    <li>本周贡献榜</li>
+                    <li>本月贡献榜</li>
+                </ul>
+            </div>
+            <div class="art-tri-con">
+                <div class="art-tri-d tri-d-show">
+                    <table class="art-tri-table">
+                        <thead>
+                            <tr>
+                                <th>名次</th>
+                                <th>昵称</th>
+                                <th>魅号</th>
+                                <th>送出的魅力</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {volist name="contributeList['giftrankday']" id="vo" key="i"}
+                            <tr>
+                                <td><b class="art-red art-font-s">{$i}</b>名</td>
+                                <td>{$vo['user']['nick']}</td>
+                                <td>{$vo['user']['roomId']}</td>
+                                <td>{$vo['Value']}</td>
+                            </tr>
+                            {/volist}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="art-tri-d">
+                    <table class="art-tri-table">
+                        <thead>
+                            <tr>
+                                <th>名次</th>
+                                <th>昵称</th>
+                                <th>魅号</th>
+                                <th>送出的魅力</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {volist name="contributeList['giftrankweek']" id="vo" key="i"}
+                            <tr>
+                                <td><b class="art-red art-font-s">{$i}</b>名</td>
+                                <td>{$vo['user']['nick']}</td>
+                                <td>{$vo['user']['roomId']}</td>
+                                <td>{$vo['Value']}</td>
+                            </tr>
+                            {/volist}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="art-tri-d">
+                    <table class="art-tri-table">
+                        <thead>
+                            <tr>
+                                <th>名次</th>
+                                <th>昵称</th>
+                                <th>魅号</th>
+                                <th>送出的魅力</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                {volist name="contributeList['giftrankmonth']" id="vo" key="i"}
+                            <tr>
+                                <td><b class="art-red art-font-s">{$i}</b>名</td>
+                                <td>{$vo['user']['nick']}</td>
+                                <td>{$vo['user']['roomId']}</td>
+                                <td>{$vo['Value']}</td>
+                            </tr>
+                            {/volist}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</article>
+<!--登录、注册、忘记密码-->
+{include file="../../common/view/default/login" /}
+<script type="text/javascript" src="__PC_JS__/g-index.js"></script>
+</body>
+</html>

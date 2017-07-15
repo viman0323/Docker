@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>艺人管理</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <link type="text/css" rel="stylesheet" href="__PC_CSS__/common.css">
+    <link type="text/css" rel="stylesheet" href="__PC_CSS__/artist.css">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+</head>
+<body>
+<!--头部信息-->
+{include file="../../common/view/default/header" /}
+<article>
+    <!--展示个人信息的banner-->
+    {include file="../../common/view/default/infoBanner" /}
+    <section>
+        <div class="charm-bar clearfix">
+            <ul class="charm-bar-ul">
+                <li>
+                    <h5 class="charm-bar-tit">今日</h5>
+                    <div class="charm-bar-c">
+                        <div class="charm-bar-l">
+                            <span class="charm-txt-a">收入：</span>
+                            <span class="charm-txt-b art-red"><b>{$statData['incomeday']|default=0}</b> 魅力 </span>
+                            <div class="charm-line"></div>
+                        </div>
+                        <div class="charm-bar-l">
+                            <span class="charm-txt-a">收入排名：</span>
+                            <span class="charm-txt-b art-red"><b>{$statData['incomerankday']|default=0}</b> 名 </span>
+                            <div class="charm-line"></div>
+                        </div>
+                        <div class="charm-bar-l">
+                            <span class="charm-txt-a">即将超越：</span>
+                            <span class="charm-txt-b art-blue"><b> {$statData['willsurpassday']|default=0} </b></span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <h5 class="charm-bar-tit">本周</h5>
+                    <div class="charm-bar-c">
+                        <div class="charm-bar-l">
+                            <span class="charm-txt-a">收入：</span>
+                            <span class="charm-txt-b art-red"><b>{$statData['incomeweek']|default=0}</b> 魅力 </span>
+                            <div class="charm-line"></div>
+                        </div>
+                        <div class="charm-bar-l">
+                            <span class="charm-txt-a">收入排名：</span>
+                            <span class="charm-txt-b art-red"><b> {$statData['incomerankweek']|default=0} </b> 名 </span>
+                            <div class="charm-line"></div>
+                        </div>
+                        <div class="charm-bar-l">
+                            <span class="charm-txt-a">即将超越：</span>
+                            <span class="charm-txt-b art-blue"><b> {$statData['willsurpassweek']|default=0} </b></span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <h5 class="charm-bar-tit">本月</h5>
+                    <div class="charm-bar-c">
+                        <div class="charm-bar-l">
+                            <span class="charm-txt-a">收入：</span>
+                            <span class="charm-txt-b art-red"><b>{$statData['incomemonth']|default=0}</b> 魅力 </span>
+                            <div class="charm-line"></div>
+                        </div>
+                        <div class="charm-bar-l">
+                            <span class="charm-txt-a">收入排名：</span>
+                            <span class="charm-txt-b art-red"><b> {$statData['incomerankmonth']|default=0} </b> 名 </span>
+                            <div class="charm-line"></div>
+                        </div>
+                        <div class="charm-bar-l">
+                            <span class="charm-txt-a">即将超越：</span>
+                            <span class="charm-txt-b art-blue"><b> {$statData['willsurpassmonth']|default=0} </b></span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section>
+        <div class="art-warp art-bot">
+            <table class="charm-table">
+                <thead>
+                <tr>
+                    <th>日期</th>
+                    <th>日总收入</th>
+                    <th>直播间收入</th>
+                    <!--<th>直播间红包收入</th>-->
+                    <th>直播间游戏收入</th>
+                    <th>动态收入</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {volist name="statData['last30incomestat']" id="vo" key="i"}
+                    <tr>
+                        <td>{:date('Y-m-d',strtotime($vo['Date']))}</td>
+                        <td>{$vo['Total']}</td>
+                        <td>{$vo['Livetotal']}</td>
+                        <!--<td>{$vo['RedEnvelope']}</td>-->
+                        <td>{$vo['GameIncome']}</td>
+                        <td>{$vo['FeedIncome']}</td>
+                    </tr>
+                    {/volist}
+                </tbody>
+            </table>
+        </div>
+    </section>
+</article>
+<!--登录、注册、忘记密码-->
+{include file="../../common/view/default/login" /}
+<script type="text/javascript" src="__PC_JS__/g-index.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>玩咖直播</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="__CSS__/m-edg.css">
+</head>
+<body>
+<img src="__IMG__/edg/bg02.jpg" class="edg-bg">
+<div class="edg-bot">
+    <img src="__IMG__/edg/bg01.jpg" class="edg-bg01">
+    <div class="edg-but">
+        {volist name="result" id="vo"}
+        
+        {php}if($vo['status']==1){{/php}
+	        <a class="edg-but-a" href="{$vo['url']}">
+	            <img src="__IMG__/edg/Live.png" class="edg-live">
+	            <img src="__IMG__/edg/edg-{$i}.png" class="edg-a-i">
+	        </a>
+        {php} }else{ {/php}
+            <a class="edg-but-a" href="imay://com.imay.live/openwith?type=2&uid={$vo['uid']}">
+              <img src="__IMG__/edg/edg-{$i}.png" class="edg-a-i">
+            </a>
+        {php} } {/php}
+        {/volist}
+        
+        
+        
+    </div>
+</div>
+
+</body>
+</html>

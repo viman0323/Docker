@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>提现-iMay直播</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <meta itemprop="name" content="iMay直播">
+    <meta name="keywords" content="交友，直播，游戏，年轻，才艺，文艺，校花，电影，90后，00后，大学生，音乐，自由职业，网红，宅男，女神，潮流，时尚，男神，夜店，唱K，秀场，土豪，富二代"/>
+    <meta name="description" itemprop="description"
+          content="首款可以玩的时尚手机直播APP，极简的产品设计，集离线动态图文、视频等为一体的全新社交点赞模式。意外的邂逅，点亮陌生而并不陌生的社交关系网"/>
+    <meta name="application-name" content="iMay直播"/>
+    <meta name="msapplication-tooltip" content="iMay直播"/>
+    <link type="text/css" rel="stylesheet" href="__PC_CSS__/common.css">
+    <link type="text/css" rel="stylesheet" href="__PC_CSS__/default.css">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+    <style>
+        .m-tip {
+            width: 278px;
+            display: block;
+            text-align: left;
+            line-height: 15px;
+            color: green;
+            font-size: 8px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<!--头部信息-->
+{include file="../../common/view/default/header" /}
+<div class="g-wrap">
+    <div class="g-con">
+        <a class="g-h3-ic"></a>
+        <h3 class="g-h3-bg">兑换收益</h3>
+        <!-- 充值登录bar -->
+        <div class="g-c-log">
+            <div class="g-log-l">
+                <div class="g-log-t">
+                    {if condition="$accessCode eq '0'"}
+                    <img class="g-l-img" src="__PC_IMG__/g-logo.png">
+                    <div class="g-i-r">
+                        <span class="g-l-m1">您还没有登录</span>
+                        <span class="g-l-m2">登录后才能提现  <a href="javascript:;" class="g-m2-login pop-login">登录</a></span>
+                    </div>
+                    {else /}
+                    <img class="g-l-img" src="{$login['user']['imgHead']|default='__PC_IMG__/g-logo.png'}">
+                    <div class="g-i-r i-r-a" style="display: block">
+                        <span class="g-l-m3">{$login['user']['nick']|default=''}</span>
+                        <span class="g-l-m4">魅号：<b>{$login['user']['roomId']|default=0}</b></span>
+                        <div class="g-l-m6">
+	                                <span class="g-m6-a">实名认证：
+                                        {php} if(isset($withdrawInfo['realNameVerify']) && $withdrawInfo['realNameVerify']) { {/php}
+                                        <b class="g-m6-settle">已认证</b>
+                                        {php} } else { {/php}
+                                        <b class="">未认证</b>
+                                        {php} } {/php}
+	                                </span>
+                            <span class="g-m6-a">绑定手机：
+                                {php} if(isset($withdrawInfo['bindPhone']) && $withdrawInfo['bindPhone']) { {/php}
+                                <b class="g-m6-settle">已绑定</b>
+                                {php} } else { {/php}
+                                <b class="">未绑定</b>
+                                {php} } {/php}
+                            </span>
+                            <span class="g-m6-a"> 结算方式：
+                                {php} if(isset($withdrawInfo['signConfirmStatus']) && $withdrawInfo['signConfirmStatus']) { {/php}
+                                <b class="g-m6-settle">已确认</b>
+                                {php} } else { {/php}
+                                <b class="">未确认</b>
+                                {php} } {/php}
+                            </span>
+                            <span class="g-m6-b">提现账号：
+                                {php} if(isset($withdrawInfo['alipayAccount']) && $withdrawInfo['alipayAccount']) { {/php}
+                                <b class="g-m6-b1">{$withdrawInfo['alipayAccount']}</b>
+                                {php} } else { {/php}
+                                <b class="g-m6-b1" style="color: #eb2525">未有帐号</b>
+                                {php} } {/php}
+                             <input name="alipay_account" type="hidden"
+                                    value="{$withdrawInfo['alipayAccount'] | default=''}" maxlength="25">
+                            </span>
+                            <input name="alipay-account" type="hidden"
+                                   value="{$withdrawInfo['alipayAccount']|default=''}" maxlength=11
+                                   onkeypress="return WST.isNumberKey(event)">
+                            <a class="g-m6-edit" onclick="dialogChangeAccount();">
+                                {php}
+                                if( isset($withdrawInfo['alipayAccount']))
+                                echo '更改';
+                                else
+                                echo '设定';
+                                {/php}
+                            </a>
+                        </div>
+                        <div class="g-l-m7">
+                            请去APP中进行实名认证、绑定手机号以及确认结算方式！
+                        </div>
+                    </div>
+                    {/if}
+                </div>
+            </div>
+            {if condition="$accessCode neq '0'"}
+            <div class="g-log-r">
+                <!--<a href="#" class="imay-rc"></a>-->
+                <a href="javascript:void(0)" class="imay-sw-ac pop-login">切换账号</a>
+            </div>
+            {/if}
+        </div>
+        <!-- 魅力余额 -->
+        <div class="g-m-con">
+            <div class="g-c1-a">
+                <div class="g-m-l">
+                    <div class="gl-d1">
+                        <span class="g-c1-t1">魅力余额</span>
+                        <span class="g-c1-t2"><b class="meile-v">{$withdrawInfo['meili']|default="0"}</b></span>
+                    </div>
+                </div>
+                <div class="g-line"></div>
+                <div class="g-m-r">
+                    <span class="g-c1-t1">可兑换收益</span>
+                    <span class="g-c1-t2"><b class="meili-enable">{$withdrawInfo['meili_money']|default="0"}</b>元</span>
+                </div>
+            </div>
+        </div>
+        <!-- 输入提现魅力： -->
+        <div class="g-t-con">
+            <div class="gt-t">
+                <label>输入提现魅力：</label>
+                <div class="pop-info">
+                    <input name="meili" type="text" placeholder="请输入大于300魅力的数量"
+                           onkeypress="return WST.isNumberKey(event)" maxlength=15>
+                    <!--onkeyup="this.value=this.value.replace(/\D/g,'')"-->
+                    <!--onafterpaste="this.value=this.value.replace(/\D/g,'')"-->
+                    {php}if($withdrawInfo['hasDouble'] > 0){ {/php}
+                    <span class="p-l-dobule m-tip">*您有双倍卡，提现比例60%</span>
+                    {php} } {/php}
+                    <span class="p-l-error">请输入大于300魅力的数量</span>
+                </div>
+                <span class="gt-t-t1">到账金额：<b name="s_money">0</b></span>
+                <input name="money" type="hidden">
+            </div>
+            <div class="gt-but">
+                <a href="javascript:void(0)" class="imay-pay" onclick="javascript:dialogConfirmAlipay();"
+                   style="display: none;">提现</a>
+                <a href="javascript:void(0)" class="imay-pay-no">提现</a>
+                <div class="draw-agree">
+                    <input type="checkbox" class="draw-agree-i" id="userReg" checked>
+                    <label for="userReg">我已阅读并同意<a href="{:url('/about/exchange')}" target="_blank">《用户兑换协议》</a></label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--底部信息-->
+{include file="../../common/view/default/footer" /}
+<!--登录、注册、忘记密码-->
+{include file="../../common/view/default/login" /}
+
+<div class="g-mask" style="display: none;"></div>
+<!-- 输入支付宝账号 -->
+<div class="g-pop alipay-pop" style="display:none">
+    <div class="pop-close"></div>
+    <div class="alipay-p-con">
+        <ul class="pop-lg-ul" style="margin-top: 60px;">
+            <li>
+                <h5 class="ali-p-t1">输入支付宝账号</h5>
+            </li>
+            <li>
+                <div class="pop-info">
+                    <input class="alipay-phone" type="text" placeholder="输入手机号"
+                           onkeyup="this.value=this.value.replace(/\D/g,'')"
+                           onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength=11>
+                    <span class="info-mes">手机号不能为空</span>
+                </div>
+            </li>
+            <li class="info-code" style="display: none;">
+                <div class="pop-info">
+                    <input class="apipay-code" type="text" placeholder="输入验证码">
+                    <span class="info-mes">验证码不能为空</span>
+                </div>
+                <a class="chang-alip-getCode getCode">获取验证码</a>
+                <a class="code_btn_dis" style="display: none">0</a>
+            </li>
+            
+            <li style="display: none;">
+                <div class="pop-info">
+                    <input type="text" placeholder="输入6-16位密码">
+                    <span class="info-mes">密码不能为空</span>
+                </div>
+            </li>
+            <li>
+                <a href="javascript:void (0)" class="imay-a0 alipay-ok">确定</a>
+                <span class="p-l-error">编辑提现帐号失败！</span>
+            </li>
+            <li class="iMay-mes">
+                注意：请仔细确认支付宝账号(打开支付宝在“我的-个人中心-个人主页”查看）和实名认证的姓名是否一致，否则提现操作都将失败
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- 提取确认信息 -->
+<div class="g-pop alipay-detail-pop" style="display: none;">
+    
+    <div class="pop-close"></div>
+    <div class="alipay-p-con">
+        <ul class="pop-ad-ul">
+            <li>
+                <h5 class="ali-p-t1">确认信息</h5>
+            </li>
+            <li>
+                <span>提现支付宝账户：<b class="ali-b-account">0</b></span>
+            </li>
+            <li class="info-code">
+                <span class="ali-p-t2">提现魅力： <b class="ali-b-meili">0</b></span>
+            </li>
+            <li>
+                <span class="ali-p-t3"> 到账金额：<b class="ali-b-money">0</b></span>
+            </li>
+            <li>
+                <div class="ali-but">
+                    <a class="ali-but-a">放弃</a>
+                    <a class="ali-but-b">确定</a>
+                </div>
+                <div class="ali-mes">
+                    <span class="info-mes" style="display: none;">提现失败</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript" src="__BJS__/bootstrap.min.js"></script>
+<script type="text/javascript" src="__PJS__/plugins.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/common.js"></script>
+<script type="text/javascript" src="__PUBLIC__/pc/js/g-index.js"></script>
+
+<script>
+    var wait                = 60;
+    var m_itemDouble        = "{$withdrawInfo['itemDouble']|default=0}";
+    var isRealNameVerify    = Number("{$withdrawInfo['realNameVerify'] | default=0}");
+    var isBindPhone         = Number("{$withdrawInfo['bindPhone'] | default=0}");
+    var isSignConfirmStatus = Number("{$withdrawInfo['signConfirmStatus'] | default=0}");
+    var maxMeili            = Number($('.meile-v').html());
+    var isSigned            = Number("{$withdrawInfo['isSigned'] | default=0}");
+
+
+    /*
+     * 更改提现帐号
+     */
+    function dialogChangeAccount() {
+        $(".alipay-pop").show();
+        $(".g-mask").show();
+    }
+    
+    /*
+     * 隐藏【更改提现 帐号】窗口
+     */
+    function dialogChangeAccountHide() {
+        $(".alipay-pop").hide();
+        $(".g-mask").hide();
+    }
+    /*
+     * 点击提现的提示框
+     */
+    function dialogConfirmAlipay() {
+        $(".ali-but").siblings('.ali-mes').find('.info-mes').css("display", "none");
+        $('.ali-b-account').html($('.g-m6-b1').html()); //显示确认提现账号
+        $('.ali-b-meili').html($("input[name='meili']").val()); //显示确认的魅力
+        $('.ali-b-money').html($("input[name='money']").val()); //显示确认的到账金额
+        $('.alipay-detail-pop').show();
+        $(".g-mask").show();
+    }
+    /**
+     * 检查参数
+     */
+    function checkParams(_this) {
+//        alert(_this.toString());return;
+        var isAlipayAccount = $("input[name='alipay_account']").val();
+        var isMeiliRight;
+        var meili           = $("input[name='meili']").val();
+        
+        $("input[name='meili']").siblings('.p-l-error').css("display", "none");
+        if (meili < 300 || meili > maxMeili) {
+            isMeiliRight = false;
+            if ($(_this).attr("name") == "meili") {
+                $("input[name='meili']").siblings('.p-l-error').html('请输入大于300魅力的数量');
+                $("input[name='meili']").siblings('.p-l-error').css("display", "block");
+            }
+        } else {
+            isMeiliRight = true;
+        }
+        if (isAlipayAccount == "" && $(_this).hasClass("alipay-ok")) {
+            $("input[name='meili']").siblings('.p-l-error').html('请设定提现帐号！');
+            $("input[name='meili']").siblings('.p-l-error').css("display", "block");
+        }
+        
+        if (isRealNameVerify && isBindPhone && isAlipayAccount && isMeiliRight && isSignConfirmStatus) {
+            $(".imay-pay").show();
+            $(".imay-pay-no").hide();
+        } else {
+            $(".imay-pay").hide();
+            $(".imay-pay-no").show();
+        }
+    }
+    /*
+     * 将魅力转换成钱
+     */
+    function convertMeiliToMoney(meile) {
+        var money = 0;
+        if (meile) {
+            if (m_itemDouble != "0") {
+                money = (meile / 100) * 3 * 2;
+            } else {
+                money = (meile / 100) * 3;
+            }
+        }
+        return money.toFixed(2);
+    }
+    
+    /*
+     * 检查输入魅力值
+     */
+    function calcMoney() {
+        var meili = Number($("input[name='meili']").val());
+        if (meili > maxMeili) {
+            meili = maxMeili;
+            $("input[name='meili']").val(meili)
+        }
+        checkParams(this);
+        money = convertMeiliToMoney(meili);
+        $("b[name='s_money']").html(money + "元");
+        $("input[name='money']").val(money);
+    }
+    
+    //60s倒计时
+    function time(btn) {
+        if (wait === 0) {
+            btn.html("重新发送").show();
+            btn.siblings('.code_btn_dis').hide();
+            wait = 60;
+        } else {
+            btn.hide();
+            btn.siblings('.code_btn_dis').html(wait + '秒').show();
+            wait--;
+            setTimeout(function () {
+                time(btn);
+            }, 1000);
+        }
+    }
+    
+    $(function () {
+        var alipayAccount = "{$withdrawInfo['alipayAccount']|default = '13633333'}";
+        $("input[name='meili']").on("input valuechange", calcMoney);
+        
+        /*
+         * 获取验证码(更换帐号时)
+         */
+        $('.chang-alip-getCode').click(function () {
+            var obj   = {};
+            obj.type  = '3';
+            obj.phone = $('.alipay-phone').val();
+            if (!obj.phone || obj.phone.substring(0, 2) == '输入') {
+                $('.alipay-phone').parent().find(".info-mes").css("display", "block");
+                return;
+            }
+            obj.country = 86;//$('.login-country').find('span b').text();
+            wait        = 60;
+            time($(this));
+            $.post(verificationCode, obj);
+        });
+        
+        /*
+         * 确定更换支付宝号
+         */
+        $('.alipay-ok').click(function () {
+            var obj     = {};
+            obj.account = $('.alipay-phone').val();
+            obj.code    = $('.apipay-code').val();
+            if (!obj.account) {
+                $('.alipay-phone').parent().find(".info-mes").html("手机号不能为空").css("display", "block");
+                f
+                return;
+            } else if (obj.account.length != 11) {
+                $('.alipay-phone').parent().find(".info-mes").html("请输入11位手机号码").css("display", "block");
+                return;
+            }
+            
+            $("input[name='alipay-account']").val(obj.account);
+            $("input[name='alipay_account']").val(obj.account);
+            $('.g-m6-b1').html(obj.account);
+            $(".g-m6-b1").html($(".g-m6-b1").html().substring(0, 3) + "****" + $(".g-m6-b1").html().substring(8, 11));
+            $('.alipay-phone').val('');
+            $('.apipay-code').val('');
+            checkParams(this);
+            dialogChangeAccountHide();
+        });
+        
+        /*
+         * 确认信息--放弃事件
+         */
+        $('.ali-but-a').click(function () {
+            $(".alipay-detail-pop").hide();
+            $(".g-mask").hide();
+        });
+        
+        /*
+         * 确认信息--确定事件
+         */
+        $('.ali-but-b').click(function () {
+            var params           = {};
+            params.alipayAccount = $("input[name='alipay-account']").val();
+            params.meili         = Number($("input[name='meili']").val());
+            
+            var submit_url = "{:url('m/withdraw/aliWithDraw')}";
+            if (isSigned) {
+                $(".ali-but").siblings('.ali-mes').find('.info-mes').css("display", "block").html("您是按月结算主播，无需进行提现操作");
+                return;
+            }
+            $.post(submit_url, params, function (data, textStatus) {
+                var json = WST.toJson(data);
+                console.log(json);
+                if (json.status == '1') {
+                    window.location.href = '{:url("user/withdraw/successfulView")}';
+                } else {
+                    var msg;
+                    if (json.errordesc) {
+                        msg = "提现失败," + WST.getErrorMsg(json.errordesc);
+                    } else {
+                        msg = "提现失败";
+                    }
+                    $(".ali-but").siblings('.ali-mes').find('.info-mes').css("display", "block").html(msg);
+                }
+            });
+        });
+        
+    });
+</script>
+</body>
+</html>

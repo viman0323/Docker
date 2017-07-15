@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>新年活动</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta content="telephone=no" name="format-detection">
+    <link rel="stylesheet" href="__CSS__/newyear.css">
+</head>
+<body>
+<header>
+    <div class="n-header">
+        <h1><img class="n-bg-i02"></h1>
+    </div>
+</header>
+<article>
+    <div class="n-con">
+        <img class="n-bg-i03 aniInTop">
+        <div class="n-list">
+            <ul class="n-list-ul clearfix">
+                <li class="n-checked">
+                    <img class="n-i07a n-i07">
+                    <img class="n-i08a n-i08">
+                </li>
+                <li>
+                    <img class="n-i07b n-i07">
+                    <img class="n-i08b n-i08">
+                </li>
+            </ul>
+            <div class="n-list-c clearfix">
+                <!--恭喜发财榜-->
+                <div class="list-c-d">
+                    <div class="n-bar">
+                        <img class="n-i03">
+                        <img class="n-i02 n-i02a n-i02a-a">
+                    </div>
+                    <div class="list-c-mid">
+                        <ul class="list-c-ul congratulation">
+                        </ul>
+                    </div>
+                </div>
+                <!--发财榜-->
+                <div class="list-c-d">
+                    <div class="n-bar">
+                        <img class="n-i03">
+                        <img class="n-i02 n-i02b">
+                    </div>
+                    <div class="list-c-mid">
+                        <ul class="list-c-ul fatten">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+<footer>
+    <div class="n-footer">
+        <span>关注“iMay服务中心”公众号，充值有惊喜</span>
+        <span>本活动最终解释权归iMay所有</span>
+        <span>QQ：3383498099</span>
+    </div>
+</footer>
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript">
+    var a = "__IMG__/newyear";
+
+    setTimeout(locationUrl(), 2000); //加载完页面后ajax请求数据并显示在页面上
+
+    function locationUrl(){
+        var  url = "{:url('activity/NewYearActivity/ajaxindex')}";
+        $.post(url,'',
+        function(data_list){
+            if (data_list['status'] == '1') {
+                //恭喜发财排行榜
+                var total_str = '';
+                for (var p = 0; p < data_list.ranksA.length; p++) {
+                    var num = p+1;
+                    var nick = '';
+                    if (data_list.ranksA[p]['User']['nick']) {
+                        nick = data_list.ranksA[p]['User']['nick'];
+                    } else {
+                        nick = '';
+                    }
+                    total_str += "<li>";
+                    total_str += '<div class="list-top clearfix">';
+                    total_str += '<div class="list-l">';
+                    total_str += '<span class="list-l-id">' + num + '</span>';
+
+                    if (p == 0) {
+                        total_str += '<img src="__IMG__/newyear/n06.png" class="n-i06">';
+                    } else if (p == 1) {
+                        total_str += '<img src="__IMG__/newyear/n06a.png" class="n-i06">';
+                    } else if (p == 2) {
+                        total_str += '<img src="__IMG__/newyear/n06b.png" class="n-i06">';
+                    } else {
+                        total_str += '<img src="__IMG__/newyear/n06c.png" class="n-i06">';
+                    }
+
+                    if (data_list.ranksA[p]['User']['imgHead']) {
+                        total_str += '<img src="' + data_list.ranksA[p]['User']['imgHead'] + '?imageView2/2/w/200" class="n-j01">';
+                    } else {
+                        total_str += '<img src="__IMG__/no.png" class="n-j01">';
+                    }
+
+                    if (p == 0) {
+                        total_str += '<img src="__IMG__/newyear/n05.png" class="n-i05">';
+                    } else if (p == 1) {
+                        total_str += '<img src="__IMG__/newyear/n05a.png" class="n-i05">';
+                    } else if (p == 2) {
+                        total_str += '<img src="__IMG__/newyear/n05b.png" class="n-i05">';
+                    } else {
+                        total_str += '<img src="__IMG__/newyear/n05.png" class="n-i05a">';
+                    }
+
+                    total_str += '</div>';
+                    total_str += '<div class="b-txt fc-txt"><h5>' +  nick +'</h5><span>' +  data_list.ranksA[p]['Score'] +'</span></div>';
+                    total_str += '</div>';
+                    total_str += '<div class="n-line"></div>';
+                    total_str += "</li>";
+                }
+
+                $(".congratulation").html(total_str);
+
+                //发财榜
+                var fatten = '';
+                for(var i = 0; i < data_list.ranksB.length; i++){
+                    var number = i+1;
+                    var nickName = '';
+                    if (data_list.ranksB[i]['User']['nick']) {
+                        nickName = data_list.ranksB[i]['User']['nick'];
+                    } else {
+                        nickName = '';
+                    }
+                    fatten += "<li>";
+                    fatten += '<div class="list-top clearfix">';
+                    fatten += '<div class="list-l">';
+                    fatten += '<span class="list-l-id">' + number + '</span>';
+
+                    if (i == 0) {
+                        fatten += '<img src="__IMG__/newyear/n06.png" class="n-i06">';
+                    } else if (i == 1) {
+                        fatten += '<img src="__IMG__/newyear/n06a.png" class="n-i06">';
+                    } else if (i == 2) {
+                        fatten += '<img src="__IMG__/newyear/n06b.png" class="n-i06">';
+                    } else {
+                        fatten += '<img src="__IMG__/newyear/n06c.png" class="n-i06">';
+                    }
+
+                    if (data_list.ranksB[i]['User']['imgHead']) {
+                        fatten += '<img src="' + data_list.ranksB[i]['User']['imgHead'] + '?imageView2/2/w/200" class="n-j01">';
+                    } else {
+                        fatten += '<img src="__IMG__/no.png" class="n-j01">';
+                    }
+
+                    if (i == 0) {
+                        fatten += '<img src="__IMG__/newyear/n05.png" class="n-i05">';
+                    } else if (i == 1) {
+                        fatten += '<img src="__IMG__/newyear/n05a.png" class="n-i05">';
+                    } else if (i == 2) {
+                        fatten += '<img src="__IMG__/newyear/n05b.png" class="n-i05">';
+                    } else {
+                        fatten += '<img src="__IMG__/newyear/n05.png" class="n-i05a">';
+                    }
+
+                    fatten += '</div>';
+                    fatten += '<div class="b-txt fc-txt"><h5>' +  nickName +'</h5><span>' +  data_list.ranksB[i]['Score'] +'</span></div>';
+                    fatten += '</div>';
+                    fatten += '<div class="n-line"></div>';
+                    fatten += "</li>";
+
+                }
+
+                $(".fatten").html(fatten);
+
+            }
+        }, "json");
+    }
+    setInterval("locationUrl()",15000);
+
+</script>
+<script type="text/javascript" src="__JS__/newyear.js"></script>
+
+<script type="text/javascript">
+    var _hmt = _hmt || [];
+    $(function () {
+
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?92271316ab45db908e0b6763467fea57";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })
+</script>
+</body>
+</html>

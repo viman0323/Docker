@@ -1,0 +1,70 @@
+@charset "utf-8";
+/* CSS Document */
+/*reset*/
+*{-webkit-tap-highlight-color:rgba(0, 0, 0, 0);}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,iframe{margin:0;padding:0;border:0; word-wrap: break-word; -webkit-text-size-adjust:none; -webkit-tap-highlight-color:rgba(0,0,0,0);}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+body,button,input,select,textarea{font:12px/1.5 tahoma,arial;font-family:\5FAE\8F6F\96C5\9ED1,Arial,sans-serif;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500}
+input,select,textarea{font-size:100%; vertical-align:middle; border:0;background:none;box-shadow:none; -moz-appearance:none; appearance:none; outline:none; -webkit-outline:none;-webkit-appearance:searchfield;-webkit-rtl-ordering:logical;-webkit-user-select:text;-webkit-appearance:none;-webkit-tap-highlight-color:rgba(255,0,0,0);}
+input:focus,textarea:focus{outline:none}
+ol,ul{list-style:none}
+table{border-collapse:collapse;border-spacing:0}
+img{border:0 none}
+img, object {max-width: 100%;}
+em,i,code,cite,address,th{font-style:normal;font-weight:500}
+.clear{clear:both;line-height:0;font-size:0}
+.clearfix{*zoom:1;_height:1px}
+.clearfix:after{content:" ";display:block;height:0;clear:both;visibility:hidden}
+q:before,q:after{ content:''}
+abbr,acronym{ border:0}
+a{text-decoration:none;-webkit-user-select:none;}
+.none{ display:none;}
+.hr_10{clear:both;height:10px;line-height:1px;font-size:1px}
+.hr_5{clear:both;height:5px;line-height:1px;font-size:1px}
+.hr_1{clear:both;height:1px;line-height:1px;font-size:0}
+.wb{clear:both; border:none; height:1px; line-height:1px; background:#FFF; font-size:0; overflow:hidden}
+a:link,a:visited,a:hover,a:active{color:#999;text-shadow:none}
+.w320{ width:320px; margin:0 auto; clear:both; position:relative;}
+.w360{ width:360px; margin:0 auto; clear:both; position:relative;}
+.w480{ width:480px; margin:0 auto; clear:both; position:relative;}
+/*reset end*/
+img{ width: 100%;}
+body{ background-color: #541d8d;}
+@font-face{ font-family: fz; src: url('../css/POORICH.TTF');  }
+.h5-info1{ position: relative;}
+.h5-pos{ position: absolute;}
+.h5-i01{ top: 0; left: 0; z-index: 3;}
+.h5-i04{ top: 39%; z-index: 1; width: 90%; left: 4%;}
+.h5-h01{width: 52%; top: 45%; left: 50%; margin-left: -26%; z-index: 1; font-family: fz;font-style:italic; font-weight: bold;}
+.h5-h01-t{margin-top: -59%; font-size: 2.5rem; color: #FFF;text-align: center; width: 100%;}
+.h5-i03{ margin-top: 12%; width: 96%; left: 2%;}
+.h5-info2{ margin-top: 60%; position: relative;}
+.h5-j02{ margin-top: 55%;}
+.h5-i08{ top: 0; left: 0;}
+.h5-i07{ margin-top: 96%;}
+.h5-i09{ top: 35%; z-index: 2;}
+.h5-footer{ width: 100%; text-align: center; margin-top: 240%; padding-bottom: 20px; color: #FFF;}
+.h5-i04,.h5-h01,.h5-i09,.h5-i07,.h5-i08,.h5-i10{ display: none;}
+.h5-i10{ top: 83%; left: 7%; width: 18%; z-index: 5;}
+.tab-scroll{animation-duration:1s;-webkit-animation-duration:1s; -moz-animation-duration: 1s; -o-animation-duration: 1s;display: block;  }
+.aniInTop{ animation-name: aniInTop;-webkitanimation-name: aniInTop; -moz-animation-name: aniInTop; -o-animation-name:aniInTop; }
+.aniInTop1{ animation-name: aniInTop1;-webkitanimation-name: aniInTop1; -moz-animation-name: aniInTop1; -o-animation-name:aniInTop1; }
+.aniInBottom{ animation-name: aniInBottom;-webkitanimation-name: aniInBottom; -moz-animation-name: aniInBottom; -o-animation-name:aniInBottom; }
+.enlarge{ animation-name: enlarge;-webkitanimation-name: enlarge; -moz-animation-name: enlarge; -o-animation-name:enlarge; }
+@keyframes aniInTop {
+    0% { opacity: 0;  transform: translate3d(0px, -50px, 0px);  }
+    100% { opacity: 1;  transform: none;}
+}
+@keyframes enlarge {
+    0% { opacity: 0; width: 0; top:20%; transform:scale(.5,.5); }
+    100% {  opacity: 1; width: 52%; transform:scale(1,1);}
+}
+@keyframes aniInBottom {
+    0% { opacity: 0;  transform: translate3d(0px, 50px, 0px);  }
+    100% {  opacity: 1;  transform: none;}
+}
+@keyframes aniInTop1 {
+    0% { opacity: 0; left: 30%; transform: translate3d(0px, -300px, 0px);  }
+    100% { opacity: 1;   transform: none;}
+}

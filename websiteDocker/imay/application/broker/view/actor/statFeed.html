@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>艺人管理</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <link type="text/css" rel="stylesheet" href="__PC_CSS__/common.css">
+    <link type="text/css" rel="stylesheet" href="__PC_CSS__/artist.css">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+</head>
+<body>
+<!--头部信息-->
+{include file="../../common/view/default/header" /}
+<article>
+    <!--展示个人信息的banner-->
+    {include file="../../common/view/default/infoBanner" /}
+    <section>
+        <div class="charm-bar clearfix inter-bar">
+            <ul class="charm-bar-ul inter-ul">
+                <li>
+                    <h5 class="charm-bar-tit">今日</h5>
+                    <div class="charm-bar-c inter-h-a">
+                        <div class="charm-bar-l">
+                            <span class="charm-txt-a">发布动态数：</span>
+                            <span class="charm-txt-b art-red"><b>{$statData['feedcountweek']|default=0}</b></span>
+                            <div class="charm-line"></div>
+                        </div>
+                        <div class="charm-bar-l">
+                            <span class="charm-txt-a">动态获得赞：</span>
+                            <span class="charm-txt-b art-red"><b> {$statData['feedcountweek']|default=0} </b></span>
+                            <div class="charm-line"></div>
+                        </div>
+                        <div class="charm-bar-l">
+                            <span class="charm-txt-a">动态礼物收入：</span>
+                            <span class="charm-txt-b art-blue"><b> {$statData['feedcountweek']|default=0} </b></span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <h5 class="charm-bar-tit">本月</h5>
+                    <div class="charm-bar-c inter-h-a">
+                        <div class="charm-bar-l">
+                            <span class="charm-txt-a">发布动态数：</span>
+                            <span class="charm-txt-b art-red"><b>{$statData['feedcountmonth']|default=0}</b></span>
+                            <div class="charm-line"></div>
+                        </div>
+                        <div class="charm-bar-l">
+                            <span class="charm-txt-a">发布图片数：</span>
+                            <span class="charm-txt-b art-red"><b> {$statData['imgcountmonth']|default=0} </b></span>
+                            <div class="charm-line"></div>
+                        </div>
+                        <div class="charm-bar-l">
+                            <span class="charm-txt-a">发布视频数：</span>
+                            <span class="charm-txt-b art-blue"><b> {$statData['vediocountmonth']|default=0} </b></span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <h5 class="charm-bar-tit">上周</h5>
+                    <div class="charm-bar-c inter-h-b">
+                        <div class="charm-bar-l">
+                            <span class="charm-txt-a">获得赞：</span>
+                            <span class="charm-txt-b art-red"><b>{$statData['praiselastweek']|default=0}</b> 魅力 </span>
+                            <div class="charm-line"></div>
+                        </div>
+                        <div class="charm-bar-l">
+                            <span class="charm-txt-a">转发数：</span>
+                            <span class="charm-txt-b art-red"><b> {$statData['repostlastweek']|default=0} </b> 名 </span>
+                            <div class="charm-line"></div>
+                        </div>
+                        <div class="charm-bar-l">
+                            <span class="charm-txt-a">评论数：</span>
+                            <span
+                                class="charm-txt-b art-red"><b> {$statData['commentlastweek']|default=0} </b> 名 </span>
+                            <div class="charm-line"></div>
+                        </div>
+                        <div class="charm-bar-l">
+                            <span class="charm-txt-a">礼物收入：</span>
+                            <span class="charm-txt-b art-blue"><b> {$statData['giftlastweek']|default=0} </b></span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <h5 class="charm-bar-tit">上上周</h5>
+                    <div class="charm-bar-c inter-h-b">
+                        <div class="charm-bar-l">
+                            <span class="charm-txt-a">获得赞：</span>
+                            <span class="charm-txt-b art-red"><b>{$statData['praiselast2week']|default=0}</b> 魅力 </span>
+                            <span class="art-red">涨：{$statData['praiselast2week']|default=0}%</span>
+                            <div class="charm-line"></div>
+                        </div>
+                        <div class="charm-bar-l">
+                            <span class="charm-txt-a">转发数：</span>
+                            <span
+                                class="charm-txt-b art-red"><b> {$statData['repostlast2week']|default=0} </b> 名 </span>
+                            <div class="charm-line"></div>
+                        </div>
+                        <div class="charm-bar-l">
+                            <span class="charm-txt-a">评论数：</span>
+                            <span
+                                class="charm-txt-b art-red"><b> {$statData['commentlast2week']|default=0} </b> 名 </span>
+                            <span class="art-green">跌：{$statData['commentlast2week']|default=0}%</span>
+                            <div class="charm-line"></div>
+                        </div>
+                        <div class="charm-bar-l">
+                            <span class="charm-txt-a">礼物收入：</span>
+                            <span class="charm-txt-b art-blue"><b> {$statData['giftlast2week']|default=0} </b></span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section>
+        <div class="art-warp art-bot">
+            <table class="charm-table">
+                <thead>
+                    <tr>
+                        <th>日期</th>
+                        <th>动态数</th>
+                        <th>动态收入</th>
+                        <th>动态获赞数</th>
+                        <th>动态评论</th>
+                        <th>动态转发</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {volist name="statData['last30feedsnsstat']" id="vo" key="i"}
+                    <tr>
+                        <td>{:date('Y-m-d',strtotime($vo['Date']))}</td>
+                        <td>{$vo['Count']}</td>
+                        <td>{$vo['Income']}</td>
+                        <td>{$vo['Praise']}</td>
+                        <td>{$vo['Comment']}</td>
+                        <td>{$vo['Repost']}</td>
+                    </tr>
+                    {/volist}
+                </tbody>
+            </table>
+        </div>
+    </section>
+</article>
+<!--登录、注册、忘记密码-->
+{include file="../../common/view/default/login" /}
+<script type="text/javascript" src="__PC_JS__/g-index.js"></script>
+</body>
+</html>

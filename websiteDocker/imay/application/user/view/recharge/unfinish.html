@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <link type="text/css" rel="stylesheet" href="__PC_CSS__/common.css">
+    <link type="text/css" rel="stylesheet" href="__PC_CSS__/default.css">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+</head>
+<body>
+<!--头部信息-->
+{include file="../../common/view/default/header" /}
+<div class="g-wrap">
+    <div class="g-con">
+        <h3 class="g-h3-bg">魅钻充值</h3>
+        <!-- 充值登录bar -->
+        <div class="g-c-log">
+            <div class="pay-con">
+                <div class="pay-txt pay-txt-h"><b class="pay-t-icon"></b>充值未完成！</div>
+                <div class="pay-b-mes">客官请别着急，如已扣款，高峰时段会延迟15秒左右到账。</div>
+                <div class="pay-b-mes"><a href="{:url('/about/connect')}" class="link-cur">联系客服</a></div>
+                <div class="pay-t-but pay-b-ref">
+                    <a href="{:url('user/recharge/index')}" class="imay-rc">重新充值</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--底部信息-->
+{include file="../../common/view/default/footer" /}
+<!--登录、注册、忘记密码-->
+{include file="../../common/view/default/login" /}
+</body>
+</html>

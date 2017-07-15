@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>充值-iMay直播</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <meta itemprop="name" content="iMay直播">
+    <meta name="keywords" content="交友，直播，游戏，年轻，才艺，文艺，校花，电影，90后，00后，大学生，音乐，自由职业，网红，宅男，女神，潮流，时尚，男神，夜店，唱K，秀场，土豪，富二代"/>
+    <meta name="description" itemprop="description"
+          content="首款可以玩的时尚手机直播APP，极简的产品设计，集离线动态图文、视频等为一体的全新社交点赞模式。意外的邂逅，点亮陌生而并不陌生的社交关系网"/>
+    <meta name="application-name" content="iMay直播"/>
+    <meta name="msapplication-tooltip" content="iMay直播"/>
+    <link type="text/css" rel="stylesheet" href="__PC_CSS__/common.css">
+    <link type="text/css" rel="stylesheet" href="__PC_CSS__/default.css">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+</head>
+<body>
+<!--头部信息-->
+{include file="../../common/view/default/header" /}
+<div class="g-wrap">
+    <div class="g-con">
+        <h3 class="g-h3-bg">魅钻充值</h3>
+        <!-- 充值登录bar -->
+        <div class="g-c-log">
+            <div class="g-log-l">
+                <div class="g-log-t">
+                    {php} if (empty($user)) { {/php}
+                    <img class="g-l-img" src="__PC_IMG__/g-logo.png">
+                    <div class="g-i-r">
+                        <span class="g-l-m1">您还没有登录</span>
+                        <span class="g-l-m2">登录后即可充值  <a href="javascript:;" class="g-m2-login pop-login">登录</a></span>
+                    </div>
+                    {php} } else { {/php}
+                    {php} if (!empty($user['user']['imgHead'])) { {/php}
+                    <img class="g-l-img" src="{$user['user']['imgHead']}">
+                    {php} } else { {/php}
+                    <img class="g-l-img" src="__PC_IMG__/g-logo.png">
+                    {php} } {/php}
+                    <div class="g-i-r">
+                        <span class="g-l-m3">{$user['user']['nick']}</span>
+                        <span class="g-l-m4">魅号：<b>{$user['user']['roomId']}</b></span>
+                    </div>
+                    {php} } {/php}
+                </div>
+            </div>
+            <div class="g-log-r">
+                {php} if (empty($user)) { {/php}
+                <a href="javascript:;" class="imay-rc">魅号充值</a>
+                {php} } else { {/php}
+                <a href="javascript:;" class="imay-sw-ac">切换账号</a>
+                {php} } {/php}
+
+            </div>
+        </div>
+        <!-- 充值选择金额bar -->
+        <div class="">
+            <div class="g-c-tit">选择充值金额</div>
+            <div class="g-c-log">
+                <div class="g-log">
+                    <ul class="g-rc-ul">
+                        {volist name="recharge" id="vo" key='i'}
+                        <li class="rc-bg" value="{$i}">
+                            {if condition="$recharge_id neq 0"}
+                            {if condition="isset($user['user']['DiamondRecharge']) && $user['user']['DiamondRecharge']
+                            == 0"}
+                            <div class="rc-bg-s">
+                                <a class="rc-s-a"></a>
+                                <span class="re-s-txt">送<em>{$vo.first_charge}</em>钻</span>
+                            </div>
+                            {/if}
+                            {/if}
+                            <span class="tc-m2">￥<b>{$vo.rmb}</b></span>
+                            <span class="tc-m1"><b>{$vo.diamond}</b>钻</span>
+                        </li>
+                        {/volist}
+                    </ul>
+                </div>
+                <!-- 大额支付 -->
+                <div class="g-b-pay">
+                    <input type="hidden" class="product_id" value="999">
+                    <div class="rc-bg">
+                        <span class="tip-message">自定义充值金额</span>
+                        <span class="tc-m2"></span>
+                        <span class="tc-m1"></span>
+                    </div>
+                    <div class="g-pay-i">
+                        <input type="text" placeholder="请输入所需充值的金额" name="money" class="g-pay-d" maxlength="6"
+                               onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+                               onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}"
+                        >
+                        <span>* 充值金额最低1元，最高可充值20万。首充可获10%魅钻返还。</span>
+                    </div>
+                </div>
+                <div class="g-pay-qq">
+                    <a href="http://wpa.b.qq.com/cgi/wpa.php?ln=2&uin=800811388" class="g-qq-a" target="_blank">
+                        <img src="__PC_IMG__/pay02.jpg">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- 充值支付方式 -->
+        <div class="g-pay">
+            <div class="g-pay-b">支付金额：<b>6</b>元</div>
+            <div class="mei" style="display: none;">980</div>
+            <div class="g-pay-t">
+                <h6 class="g-pay-tit">支付平台：</h6>
+                <div class="g-pay-set">
+                    <div class="pay-t-c alipay" data-val="1">
+                        <a class="g-alipay"></a>
+                        <div class="pay-ckecked"></div>
+                    </div>
+                    <div class="pay-t-c wechat" data-val="2">
+                        <a class="g-wechat"></a>
+                        <div class="pay-ckecked"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- 网银支付 -->
+            <div class="g-pay-t">
+                <h6 class="g-pay-tit">网上银行：</h6>
+                <div class="g-pay-set">
+                    <ul class="g-bank-ul">
+                        <li data-val="3">
+                            <div class="g-bank"></div>
+                            <div class="g-bank-check"></div>
+                        </li>
+                        <li data-val="4">
+                            <div class="g-bank"></div>
+                            <div class="g-bank-check"></div>
+                        </li>
+                        <li data-val="5">
+                            <div class="g-bank"></div>
+                            <div class="g-bank-check"></div>
+                        </li>
+                        <li data-val="6">
+                            <div class="g-bank"></div>
+                            <div class="g-bank-check"></div>
+                        </li>
+                        <li data-val="7">
+                            <div class="g-bank"></div>
+                            <div class="g-bank-check"></div>
+                        </li>
+                        <li data-val="8">
+                            <div class="g-bank"></div>
+                            <div class="g-bank-check"></div>
+                        </li>
+                        <li data-val="9">
+                            <div class="g-bank"></div>
+                            <div class="g-bank-check"></div>
+                        </li>
+                        <li data-val="10">
+                            <div class="g-bank"></div>
+                            <div class="g-bank-check"></div>
+                        </li>
+                    </ul>
+                    <div class="g-bank-mes">* 单笔最高50,000元，具体受限于银行卡网上支付限额</div>
+                </div>
+            </div>
+            <div class="g-log-r">
+                {if condition="$recharge_id eq 0"}
+                <a id="imay-recharge-pay" style="cursor: pointer;" class="imay-pay-no">确认支付</a>
+                {else /}
+                <a id="imay-recharge-pay" style="cursor: pointer;" class="imay-pay">确认支付</a>
+                {/if}
+                <div class="draw-agree draw-agree-a">
+                    <input type="checkbox" name="userReg" class="draw-agree-i" id="userReg" checked>
+                    <label for="userReg">我已阅读并同意<a href="{:url('/about/recharge')}"
+                                                   target="_blank">《用户充值协议》</a></label>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+    <div class="g-mask"></div>
+    <!-- 限额3000 -->
+    <div class="g-pop g-pop-a">
+        <div class="pop-close"></div>
+        <div class="pop-a-con">
+            <span class="pop-a-txt">微信支付目前不支持单笔超过￥3000的充值业务</span>
+            <div class="pop-a-but">
+                <a class="pop-a-a" onclick="largeBtnClick()">调整金额</a><!--  pop-a-c1 -->
+                <a class="pop-a-b pop-a-c2" onclick="aliPayBtnClick()">使用其它方式支付</a>
+            </div>
+        </div>
+    </div>
+    <!-- 支付订单确认 -->
+    <div class="g-pop g-pop-a">
+        <div class="pop-close" onclick="closeDialog_2()"></div>
+        <div class="pop-a-con">
+            <h5 class="pop-l-tit">支付订单</h5>
+            <div class="pop-g-l">
+                <div class="pop-l-info">
+                    <label>充值：</label>
+                    <span>7000魅钻</span>
+                </div>
+                <div class="pop-l-info">
+                    <label>支付：</label>
+                    <span class="pop-money">7200元</span>
+                </div>
+            </div>
+            <div class="pop-l-mes">请在新打开的支付页面完成支付</div>
+            <div class="pop-a-but">
+                <a class="pop-a-a" onclick="uCardPayStatus(currentOrderid);
+">支付完成</a><!--  pop-a-c1 -->
+                <a class="pop-a-b pop-a-c2" href="{:url('/about/connect')}">遇到问题？</a>
+            </div>
+        </div>
+    </div>
+    <!--iMay充值-->
+    <div id="g-pop" class="g-rc-pop">
+        <div class="pop-close"></div>
+        <div class="pop-con">
+            <div class="g-rec-i">
+                <h5>iMay号充值</h5>
+                <ul class="pop-lg-ul">
+                    <li>
+                        <div class="pop-info">
+                            <input class="imay-i0 imay-number" type="text" placeholder="输入暧魅号">
+                            <span class="info-mes">魅号不能为空</span>
+                        </div>
+                    </li>
+                </ul>
+                <a href="javascript:;" class="imay-a0 imay-recharge">充值</a>
+                <span class="p-l-error">魅号不存在或者魅号错误！</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 18岁提醒 -->
+    <div class="g-pop g-pop-a recharge-tip" style="display: none;">
+        <div class="pop-a-con">
+            <span class="pop-a-txt txt-t1">您已成为我们的贵宾用户，为保证您的消费安全，请确认您已满18周岁。若您不满18周岁，
+                请您告知监护人向本直播平台追认与同意后，再进行充值；若您存在不实确认行为，
+                由此造成的一切法律后果与财产损失均由您与您的监护人自行承担。</span>
+            <div class="pop-a-but">
+                <a class="pop-a-a recharge-checked" style="cursor: pointer;" id="{$recharge_id}">我已满18岁</a><!--  pop-a-c1 -->
+                <a class="pop-a-b pop-a-c2"  style="cursor: pointer;" onclick="closeTip()">取消</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--底部信息-->
+{include file="../../common/view/default/footer" /}
+<!--登录、注册、忘记密码-->
+{include file="../../common/view/default/login" /}
+<script type="text/javascript" src="__BJS__/bootstrap.min.js"></script>
+<script type="text/javascript" src="__PJS__/plugins.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/common.js"></script>
+<script type="text/javascript" src="__PUBLIC__/pc/js/g-index.js"></script>
+
+<script type="text/javascript">
+    //弹框1
+    function showDialog_1() {
+        $(".g-mask").show();
+        var dialog = $(".g-pop-a").eq(0);
+        dialog.show();
+    }
+    //弹框2
+    function showDialog_2($diamond, $money) {
+        $(".g-mask").show();
+        var dialog = $(".g-pop-a").eq(1);
+        dialog.find(".pop-l-info:eq(0) span").html($diamond + "魅钻");
+        dialog.find(".pop-l-info:eq(1) span").html($money + "元");
+        dialog.show();
+        
+        //修改确认支付按钮样式
+        $("#imay-recharge-pay").removeClass("imay-pay").addClass("imay-pay-no").html("下单中");
+    }
+    
+    function closeDialog_1() {
+        $(".g-mask").hide();
+        $(".g-pop-a").hide();
+    }
+    
+    function closeDialog_2() {
+        $(".g-mask").hide();
+        $(".g-pop-a").hide();
+        clearClock();
+        //修改确认支付按钮样式
+        $("#imay-recharge-pay").removeClass("imay-pay-no").addClass("imay-pay").html("确认支付");
+    }
+    
+    function setClock(orderid, setClock) {
+        currentClockId = setTimeout("uCardPayStatus(" + orderid + "," + setClock + ")", 5000);
+    }
+    function clearClock() {
+        clearTimeout(currentClockId);
+    }
+    //获取UCard支付状态
+    function uCardPayStatus(orderid, setClock) {
+        var params = {
+            orderid: orderid
+        };
+        $.ajax({
+            type   : 'get',
+            url    : '{:url("m/recharge/uCardPayStatus")}',
+            data   : params,
+            success: function (json) {
+                var json = WST.toJson(json);
+                console.log(json);
+                if (json.status == 1) { //成功支付
+                    location.href = "{:url('user/recharge/successfulView')}"
+                } else {
+                    if (setClock)
+                        window.setClock(orderid, setClock);
+                    else
+                        location.href = "{:url('user/recharge/unfinishView')}";
+                }
+            }
+        });
+    }
+    
+    function checkRules($money, $payType) {
+        $money   = getPayMoney();
+        $payType = getPayType();
+        
+        if ($payType == 2 && $money > maxMoneyWxPay) { //微信支付
+            showDialog_1();
+            return;
+        }
+    }
+    //获取要充值多少钱
+    function getPayMoney() {
+        return Number($('.g-pay-b').find('b').text());
+    }
+    //获取支付方式
+    function getPayType() {
+        return Number($("#linkChecked").data("val"))
+    }
+    function largeBtnClick() {
+        //模拟大额支付按钮点击效果
+        $(".g-b-pay .rc-bg").click();
+        //修改大额金额
+        $('.g-pay-d').val(maxMoneyWxPay).keyup();
+        closeDialog_1();
+    }
+    function aliPayBtnClick() {
+        //模拟支付宝支付按钮点击效果
+        $(".pay-t-c").click();
+        $(".g-alipay").click();
+        
+        closeDialog_1();
+    }
+    /**
+     * 初始化支付方式
+     */
+    function initPayType() {
+        $('.g-rc-ul li:first-child').addClass("tc-checked");
+        $(".g-pay-b b").html($('.g-rc-ul li:first-child').find(".tc-m2 b").text());
+        $(".mei").html($('.g-rc-ul li:first-child').find(".tc-m1 b").text());
+    }
+    
+    // 关闭18岁提示
+    function closeTip() {
+        $('.recharge-tip').hide();
+        $(".g-mask").hide();
+    }
+    
+    //点击浏览器上一步/返回按钮时，将大额数据回写在金额魅钻框中
+    function large() {
+        var name  = $('.g-pay-d');
+        var money = name.val();
+        if (money) {
+            $('.tip-message').hide();
+            name.parents().parent('.g-b-pay').find('.tc-m2').html('￥' + money);
+            name.parents().parent('.g-b-pay').find('.tc-m1').html(money * 10 + ' 钻');
+            $(".g-pay-i").show();
+        }
+    }
+    function newWin(url, id) {
+        var a = document.createElement('a');
+        a.setAttribute('href', url);
+        a.setAttribute('target', '_blank');
+        a.setAttribute('id', id);
+        // 防止反复添加
+        if (!document.getElementById(id)) {
+            document.body.appendChild(a);
+        }
+        a.click();
+    }
+    var currentOrderid   = -1;
+    var currentClockId   = -1;
+    var wait          = 60;
+    var recharge_id   = "{$recharge_id}";
+    var diamond       = "{$diamond}";
+    var rechargeSum   = "{$sum['sumRecharge']}";
+    var isAdult       = "{$sum['isAdult']}";
+    var maxMoneyWxPay = 3000;
+    // 判断是否充值超过10000并且未确认已是成年人
+    if (rechargeSum > 100000 && isAdult == 0) {
+        $("#imay-recharge-pay").removeClass("imay-pay").addClass("imay-pay-no");
+        $('.g-mask').show();
+        $('.recharge-tip').show();
+    }
+    $(function () {
+        initPayType();
+        //点击确认支付
+        $('.imay-pay').click(function () {
+            checkRules();
+            if ($('#imay-recharge-pay').hasClass('imay-pay-no')) {
+                return;
+            }
+            var money = getPayMoney();
+            if (!money) {
+                return;
+            }
+            var obj = {
+                diamond  : $('.mei').text(),
+                subject  : $('.g-h3-bg').text(),
+                uid      : '{$recharge_id}',
+                payClient: 3,
+                money    : money
+            };
+            //获取充值项
+            if ($('.g-b-pay .rc-bg').hasClass("tc-checked")) {
+                obj.product_id = $('.product_id').val(); //默认product_id
+            } else {
+                obj.product_id = $('.tc-checked').val();
+            }
+            //获取支付方式
+            var v = getPayType();
+            if (v === 1) {
+                obj.payment = 'zhifubao';
+                $.post("{:url('user/recharge/aliScanPay')}", obj, function (json) {
+                    var json = WST.toJson(json);
+                    if (json.errordesc) {
+                        if (json.errordesc == 'user exist UserBlacklist') {
+                            var room_id = "{$room_id}";
+                            var content = "您所充值的账号（魅号：" + room_id + "）已被冻结，请联系官方客服QQ：800811388";
+                            alert(WST.getErrorMsg(content));
+                            return;
+                        } else {
+                            alert(WST.getErrorMsg(json.errordesc));
+                            return;
+                        }
+                    }
+                    if (json.status == '1') { // 支付宝支付
+                        var url              = "{:url('user/recharge/pay')}";
+                        var params           = "?no=" + json.out_trade_no + "&type=" + obj.payment;
+                        window.location.href = url + params;
+                    }
+                }, "json");
+            } else if (v === 2) {
+                obj.payment = 'weixin';
+                $.post("{:url('user/recharge/wxScanPay')}", obj, function (json) {
+                    var json = WST.toJson(json);
+                    if (json.errordesc) {
+                        if (json.errordesc == 'user exist UserBlacklist') {
+                            var room_id = "{$room_id}";
+                            var content = "您所充值的账号（魅号：" + room_id + "）已被冻结，请联系官方客服QQ：800811388";
+                            alert(WST.getErrorMsg(content));
+                            return;
+                        } else {
+                            alert(WST.getErrorMsg(json.errordesc));
+                            return;
+                        }
+                    }
+                    if (json.status == '1') { // 微信支付
+                        var url              = "{:url('user/recharge/pay')}";
+                        var params           = "?no=" + json.out_trade_no + "&type=" + obj.payment;
+                        window.location.href = url + params;
+                    }
+                }, "json");
+            } else {
+                switch (v) {
+                    case 3:
+                        obj.type = 965;//中国建设银行
+                        break;
+                    case 4:
+                        obj.type = 964;//中国农业银行
+                        break;
+                    case 5:
+                        obj.type = 970;//招商银行
+                        break;
+                    case 6:
+                        obj.type = 980;//民生银行
+                        break;
+                    case 7:
+                        obj.type = 967;//中国工商银行
+                        break;
+                    case 8:
+                        obj.type = 963;//中国银行
+                        break;
+                    case 9:
+                        obj.type = 981;//交通银行
+                        break;
+                    case 10:
+                        obj.type = 972;//兴业银行
+                        break;
+                    default:
+                        break;
+                }
+                if (obj.type) {
+                    //先修改按钮状态，防止多次请求
+                    showDialog_2(obj.diamond, obj.money);
+                    $.ajax({
+                        type   : 'post',
+                        url    : "{:url('m/recharge/uCardPay')}",
+                        data   : obj,
+                        success: function (json) {
+                            var json = WST.toJson(json);
+//                            console.log(json);
+                            if (json.errordesc) {
+                                if (json.errordesc == 'user exist UserBlacklist') {
+                                    var room_id = "{$room_id}";
+                                    var content = "您所充值的账号（魅号：" + room_id + "）已被冻结，请联系官方客服QQ：800811388";
+                                    alert(WST.getErrorMsg(content));
+                                    return;
+                                } else {
+                                    alert(WST.getErrorMsg(json.errordesc));
+                                    return;
+                                }
+                            }
+                            if (json.status == 1) {
+                                var data       = json.data;
+                                currentOrderid = data.orderid;
+//                                window.open(data.url);
+                                newWin(data.url, "new-win");
+                                //检测支付状态
+                                uCardPayStatus(currentOrderid, 1);
+                            } else {
+                                alert("网络繁忙，请重新发起支付~");
+                            }
+                        }
+                    });
+                }
+            }
+            
+        });
+        
+        //输入魅号框-点击充值
+        $(".imay-recharge").click(function () {
+            var room_id = $(".imay-number").val();
+            if (!room_id || room_id.substring(0, 3) == '请输入') {
+                $('.imay-number').parent().find(".info-mes").css("display", "block");
+                return;
+            }
+            $.get("{:url('user/login/getInfoSimpleByRoomId')}", {'room_id': room_id}, function (data, textStatus) {
+                var json = WST.toJson(data);
+                if (json.status == '1') {
+                    window.location.href = '{:url("user/recharge/index")}';
+                } else {
+                    $(".imay-recharge").siblings('.p-l-error').css("display", "block");
+                }
+            });
+        });
+        
+        //取消协议勾选和重新勾选协议切换
+        if (recharge_id != 0) {
+            $('#userReg').click(function () {
+                if ($('input:checkbox[name="userReg"]:checked').val() == 'on') {
+                    $('#imay-recharge-pay').removeClass('imay-pay-no');
+                    $('#imay-recharge-pay').addClass('imay-pay');
+                } else {
+                    $('#imay-recharge-pay').removeClass('imay-pay');
+                    $('#imay-recharge-pay').addClass('imay-pay-no');
+                }
+            })
+        }
+        
+        //勾选切换支付方式
+        $('[name="pay"]:checked').trigger("click");
+
+        // 确认已是成年人
+        $('.recharge-checked').click(function () {
+            var obj = {};
+            obj.uid = $(this).attr('id');
+            $.post("{:url('user/recharge/tip')}", obj, function (data) {
+                var json = WST.toJson(data);
+                if (json.errordesc) {
+                    alert(WST.getErrorMsg(json.errordesc));
+                    return;
+                }
+                if (json.status == '1') { // 18岁确认
+                    $("#imay-recharge-pay").removeClass("imay-pay-no").addClass("imay-pay");
+                    $('.g-mask').hide();
+                    $('.recharge-tip').hide();
+                } else {
+                    alert("网络繁忙，请稍后再试~");
+                }
+            }, "json");
+        });
+        
+        $('.g-pay-d').keyup(checkRules);
+//        $('.g-pay-d').change(function(){
+//            console.log("change");
+//        });
+        $(".g-rc-ul li").click(checkRules);
+        $(".pay-t-c").click(checkRules)
+    });
+    large();
+</script>
+</body>
+</html>

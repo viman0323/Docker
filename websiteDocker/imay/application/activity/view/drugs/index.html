@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>排行榜</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="__CSS__/medicine.css">
+</head>
+<body>
+<header>
+    <div class="m-header">
+        <img  class="m-x-i01">
+        <div class="m-top m-pos">
+            <div class="m-t-c">
+                <img class="m-x-i11">
+            </div>
+            <div class="m-top-nav">
+                <img class="m-x-i12">
+                <div class="m-nac-c m-pos">
+                </div>
+            </div>
+            <div class="m-bot">
+                <img class="m-x-i10">
+                <div class="m-bot-c m-pos">
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<article>
+    <div class="m-con">
+        <img class="m-x-01">
+        <div class="b-list-top m-pos">
+            <ul class="m-ul clearfix">
+                <li class="m-first m-checked">
+                    <img class="m-tab1">
+                </li>
+                <li class="m-second">
+                    <img class="m-tab2">
+                </li>
+            </ul>
+            <div class="b-c-list">
+                <div class="b-list-m">
+                    <div class="list-first">
+                    </div>
+                    <ul class="b-list-ul b-first">
+                    </ul>
+                </div>
+                <div class="b-list-r">
+                    <div class="list-second">
+                    </div>
+                    <ul class="b-list-ul b-second">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+<footer>
+    <div class="b-pager">
+        <span> 关注“iMay服务中心”公众号，充值有惊喜！</span>
+        <span> 本活动最终解释权归iMay所有</span>
+        <span> QQ：3383498099</span>
+    </div>
+</footer>
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript">
+    var img = "__IMG__/drugs";
+    var uid = '{$uid}';
+    var accessToken = '{$accessToken}';
+    setTimeout(locationUrl(), 2000); //加载完页面后ajax请求数据并显示在页面上
+
+    // ajax请求数据
+    function locationUrl(){
+        var  url = "{:url('activity/Drugs/ajaxIndex')}";
+        $.post(url,{'uid': uid},
+            function(data){
+                if (data['status'] == '1') {
+                    // 个人信息、最美天使和最佳守护
+                    var information = '';
+                    var angel = '';
+                    if (data.rankA) {
+                        // 我的送礼和收礼数量和排名
+                        var myReceiveNumber = data.rankA['myReceiveNumber'];
+                        var myReceiveRank = '';
+                        if (data.rankA['myReceiveRank'] > 99) {
+                            myReceiveRank = '99+';
+                        } else {
+                            myReceiveRank = data.rankA['myReceiveRank'];
+                        }
+                        var mySendNumber = data.rankA['mySendNumber'];
+                        var mySendRank = '';
+                        if (data.rankA['mySendRank'] > 99) {
+                            mySendRank = '99+';
+                        } else {
+                            mySendRank = data.rankA['mySendRank'];
+                        }
+
+                        // 最美天使和最佳守护
+                        angel += '<div class="m-nav-l">';
+                        if (data.rankA['angelImg']) {
+                            angel += '<img src="' + data.rankA['angelImg'] + '?imageView2/5/w/200/h/200" class="m-head">';
+                        } else {
+                            angel += '<img src="__IMG__/no.png" class="m-head">';
+                        }
+                        angel += '<span>' + data.rankA['angelNick'] + '</span>' + '</div>';
+                        angel += '<div class="m-nav-l m-nav-r">';
+                        if (data.rankA['guardianImg']) {
+                            angel += '<img src="' + data.rankA['guardianImg'] + '?imageView2/5/w/200/h/200" class="m-head">';
+                        } else {
+                            angel += '<img src="__IMG__/no.png" class="m-head">';
+                        }
+                        angel += '<span>' + data.rankA['guardianNick'] + '</span>' + '</div>';
+                        $('.m-nac-c').html(angel);
+
+                        // 个人信息
+                        information += '<div class="bot-l">';
+                        if (data.rankA['myImg']) {
+                            information += '<img src="' + data.rankA['myImg'] + '?imageView2/5/w/200/h/200" class="bot-head">';
+                        } else {
+                            information += '<img src="__IMG__/no.png" class="bot-head">';
+                        }
+                        information += '<h6>' + data.rankA['myNick'] + '</h6>' + '</div>' + '<div class="bot-m">';
+                        // 默认显示收礼数量和排名
+                        if ($('.m-first').hasClass('m-checked')) {
+                            information += '<img src="__IMG__/drugs/x-14.png" class="m-x-i13">';
+                            information += '<h5>' + myReceiveNumber + '</h5>' + '</div>' + '<div class="bot-r"><img class="m-x-i15" src="__IMG__/drugs/x-15.png">';
+                            information += '<h5>' + myReceiveRank + '</h5>' + '</div>';
+                        } else {
+                            information += '<img src="__IMG__/drugs/x-13.png" class="m-x-i13">';
+                            information += '<h5>' + mySendNumber + '</h5>' + '</div>' + '<div class="bot-r"><img class="m-x-i15" src="__IMG__/drugs/x-15.png">';
+                            information += '<h5>' + mySendRank + '</h5>' + '</div>';
+                        }
+                        $('.m-bot-c').html(information);
+                    }
+
+                    // 最美爱心天使榜
+                    var total_str = '';
+                    if (data.rankB) {
+                        if (data.rankB.length > 1) {
+                            total_str += '<div class="list-head list-head-a">';
+                            if (data.rankB[1]['live_status'] == 1) {
+                                total_str += '<a id="rank_2" onclick="_hmt.push([\'_trackEvent\', \'ranking_list\', \'click\', \'rank_2\'])" href="' + data.rankB[1]['url'] + '">';
+                                if (data.rankB[1]['img_head']) {
+                                    total_str += '<img src="' + data.rankB[1]['img_head'] + '?imageView2/5/w/100/h/100" class="b-head-a">';
+                                } else {
+                                    total_str += '<img src="__IMG__/no.png" class="b-head-a">';
+                                }
+                                total_str += '<img src="__IMG__/drugs/x-02.png" class="b-m-i09b m-pos">';
+                                total_str += '<img src="__IMG__/drugs/x-09.png" class="b-m-i11 m-pos">';
+                                total_str += '<img src="__IMG__/drugs/x-07c.png" class="b-m-i10b m-pos"></a>';
+//                                if (data.rankB[1]['is_follow'] == false) {
+//                                    total_str += '<img src="__IMG__/drugs/x-06.png" onclick="follow(' + data.rankB[1]['uid'] + ')" class="m-x-i05 m-pos"></a>';
+//                                }
+                            } else {
+                                if (data.rankB[1]['img_head']) {
+                                    total_str += '<img src="' + data.rankB[1]['img_head'] + '?imageView2/5/w/100/h/100" class="b-head-a">';
+                                } else {
+                                    total_str += '<img src="__IMG__/no.png" class="b-head-a">';
+                                }
+                                total_str += '<img src="__IMG__/drugs/x-02.png" class="b-m-i09b m-pos">';
+                                total_str += '<img src="__IMG__/drugs/x-07c.png" class="b-m-i10b m-pos">';
+                            }
+                            if (uid != data.rankB[1]['uid']) {
+                                if (data.rankB[1]['is_follow'] == false) {
+                                    total_str += '<img src="__IMG__/drugs/x-06.png" onclick="follow(' + data.rankB[1]['uid'] + ')" class="m-x-i05 m-pos">';
+                                } else {
+                                    total_str += '<img src="__IMG__/drugs/x-05.png" class="m-x-i05 m-pos">';
+                                }
+                            }
+                            total_str += '<div class="list-txt">';
+                            if (data.rankB[1]['nick']) {
+                                total_str += '<h5>' + data.rankB[1]['nick'] + '</h5>';
+                            } else {
+                                total_str += '<h5></h5>';
+                            }
+                            total_str += '<h6><b class="y-i01"></b><span class="list-txt-a">' + data.rankB[1]['score'] + '</span>';
+                            total_str += '</h6>' + '</div>' + '</div>';
+                        } else {
+                            total_str += '<div class="list-head list-head-a">';
+                            total_str += '</div>';
+                        }
+
+                        total_str += '<div class="list-head list-head-b">';
+                        if (data.rankB[0]['live_status'] == 1) {
+                            total_str += '<a id="rank_1" onclick="_hmt.push([\'_trackEvent\', \'ranking_list\', \'click\', \'rank_1\'])" href="' + data.rankB[0]['url'] + '">';
+                            if (data.rankB[0]['img_head']) {
+                                total_str += '<img src="' + data.rankB[0]['img_head'] + '?imageView2/5/w/100/h/100" class="b-head-a">';
+                            } else {
+                                total_str += '<img src="__IMG__/no.png" class="b-head-a">';
+                            }
+                            total_str += '<img src="__IMG__/drugs/x-03.png" class="b-m-i09b m-pos">';
+                            total_str += '<img src="__IMG__/drugs/x-09.png" class="b-m-i11 m-pos">';
+                            total_str += '<img src="__IMG__/drugs/x-07a.png" class="b-m-i10b m-pos"></a>';
+//                            if (data.rankB[0]['is_follow'] == false) {
+//                                total_str += '<img src="__IMG__/drugs/x-06.png" onclick="follow(' + data.rankB[0]['uid'] + ')" class="m-x-i05 m-pos"></a>';
+//                            }
+                        } else {
+                            if (data.rankB[0]['img_head']) {
+                                total_str += '<img src="' + data.rankB[0]['img_head'] + '?imageView2/5/w/100/h/100" class="b-head-a">';
+                            } else {
+                                total_str += '<img src="__IMG__/no.png" class="b-head-a">';
+                            }
+                            total_str += '<img src="__IMG__/drugs/x-03.png" class="b-m-i09b m-pos">';
+                            total_str += '<img src="__IMG__/drugs/x-07a.png" class="b-m-i10b m-pos">';
+                        }
+                        if (uid != data.rankB[0]['uid']) {
+                            if (data.rankB[0]['is_follow'] == false) {
+                                total_str += '<img src="__IMG__/drugs/x-06.png" onclick="follow(' + data.rankB[0]['uid'] + ')" class="m-x-i05 m-pos">';
+                            } else {
+                                total_str += '<img src="__IMG__/drugs/x-05.png" class="m-x-i05 m-pos">';
+                            }
+                        }
+                        total_str += '<div class="list-txt">';
+                        if (data.rankB[0]['nick']) {
+                            total_str += '<h5>' + data.rankB[0]['nick'] + '</h5>';
+                        } else {
+                            total_str += '<h5></h5>';
+                        }
+                        total_str += '<h6><b class="y-i01"></b><span class="list-txt-a">' + data.rankB[0]['score'] + '</span>';
+                        total_str += '</h6>' + '</div>' + '</div>';
+
+                        if (data.rankB.length > 2) {
+                            total_str += '<div class="list-head list-head-a">';
+                            if (data.rankB[2]['live_status'] == 1) {
+                                total_str += '<a id="rank_3" onclick="_hmt.push([\'_trackEvent\', \'ranking_list\', \'click\', \'rank_3\'])" href="' + data.rankB[2]['url'] + '">'
+                                if (data.rankB[2]['img_head']) {
+                                    total_str += '<img src="' + data.rankB[2]['img_head'] + '?imageView2/5/w/100/h/100" class="b-head-a">';
+                                } else {
+                                    total_str += '<img src="__IMG__/no.png" class="b-head-a">';
+                                }
+                                total_str += '<img src="__IMG__/drugs/x-04.png" class="b-m-i09b m-pos">';
+                                total_str += '<img src="__IMG__/drugs/x-09.png" class="b-m-i11 m-pos">';
+                                total_str += '<img src="__IMG__/drugs/x-07b.png" class="b-m-i10b m-pos"></a>';
+//                                if (data.rankB[2]['is_follow'] == false) {
+//                                    total_str += '<img src="__IMG__/drugs/x-06.png" onclick="follow(' + data.rankB[2]['uid'] + ')" class="m-x-i05 m-pos">';
+//                                }
+                            } else {
+                                if (data.rankB[2]['img_head']) {
+                                    total_str += '<img src="' + data.rankB[2]['img_head'] + '?imageView2/5/w/100/h/100" class="b-head-a">';
+                                } else {
+                                    total_str += '<img src="__IMG__/no.png" class="b-head-a">';
+                                }
+                                total_str += '<img src="__IMG__/drugs/x-04.png" class="b-m-i09b m-pos">';
+                                total_str += '<img src="__IMG__/drugs/x-07b.png" class="b-m-i10b m-pos">';
+                            }
+                            if (uid != data.rankB[2]['uid']) {
+                                if (data.rankB[2]['is_follow'] == false) {
+                                    total_str += '<img src="__IMG__/drugs/x-06.png" onclick="follow(' + data.rankB[2]['uid'] + ')" class="m-x-i05 m-pos">';
+                                } else {
+                                    total_str += '<img src="__IMG__/drugs/x-05.png" class="m-x-i05 m-pos">';
+                                }
+                            }
+                            total_str += '<div class="list-txt">';
+                            if (data.rankB[2]['nick']) {
+                                total_str += '<h5>' + data.rankB[2]['nick'] + '</h5>';
+                            } else {
+                                total_str += '<h5></h5>';
+                            }
+                            total_str += '<h6><b class="y-i01"></b><span class="list-txt-a">' + data.rankB[2]['score'] + '</span>';
+                            total_str += '</h6>' + '</div>' + '</div>';
+                        } else {
+                            total_str += '<div class="list-head list-head-a">';
+                            total_str += '</div>';
+                        }
+
+                        $('.list-first').html(total_str); // 前三名
+
+                        var total = '';
+                        if (data.rankB.length > 3) {
+                            for (var p = 0; p < data.rankB.length - 3; p++) {
+                                var num = p + 4;
+                                var f_id = 'rank_' + num;
+                                var nick = '';
+                                if (data.rankB[p+3]['nick']) {
+                                    nick = data.rankB[p+3]['nick'];
+                                } else {
+                                    nick = '';
+                                }
+                                total += "<li>";
+                                total += '<div class="b-tit">' + num + '</div>';
+                                total += '<div class="b-li-head">';
+                                if (data.rankB[p+3]['live_status'] == 1) {
+                                    total += '<a class="list-a-c" id="rank_' + f_id + '" onclick="_hmt.push([\'_trackEvent\', \'ranking_list\', \'click\', \'' + f_id + '\'])" href="' + data.rankB[p+3]['url'] + '"><img src="__IMG__/drugs/x-09.png" class="b-m-i11 m-pos">';
+                                    if (data.rankB[p+3]['img_head']) {
+                                        total += '<img src="' + data.rankB[p+3]['img_head'] + '?imageView2/5/w/100/h/100" class="b-head-b"></a>';
+                                    } else {
+                                        total += '<img src="__IMG__/no.png" class="b-head-b"></a>';
+                                    }
+                                } else {
+                                    if (data.rankB[p+3]['img_head']) {
+                                        total += '<img src="' + data.rankB[p+3]['img_head'] + '?imageView2/5/w/100/h/100" class="b-head-b">';
+                                    } else {
+                                        total += '<img src="__IMG__/no.png" class="b-head-b">';
+                                    }
+                                }
+                                total += '</div>';
+                                total += '<div class="b-name"><span>' + nick + '</span>';
+                                if (uid != data.rankB[p+3]['uid']) {
+                                    if (data.rankB[p + 3]['is_follow'] == false) {
+                                        total += '<img src="__IMG__/drugs/x-06.png" onclick="follow(' + data.rankB[p + 3]['uid'] + ')" class="x-05">';
+                                    } else {
+                                        total += '<img src="__IMG__/drugs/x-05.png" class="x-05">';
+                                    }
+                                }
+                                total += '</div><div class="b-li-r">';
+                                total += '<span>' + data.rankB[p+3]['score'] + '</span>';
+                                total += '</div>';
+                                total += "</li>";
+                            }
+                        }
+                        $(".b-first").html(total);
+                    }
+
+                    // 最佳守护者榜
+                    var fatten_str = '';
+                    if (data.rankC) {
+                        if (data.rankC.length > 1) {
+                            fatten_str += '<div class="list-head list-head-a">';
+                            if (data.rankC[1]['img_head']) {
+                                fatten_str += '<img src="' + data.rankC[1]['img_head'] + '?imageView2/5/w/100/h/100" class="b-head-a">';
+                            } else {
+                                fatten_str += '<img src="__IMG__/no.png" class="b-head-a">';
+                            }
+                            fatten_str += '<img src="__IMG__/drugs/x-02.png" class="b-m-i09b m-pos">';
+                            fatten_str += '<img src="__IMG__/drugs/x-07c.png" class="b-m-i10b m-pos">';
+                            if (uid != data.rankC[1]['uid']) {
+                                if (data.rankC[1]['is_follow']) {
+                                    fatten_str += '<img src="__IMG__/drugs/x-05.png" class="m-x-i05 m-pos">';
+                                } else {
+                                    fatten_str += '<img src="__IMG__/drugs/x-06.png" onclick="follow(' + data.rankC[1]['uid'] + ')" class="m-x-i05 m-pos">';
+                                }
+                            }
+                            fatten_str += '<div class="list-txt">';
+                            if (data.rankC[1]['nick']) {
+                                fatten_str += '<h5>' + data.rankC[1]['nick'] + '</h5>';
+                            } else {
+                                fatten_str += '<h5></h5>';
+                            }
+                            fatten_str += '<h6><b class="y-i01"></b><span class="list-txt-a">' + data.rankC[1]['score'] + '</span>';
+                            fatten_str += '</h6>' + '</div>' + '</div>';
+                        } else {
+                            fatten_str += '<div class="list-head list-head-a">';
+                            fatten_str += '</div>';
+                        }
+
+                        fatten_str += '<div class="list-head list-head-b">';
+                        if (data.rankC[0]['img_head']) {
+                            fatten_str += '<img src="' + data.rankC[0]['img_head'] + '?imageView2/5/w/100/h/100" class="b-head-a">';
+                        } else {
+                            fatten_str += '<img src="__IMG__/no.png" class="b-head-a">';
+                        }
+                        fatten_str += '<img src="__IMG__/drugs/x-03.png" class="b-m-i09b m-pos">';
+                        fatten_str += '<img src="__IMG__/drugs/x-07a.png" class="b-m-i10b m-pos">';
+                        if (uid != data.rankC[0]['uid']) {
+                            if (data.rankC[0]['is_follow']) {
+                                fatten_str += '<img src="__IMG__/drugs/x-05.png" class="m-x-i05 m-pos">';
+                            } else {
+                                fatten_str += '<img src="__IMG__/drugs/x-06.png" onclick="follow(' + data.rankC[0]['uid'] + ')" class="m-x-i05 m-pos">';
+                            }
+                        }
+                        fatten_str += '<div class="list-txt">';
+                        if (data.rankC[0]['nick']) {
+                            fatten_str += '<h5>' + data.rankC[0]['nick'] + '</h5>';
+                        } else {
+                            fatten_str += '<h5></h5>';
+                        }
+                        fatten_str += '<h6><b class="y-i01"></b><span class="list-txt-a">' + data.rankC[0]['score'] + '</span>';
+                        fatten_str += '</h6>' + '</div>' + '</div>';
+
+                        if (data.rankC.length > 2) {
+                            fatten_str += '<div class="list-head list-head-a">';
+                            if (data.rankC[2]['img_head']) {
+                                fatten_str += '<img src="' + data.rankC[2]['img_head'] + '?imageView2/5/w/100/h/100" class="b-head-a">';
+                            } else {
+                                fatten_str += '<img src="__IMG__/no.png" class="b-head-a">';
+                            }
+                            fatten_str += '<img src="__IMG__/drugs/x-04.png" class="b-m-i09b m-pos">';
+                            fatten_str += '<img src="__IMG__/drugs/x-07b.png" class="b-m-i10b m-pos">';
+                            if (uid != data.rankC[2]['uid']) {
+                                if (data.rankC[2]['is_follow']) {
+                                    fatten_str += '<img src="__IMG__/drugs/x-05.png" class="m-x-i05 m-pos">';
+                                } else {
+                                    fatten_str += '<img src="__IMG__/drugs/x-06.png" onclick="follow(' + data.rankC[2]['uid'] + ')" class="m-x-i05 m-pos">';
+                                }
+                            }
+                            fatten_str += '<div class="list-txt">';
+                            if (data.rankC[2]['nick']) {
+                                fatten_str += '<h5>' + data.rankC[2]['nick'] + '</h5>';
+                            } else {
+                                fatten_str += '<h5></h5>';
+                            }
+                            fatten_str += '<h6><b class="y-i01"></b><span class="list-txt-a">' + data.rankC[2]['score'] + '</span>';
+                            fatten_str += '</h6>' + '</div>' + '</div>';
+                        } else {
+                            fatten_str += '<div class="list-head list-head-a">';
+                            fatten_str += '</div>';
+                        }
+
+                        $('.list-second').html(fatten_str); // 前三名
+
+                        var fatten = '';
+                        if (data.rankC.length > 3) {
+                            for (var i = 0; i < data.rankC.length - 3; i++) {
+                                var ii = i+4;
+                                var nickName = '';
+                                if (data.rankC[i+3]['nick']) {
+                                    nickName = data.rankC[i+3]['nick'];
+                                } else {
+                                    nickName = '';
+                                }
+                                fatten += "<li class='li-second'>";
+                                fatten += '<div class="b-tit">' + ii + '</div>';
+                                fatten += '<div class="b-li-head">';
+                                if (data.rankC[i+3]['img_head']) {
+                                    fatten += '<img src="' + data.rankC[i+3]['img_head'] + '?imageView2/5/w/100/h/100" class="b-head-b">';
+                                } else {
+                                    fatten += '<img src="__IMG__/no.png" class="b-head-b">';
+                                }
+                                fatten += '</div>';
+                                fatten += '<div class="b-name"><span>' + nickName + '</span>';
+                                if (uid != data.rankC[i+3]['uid']) {
+                                    if (data.rankC[i + 3]['is_follow']) {
+                                        fatten += '<img src="__IMG__/drugs/x-05.png" class="x-05"></div>';
+                                    } else {
+                                        fatten += '<img src="__IMG__/drugs/x-06.png" onclick="follow(' + data.rankC[i + 3]['uid'] + ')" class="x-05">';
+                                    }
+                                }
+                                fatten += '</div><div class="b-li-r">';
+                                fatten += '<span>' + data.rankC[i+3]['score'] + '</span>';
+                                fatten += '</div>';
+                                fatten += "</li>";
+                            }
+                        }
+                        $(".b-second").html(fatten);
+                    }
+
+                    // 榜单和个人信息切换
+                    $(".m-ul li").click(function () {
+                        var index = $(this).parent().children().index($(this));
+                        var obj = $(this).parent().parent().find(".b-c-list").children();
+                        $(".m-ul li").removeClass("m-checked");
+                        $(this).addClass("m-checked");
+                        if(index==1){
+                            $(".m-x-i13").attr("src",img + "/x-13.png");
+                            $('.bot-m').find('h5').html(mySendNumber);
+                            $('.bot-r').find('h5').html(mySendRank);
+                        }else{
+                            $(".m-x-i13").attr("src",img + "/x-14.png");
+                            $('.bot-m').find('h5').html(myReceiveNumber);
+                            $('.bot-r').find('h5').html(myReceiveRank);
+                        }
+                        obj.hide();
+                        obj.eq(index).show();
+                    })
+
+                }
+            }, "json");
+    }
+
+    // 关注功能
+    function follow(t) {
+        var obj = {};
+        obj.uid = uid;
+        obj.accessToken = accessToken;
+        obj.followId = t;
+        var  url = "{:url('activity/Drugs/follow')}";
+        $.post(url,obj,
+            function(data) {
+                if(data['status'] == '1') {
+                    locationUrl();
+                } else {
+                    alert('关注失败！');
+                }
+            }, "json"
+        );
+    }
+
+    setInterval("locationUrl()",15000);
+
+</script>
+<script type="text/javascript" src="__JS__/medicine.js"></script>
+</body>
+</html>

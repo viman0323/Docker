@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{$Page['title']}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <link rel="stylesheet" href="__PC_CSS__/common.css">
+    <link rel="stylesheet" href="__PC_CSS__/default.css">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+</head>
+<body>
+<header>
+    <div id="header">
+        <div class="h-con">
+            <a class="logo"></a>
+            <ul class="h-nav">
+                <li>
+                    <a href="/">官网</a>
+                </li>
+                <li>
+                    <a href="{:url('user/withdraw/index')}">提现</a>
+                </li>
+                <li>
+                    <a href="{:url('user/recharge/index')}">充值</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+<div class="g-wrap">
+    <div class="g-con g-link-bg">
+        <a class="g-h3-ic"></a>
+        <h3 class="g-h3-bg"><b>{$Page['title']}</b></h3>
+        <div class="link-c">
+            {$Page['content']}
+        </div>
+    </div>
+</div>
+{include file="../../common/view/default/footer" /}
+</body>
+</html>

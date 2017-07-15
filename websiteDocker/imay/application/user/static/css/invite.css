@@ -1,0 +1,65 @@
+@charset "utf-8";
+/* reset */
+/* reset */
+body{margin:0;font:14px Helvetica; color:#333333;}
+body, select, input, button, h1, h2, h3, h4, h5, h6 {font-size:14px}
+body, h1, h2, h3, h4, h5, h6, ul, ol, li, form, fieldset, p, dl, dt, dd, table, th, td, img, blockquote{margin:0;padding:0;border:0}
+input, button, textarea, img{line-height:normal;}
+abbr, acronym, address, cite, q, em, code, var, dfn, ins{font-style:normal;text-decoration:none;border:0}
+q:before, q:after{content:""}
+
+
+ul, ol, li{list-style:none}
+table{border-spacing:0; width:100%;}
+select, input, button{vertical-align:middle; font-family:Helvetica;}
+a{text-decoration:none;color:#333333;}
+a:hover{text-decoration:none;}
+*, *:before, *:after {box-sizing: border-box;-webkit-tap-highlight-color:rgba(0,0,0,0);outline:none;}
+body{ background:#fff; height:100%;}
+.relative{ position:relative;}
+
+
+/*苹果浏览器去掉默认*/
+input[type="button"], input[type="submit"], input[type="reset"] {
+-webkit-appearance: none;outline:none;}
+textarea {  -webkit-appearance: none;}
+input[type="text"]{-webkit-appearance:none;appearance:none;}/*苹果去阴影*/
+
+::-webkit-input-placeholder { /* WebKit browsers */    color:    #999;}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */   color:    #999;}
+::-moz-placeholder { /* Mozilla Firefox 19+ */   color:    #999;}
+:-ms-input-placeholder { /* Internet Explorer 10+ */    color:    #999;}
+
+
+
+/*邀请测试*/
+.invite{
+	max-width:640px;
+	margin:0 auto;
+	position: relative;
+}
+
+.invite img{
+	display: block;
+	width:100%;
+}
+
+.invite a{
+	position: absolute;
+	display: block;
+	background: rgba(3,3,3,0);
+    width:47%;
+    height:8%;
+    border-radius: 20px;
+    left:25.5%;
+    opacity: 0;
+}
+
+.invite .ios_test{
+    top:67.6%;
+}
+
+.invite .android_test{
+    top:80.6%;
+}
+

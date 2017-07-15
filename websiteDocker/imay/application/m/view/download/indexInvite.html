@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <link type="text/css" rel="stylesheet" href="__CSS__/m-common.css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/m-default.css">
+</head>
+<body>
+<header>
+    <div class="w-top">
+        <img src="__IMG__/w-logo.png" class="w-logo">
+        <a class="w-index" href='{:url("index/index")}'>首页</a>
+    </div>
+</header>
+<article>
+    <section>
+        <div class="w-w-mid">
+            <input type="text" name="code" class="w-mid-i" placeholder="请填写邀请码" maxlength=16>
+            <a class="w-mid-a" id="Test">验证</a>
+            <span class="w-mid-mes">说明：邀请码只允许使用一次</span>
+        </div>
+    </section>
+    <section>
+        <div class="w-mid-h">
+            <a class="w-a-con"
+               href="itms-services:///?action=download-manifest&url=https://apple.imay.com/imay_live.plist">
+                <img src="__IMG__/m-img07.png">
+            </a>
+            <a class="w-a-con"
+               href="itms-services:///?action=download-manifest&url=https://iosapp.imay.cn/imay_live.plist">
+                <img src="__IMG__/m-img08.png">
+            </a>
+        </div>
+    </section>
+    <section>
+        <div class="w-b-mes">
+            <b>iPhone使用教程：</b>
+            安装完毕，请打开【设置】 【通用】 【设备管理】，点击设备【Tinluk Information Technology Co.,Ltd】，再
+            点击【信任“Tinluk...”】选项，最后点【信任】按钮即可正常使用。
+        </div>
+    </section>
+</article>
+<div class="m-wechat-mes">
+    <div class="g-mask" id="iMask"></div>
+    <div class="i-m-txt">
+        <div class="m-i-w">
+            <span>点击这里选择“在浏览器中打开”</span>
+            <!--<span>体验更多互动!!!</span>-->
+        </div>
+        <div class="m-i-ar">
+            <img src="__IMG__/m-img04.png">
+        </div>
+    </div>
+</div>
+<style>
+    .g-mask {
+        position: fixed;
+        background: url("__IMG__/g-mask.png") repeat;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        /*display: none;*/
+    }
+    
+    .i-m-txt {
+        display: block;
+        position: fixed;
+        z-index: 2;
+        top: 0;
+    }
+    
+    .m-wechat-mes {
+        max-width: 480px;
+        display: none;
+    }
+    
+    .m-i-w {
+        color: #e9deff;
+        font-size: 18px;
+        float: left;
+        margin: 10% 0 0 12%;
+    }
+    
+    .m-i-w span {
+        display: block;
+    }
+    
+    .m-i-ar {
+        float: right;
+        width: 15%;
+        margin-right: 2%
+    }
+    
+    .m-i-ar img {
+        width: 100%;
+    }
+</style>
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript" src="__JS__/m-index.js"></script>
+<script>
+    //判断是否为微信
+    function is_weixn() {
+        var ua = navigator.userAgent.toLowerCase();
+        if (ua.match(/MicroMessenger/i) == "micromessenger") {
+            $(".m-wechat-mes").show();
+            $(".g-mask").show();
+            return true;
+        } else {
+            $(".m-wechat-mes").hide();
+            $(".g-mask").hide();
+            return false;
+        }
+    }
+    is_weixn();
+    
+    var tmp = {$setcookie};
+    if (tmp) {
+        $(".w-w-mid").hide();
+        $(".w-mid-h").show();
+    }
+    $(function () {
+        $("#Test").click(function () {
+            var params  = {};
+            params.code = $('[name="code"]').val();
+            if (is_weixn()) {
+                return;
+            }
+            if (params.code == "") {
+                alert("邀请码不能为空!");
+                return;
+            }
+            $.ajax({
+                type   : 'post',
+                url    : '{:url("download/verification")}',
+                data   : params,
+                success: function (data, textStatus) {
+                    if (data.status == '1') {
+                        $(".w-w-mid").hide();
+                        $(".w-mid-h").show();
+                    } else if (data.status == '2') {
+                        alert('邀请码已使用!');
+                    } else {
+                        alert('邀请码不存在!');
+                    }
+                }
+                
+            });
+        });
+    });
+</script>
+</body>
+</html>

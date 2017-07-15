@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <link type="text/css" rel="stylesheet" href="__PC_CSS__/common.css">
+    <link type="text/css" rel="stylesheet" href="__PC_CSS__/default.css">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+</head>
+<body>
+{include file="../../common/view/default/header" /}
+<div class="g-wrap">
+    <div class="g-con g-c-bg">
+        <a class="g-h3-ic"></a>
+        <h3 class="g-h3-bg"><b>抢先邀请</b></h3>
+        <div class="g-c-log">
+            <div class="ex-earn-t cap-wrap">
+                <!--<div class="cap-wrap-a">-->
+                <!--<div class="pay-txt">-->
+                <!--<div class="pop-info">-->
+                <!--<input type="text" name="code" placeholder="请填写邀请码" maxlength=16>-->
+                <!--<span class="info-mes">请填写邀请码</span>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="pay-t-but pay-but-a">-->
+                <!--<a class="imay-rc" href="javascript:void (0)" id="Test">验证</a>-->
+                <!--</div>-->
+                <!--</div>-->
+                <div class="cap-wrap-b" style="display: block;">
+                    <div class="cap-b-t">
+                        <img src="__IMG__/iMayCode.png">
+                        <img src="__IMG__/c-01.png" class="cap-mes">
+                        <span>手机扫描二维码</span>
+                    </div>
+                    
+                    <div class="cap-txt">
+                        <h5>iPhone使用教程：</h5>
+                        安装完毕，请打开【设置】 【通用】 【设备管理】，点击设备【Tinluk Information Technology Co.,Ltd】，再
+                        点击【信任“Tinluk...”】选项，最后点【信任】按钮即可正常使用。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="../../common/view/default/footer" /}
+<!--<div class="g-mask"></div>-->
+<!--登录、注册、忘记密码-->
+{include file="../../common/view/default/login" /}
+<!-- 输入支付宝账号 -->
+<div class="g-pop alipay-pop">
+    <div class="pop-close"></div>
+    <div class="alipay-p-con">
+        <ul class="pop-lg-ul" style="margin-top: 60px;">
+            <li>
+                <h5 class="ali-p-t1">输入支付宝账号</h5>
+            </li>
+            <li>
+                <div class="pop-info">
+                    <input type="text" placeholder="输入手机号">
+                    <span class="info-mes">手机号不能为空</span>
+                </div>
+            </li>
+            <li class="info-code" style="display: none;">
+                <div class="pop-info">
+                    <input type="text" placeholder="输入验证码">
+                </div>
+                <a class="getCode">获取验证码</a>
+                <a class="code_btn_dis">2s</a>
+            </li>
+            <li style="display: none;">
+                <div class="pop-info">
+                    <input type="text" placeholder="输入6-16位密码">
+                    <span class="info-mes">密码不能为空</span>
+                </div>
+            </li>
+            <li style="margin-top: 30px;">
+                <a href="javascript:void (0)" class="imay-a0">确定</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- 提取确认信息 -->
+<div class="g-pop alipay-detail-pop">
+    <div class="pop-close"></div>
+    <div class="alipay-p-con">
+        <ul class="pop-ad-ul">
+            <li>
+                <h5 class="ali-p-t1">确认信息</h5>
+            </li>
+            <li>
+                <span>提现支付宝账户：***8899@QQ。com</span>
+            </li>
+            <li class="info-code">
+                <span class="ali-p-t2">提现魅力： <b>12888</b></span>
+            </li>
+            <li>
+                <span class="ali-p-t3"> 到账金额：<b>1000</b></span>
+            </li>
+            <li>
+                <div class="ali-but">
+                    <a class="ali-but-a">放弃</a>
+                    <a class="ali-but-b">确定</a>
+                </div>
+                <div class="ali-mes">
+                    <span class="info-mes" style="display: block;">密码不能为空</span>
+                </div>
+            
+            </li>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/pc/js/g-index.js"></script>
+<script>
+    $(function () {
+        $("#Test").click(function () {
+            var params  = {};
+            params.code = $('[name="code"]').val();
+            $.ajax({
+                type   : 'post',
+                url    : '{:url("m/download/verification")}',
+                data   : params,
+                success: function (data, textStatus) {
+                    if (data.status == '1') {
+                        $(".cap-wrap-a").hide();
+                        $(".cap-wrap-b").show();
+                    } else if (data.status == '2') {
+                        alert('邀请码已使用!');
+                    } else {
+                        alert('邀请码不存在!');
+                    }
+                    
+                }
+                
+            });
+        });
+    });
+</script>
+</body>
+</html>

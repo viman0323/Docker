@@ -1,0 +1,69 @@
+@charset "utf-8";
+/* CSS Document */
+/*reset*/
+*{-webkit-tap-highlight-color:rgba(0, 0, 0, 0);}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,iframe{margin:0;padding:0;border:0; word-wrap: break-word; -webkit-text-size-adjust:none; -webkit-tap-highlight-color:rgba(0,0,0,0);}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+body,button,input,select,textarea{font:12px/1.5 tahoma,Microsoft YaHei;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500}
+input,select,textarea{font-size:100%; vertical-align:middle; border:0;background:none;box-shadow:none; -moz-appearance:none; appearance:none; outline:none; -webkit-outline:none;-webkit-appearance:searchfield;-webkit-rtl-ordering:logical;-webkit-user-select:text;-webkit-appearance:none;-webkit-tap-highlight-color:rgba(255,0,0,0);}
+input:focus,textarea:focus{outline:none}
+ol,ul{list-style:none}
+table{border-collapse:collapse;border-spacing:0}
+img{border:0 none; padding: 0; margin: 0;}
+img, object {max-width: 100%;}
+em,i,code,cite,address,th{font-style:normal;font-weight:500}
+.clear{clear:both;line-height:0;font-size:0}
+.clearfix{*zoom:1;_height:1px}
+.clearfix:after{content:" ";display:block;height:0;clear:both;visibility:hidden}
+q:before,q:after{ content:''}
+abbr,acronym{ border:0}
+a{text-decoration:none;-webkit-user-select:none;}
+.none{ display:none;}
+.hr_10{clear:both;height:10px;line-height:1px;font-size:1px}
+.hr_5{clear:both;height:5px;line-height:1px;font-size:1px}
+.hr_1{clear:both;height:1px;line-height:1px;font-size:0}
+.wb{clear:both; border:none; height:1px; line-height:1px; background:#FFF; font-size:0; overflow:hidden}
+a:link,a:visited,a:hover,a:active{color:#999;text-shadow:none}
+.w320{ width:320px; margin:0 auto; clear:both; position:relative;}
+.w360{ width:360px; margin:0 auto; clear:both; position:relative;}
+.w480{ width:480px; margin:0 auto; clear:both; position:relative;}
+* { -webkit-touch-callout:none;  -webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
+/*reset end*/
+body{ background-color: #3a0a6d; width: 100%;}
+.g-m-j01{ width: 100%;}
+.g-h-d{ position: absolute;width: 100%; top: 0;}
+.g-d-a{ display: block; width: 39%; margin: 94% 0 0 -19.5%;left: 50%; position: absolute;}
+.g-h-mid{ position: relative; clear: both; width: 100%; margin: -14% auto 0;}
+.g-mid-bar{}
+.mid-bar-ul{ width: 84%; margin: 0 8%; }
+.mid-bar-ul li{ cursor: pointer; width: 49.4%; float: left; text-align: center;color: #07ccfe; font-size: 16px; margin: 0 .3%; position: relative;}
+.g-m-i01{  width: 100%;}
+.mid-bar-d span{ position: absolute; z-index: 2; display: block; width: 100%; text-align: center; top: 28%;}
+.g-m-i03,.g-m-i02{ width: 84%; margin: 5% 8% 10% 8%;}
+.mid-c-d{ display: none;}
+.mid-c-block{ display: block;}
+#g-m-down{background-color: #2a1849; }
+.mid-ul-check .mid-bar-d span{ color: #f7d955;}
+.g-m-j02{ width: 100%;;}
+.g-m-d{ width: 100%; margin-top: -12%; position: relative;}
+.g-m-i05{ position: absolute; left: -8%; top: -10%; width: 22%;}
+.g-m-d{ background-color: #2a1849; padding-bottom: 10%;}
+.g-m-d:after{content: ''; display: block; clear: both;}
+.g-m-i07{ float: left; width: 2%; margin: 7% 0 0 12%;}
+.g-d-con{ float: left; width: 65%; margin: 5% 0 0 4%;}
+.d-con-ul li{ font-size: 14px; margin-bottom: 8%;}
+.d-con-ul li h5{ color: #FFF; margin-bottom: 5px;}
+.d-con-ul li h6{ color: #ab90ee}
+.g-i06-a,.g-i06-a:active,.g-i06-a:visited,.g-i06-a:hover{ color: #00c5ff !important;text-transform:Uppercase;}
+.d-con-ul li h6 span{ display: block;}
+.game-mask{ width: 100%; height: 100%; position: fixed; background-color: #000; opacity: .3; top: 0; left: 0;}
+.game-pop-c{ position: absolute; top: 26%; left: 0; width: 100%; z-index: 3;}
+.game-i05{ width: 72%; margin: 0 0 0 14%;}
+.pop-c-c{ position: absolute; width: 72%; margin: 0 0 0 14%; top: 0; }
+.game-pop-close{ display: block; width: 10%; float: right; margin: 5% 7% 0 0;}
+.game-i06{ width: 100%; }
+.game-anri-c{ color: #FFF; margin: 0 0 0 10%; clear: both; width: 80%; text-align: center;}
+.game-mes{ padding-top: 20%;}
+.game-pop{ display: none;}
+.g-d-con{ display: none;}

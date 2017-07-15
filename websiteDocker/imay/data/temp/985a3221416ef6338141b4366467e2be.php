@@ -1,0 +1,177 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:60:"/home/web/imay/application/activity/view/birthday/index.html";i:1492163971;}*/ ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>iMay直播徐海乔生日会</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta itemprop="name" content="iMay直播">
+    <meta name="keywords" content="交友，直播，游戏，年轻，才艺，文艺，校花，电影，90后，00后，大学生，音乐，自由职业，网红，宅男，女神，潮流，时尚，男神，夜店，唱K，秀场，土豪，富二代,徐海乔" />
+    <meta name="description" itemprop="description" content="iMay独家直播徐海乔的私密生日趴" />
+    <meta name="application-name" content="iMay直播" />
+    <meta name="msapplication-tooltip" content="iMay直播" />
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="__CSS__/Joe-birth.css">
+</head>
+<body>
+<!-- music -->
+<section>
+    <div class="joe-music j-pos">
+        <img class="joe-play">
+        <img class="joe-pause">
+        <audio id="joePlay" loop autoplay preload="preload">
+            <source src="__IMG__/joebirthday/joe.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+</section>
+<!-- loading -->
+<section>
+    <div class="j-loading">
+        <div class="j-loading-c j-pos">
+            <img src="__IMG__/joebirthday/j-i01.png" class="j-i01">
+            <div class="j-l-txt j-pos">
+                <img src="__IMG__/joebirthday/j-i02.png" class="j-i02">
+                <span class="j-l-b j-pos" id="showtimes">1%</span>
+            </div>
+            <img src="__IMG__/joebirthday/j-i01-a.png" class="j-i01-a j-pos">
+            <div class="j-l-c"></div>
+        </div>
+        <h6 class="j-l-h6">大明星徐海乔正在打开iMay直播……</h6>
+    </div>
+</section>
+<section>
+    <div class="j-drop">
+        <img class="j-i25 j-pos">
+        <img class="j-i26 j-pos">
+        <img class="j-i27 j-pos">
+        <img class="j-i28 j-pos">
+        <img class="j-i30 j-pos">
+        <img class="j-i31 j-pos">
+        <img class="j-i32 j-pos">
+    </div>
+</section>
+<!-- the first page-->
+<section>
+    <div class="j-f-c">
+        <div class="j-f-top j-top-a j-pos">
+            <img class="j-i03-a">
+            <img class="j-i03-b">
+            <img class="j-i03-c">
+            <img class="j-i04">
+        </div>
+        <div class="j-joe-a j-fir-joe">
+            <img class="j-joe01 j-pos ">
+        </div>
+    </div>
+</section>
+<!-- the second page-->
+<section>
+    <div class="j-s-c">
+        <div class="j-f-top j-top-b j-pos">
+            <img class="j-i05">
+            <div class="j-top-t">
+                <img class="j-i06">
+                <img class="j-i07">
+            </div>
+        </div>
+        <div class="j-joe-a j-sec-joe">
+            <!--<img src="__IMG__/joebirthday/j-joe01.png" class="j-joe01 j-joe01-sec j-pos">-->
+            <img class="j-i08 j-pos">
+            <img class="j-i09 j-pos" id="joeCake">
+            <img class="j-i10 j-pos" id="joeCar">
+            <img class="j-i11 j-pos" id="joeCham">
+            <img class="j-i12 j-pos">
+            <img class="gif-car j-pos" >
+            <img class="gif-cham j-pos" >
+        </div>
+    </div>
+</section>
+<!-- the third page-->
+<section>
+    <div class="j-t-c" style="display: block;">
+        <div class="j-bg-a j-pos">
+            <img class="j-bg01">
+        </div>
+        <div class="j-f-top j-top-c j-pos">
+            <img class="j-i13">
+            <div class="j-top-t">
+                <img class="j-i14">
+                <img class="j-i15">
+            </div>
+        </div>
+        <div class="j-joe-a j-third-joe">
+            <img class="j-joe02 j-pos">
+            <a class="joe-get j-pos">
+                <img class="j-i16 ">
+            </a>
+        </div>
+    </div>
+</section>
+<!-- the four page-->
+<section>
+    <div class="j-fo-c">
+        <img class="j-i19 j-pos">
+        <div class="j-f-top fo-c-t j-pos">
+            <img class="j-i17">
+            <img class="j-i18">
+        </div>
+        <div class="j-joe-a">
+            <img class="j-joe01-d j-pos">
+            <img class="j-i23 j-pos">
+            <div class="j-fo-but j-pos">
+                <a class="j-but-a">
+                    <img class="j-i20">
+                </a>
+                <a class="j-but-b">
+                    <img class="j-i21">
+                </a>
+                <a class="j-but-c">
+                    <img class="j-i22">
+                </a>
+            </div>
+            <div class="j-b-time j-pos">
+                <span>时间：4月17日 17:00	</span>
+                <span>官方直播间：520417	</span>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- the mask-->
+<section>
+    <div class="j-mask">
+        <div class="j-mask-bg"></div>
+        <img src="__IMG__/joebirthday/j-i24.png" class="j-i24 j-pos">
+    </div>
+</section>
+<!-- the rose-->
+<section>
+    <div class="j-rose j-pos">
+    </div>
+</section>
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript" src="__JS__/Joe-birth.js"></script>
+<script type="text/javascript" src="__JS__/common.js"></script>
+<script type="text/javascript" src="__JS__/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+    var img = "__IMG__/joebirthday";
+    var url = "<?php echo $url; ?>";
+    var wxURL = '<?php echo $base_url; ?>' + '/activity/Capturemonster/getJsapiTicket';
+    var nick = '有个大明星请你参加私密生日趴';
+    var desc = 'iMay独家直播徐海乔生日会';
+    var urlStr = "<?php echo $base_url; ?>" + "/activity/Birthday/index";
+    var imgURL = "<?php echo $base_url; ?>" + "__IMG__/joebirthday/wechat.jpg";
+    $(function () {
+        getWXData(wxURL, nick, desc, urlStr, imgURL);
+
+        $(".j-but-a").click(function () {
+            dowmIMay();
+        });
+        $(".j-but-b").click(function () {
+            openApp(url);
+        });
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+body{ background: url("../images/i_bg.jpg") #17141f no-repeat center top; }
+.i-top{ height: 42px; line-height: 42px; padding: 35px 0 22px 0; width: 950px;}
+.iMay-logo,.i-con-logo,.i-con-txt,.i-ios,.i-android,.i-code{ background: url("../images/i_index.png") no-repeat; display: block;}
+.iMay-logo{ width: 162px; height: 42px; background-position: 0 0; margin-left: 40px; float: left;}
+.i-top-txt{ float: right;}
+a.i-txt-a,.i-top-txt span{ display: inline-block;}
+a.i-txt-a,a.i-txt-a:active,a.i-txt-a:visited,.i-bot-txt{ color: #4f4f4f; font-size: 16px;}
+a.i-txt-a:hover{ color: #FFF;}
+.i-top-txt span{ color: #4f4f4f; margin: 0 9px;}
+.i-con{ width: 950px; position: relative;}
+.i-con-l,.tab-img,.i-con-r,.tab-scroll{ position: absolute;}
+.i-con-l{ left: 20px;animation-duration:2s;-webkit-animation-duration:2s;-moz-animation-duration: 2s; -o-animation-duration: 2s; top: 20px;}
+.tab-img{ width: 278px; height: 488px; top: 93px; left: 40px; overflow: hidden;}
+.i-con-r{ right: 0; top: 46px;animation-duration:2s;-webkit-animation-duration:2s;-moz-animation-duration: 2s; -o-animation-duration: 2s;}
+.i-con-logo{ width: 110px; height: 165px; background-position: 0 -46px;}
+.i-con-txt{ width: 375px; height: 140px; background-position: 0 -221px; margin: 20px 0 60px 30px;}
+.i-con-down a{ width: 156px; height: 54px; float: left; }
+.i-ios{ background-position: -135px -45px; margin:0 15px 0 24px;}
+.i-ios:hover{ background-position: -180px -360px;}
+.i-android{ background-position: -135px -110px; margin:0 15px 0 0;}
+.i-android:hover{ background-position: 0 -360px;}
+.i-code{ background-position: -305px -45px;}
+.i-code:hover{ background-position: -304px -110px;}
+.i-footer-top{ float: none; padding-bottom: 10px;}
+.i-footer{ position: fixed; bottom: 0;width: 100%;text-align: center; padding-bottom: 20px;}
+.i-bot-txt,.i-footer-top a,.i-footer-top span{font-size: 12px;}
+.tab-scroll{animation-duration:1s;-webkit-animation-duration:1s; -moz-animation-duration: 1s; -o-animation-duration: 1s; left: 0 ; top: 0}
+.aniInLeft{ animation-name: aniInLeft;-webkitanimation-name: aniInLeft; -moz-animation-name: aniInLeft; -o-animation-name:aniInLeft; }
+.aniInRight{ animation-name: aniInRight;-webkitanimation-name: aniInRight;-moz-animation-name: aniInRight; -o-animation-name:aniInRight; }
+.aniOutLeft{ animation-name: aniOutLeft;-webkit-animation-name: aniOutLeft;-moz-animation-name: aniOutLeft; -o-animation-name:aniOutLeft; }
+.animated{animation-duration: 1s; -webkit-animation-duration: 1s;-webkit-animation-fill-mode: both; -moz-animation-fill-mode: both;animation-fill-mode: both; -o-animation-fill-mode: both;}
+.scroll1{ animation-delay: 5s;-moz-animation-delay: 5s; -o-animation-delay: 5s; -webkit-animation-delay: 5s;}
+.scroll2{ animation-delay: 2s;-moz-animation-delay: 2s; -o-animation-delay: 2s; -webkit-animation-delay: 2s;}
+@keyframes aniInLeft {
+    0% {
+        opacity: 0;
+        transform: translate3d(-100%, 0px, 0px);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+@keyframes aniInRight {
+    0% {
+        opacity: 0;
+        transform: translate3d(100%, 0px, 0px);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+@keyframes aniOutLeft {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translate3d(-100%, 0px, 0px);
+    }
+}

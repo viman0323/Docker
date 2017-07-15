@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>iMay直播，可以玩的直播！</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <link type="text/css" rel="stylesheet" href="__CSS__/m-common.css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/m-default.css">
+</head>
+<body id="list-bg">
+<ul class="m-list-ul">
+    {volist name="records" id="vo"}
+    <li>
+        <div class="m-list-l">
+            <span class="m-list-t1"><b>{$vo['money']/100}</b> 人民币</span>
+            <span class="m-list-t2">{:date("Y-m-d H:i:s", $vo['timeRequest'])}</span>
+        </div>
+        <div class="m-list-r">
+            {php}if ($vo['approveStatus'] == 0){{/php}
+            <span class="m-list-exam">审核中</span>
+            {php}}else if ($vo['approveStatus'] == 1){{/php}
+            <span class="m-list-success">成功</span>
+            {php}}else{{/php}
+            <span class="m-list-fail">失败</span>
+            {php}}{/php}
+        
+        </div>
+    </li>
+    {/volist}
+</ul>
+
+</body>
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+{include file="statistics/baiduStatistcs"}
+
+</html>

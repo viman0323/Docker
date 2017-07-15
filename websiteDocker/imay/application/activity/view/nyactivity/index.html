@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>元旦活动</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta content="telephone=no" name="format-detection">
+    <link rel="stylesheet" href="__CSS__/h5-default.css">
+</head>
+<body>
+<article>
+    <section>
+        <div class="h5-info1">
+            <img src="__IMG__/y01.jpg" class="h5-j01">
+            <h1><img  class="h5-i01 h5-pos tab-scroll aniInTop"></h1>
+            <img class="h5-i09 h5-pos aniInTop">
+            <img class="h5-i10 h5-pos aniInTop1">
+            <img class="h5-i04 h5-pos aniInTop">
+            <div class="h5-h01 h5-pos aniInTop enlarge">
+                <img class="h5-i02">
+                <div class="h5-h01-t h5-pos">
+                    <h5>250</h5>
+                </div>
+            </div>
+            <img class="h5-i03 h5-pos aniInBottom">
+        </div>
+    </section>
+    <section>
+        <div class="h5-info2">
+            <img src="__IMG__/y02.jpg" class="h5-j02 h5-pos">
+            <img src="__IMG__/y08.png" class="h5-i08 h5-pos aniInTop">
+            <img src="__IMG__/y07.png" class="h5-i07 h5-pos aniInBottom">
+        </div>
+    </section>
+</article>
+<footer>
+    <div class="h5-footer">
+        <div class="h5-f-t">关注“iMay服务中心”公众号，充值有惊喜！ </div>
+        <div class="h5-f-t">本活动最终解释权归iMay所有 </div>
+        <div class="h5-f-t">QQ：3383498099</div>
+    </div>
+</footer>
+<script src="__JS__/jquery.js" type="text/javascript"></script>
+<script src="__JS__/h5-default.js" type="text/javascript"></script>
+<script type="text/javascript">
+    var a = "__IMG__";
+    redPacket();
+    //请求剩余红包数量
+    function redPacket() {
+        var  url = "{:url('activity/NewYearActivity/ajaxlist')}";
+        var uid = "{$uid}";
+        var accessToken = "{$accessToken}";
+        $.post(url, { "uid": uid,"accessToken": accessToken },
+            function(json) {
+                if(json['status']== '1') {
+                    $('.h5-h01-t').find("h5").html(json.content);
+                } else {
+                    alert('数据异常！');
+                }
+            }, "json");
+    }
+    setInterval("redPacket()",20000);
+</script>
+<script type="text/javascript">
+    var _hmt = _hmt || [];
+    $(function () {
+
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?92271316ab45db908e0b6763467fea57";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })
+</script>
+</body>
+</html>

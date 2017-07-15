@@ -1,0 +1,406 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:53:"/home/web/imay/application/m/view/withdraw/index.html";i:1499162973;s:64:"/home/web/imay/application/m/view/statistics/baiduStatistcs.html";i:1486463787;}*/ ?>
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>iMay直播，可以玩的直播！</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <link type="text/css" rel="stylesheet" href="__CSS__/m-common.css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/m-default.css">
+    <style>
+        a {
+            color: #FFF;
+        }
+    </style>
+</head>
+<body id="m-tx">
+<header>
+    <div class="m-pay-d1">
+        <div class="m-pay-yes">
+            <?php 
+            if (!empty($userInfo['imgHead'])) {
+             ?>
+            <img src="<?php echo $userInfo['imgHead']; ?>" class="m-user-img">
+            <?php 
+            } else {
+             ?>
+            <img src="__IMG__/img01.jpg" class="m-user-img">
+            <?php 
+            }
+             ?>
+            
+            <div class="g-i-r">
+                <span class="g-l-m3"><?php echo $userInfo['nick']; ?></span>
+                <span class="g-l-m4">魅号：<b><?php echo $userInfo['roomId']; ?></b></span>
+            </div>
+            <div class="m-l-r">
+                <a class="m-tab-user" href="javascript:void(0)">切换账号</a>
+            </div>
+        </div>
+    </div>
+</header>
+<article>
+    <section>
+        <div class="tx-bce">
+            <h6>魅力余额</h6>
+            <b class="tx-bce-b"><?php echo $withdrawInfo['meili']; ?></b>
+        </div>
+        <div class="tx-pro">
+            <h6>可兑换收益（元）</h6>
+            <b class="tx-pro-b"></b>
+        </div>
+    </section>
+    <section>
+        <div class="tx-detail">
+            <ul class="tx-d-ul">
+                <li>
+                    <label>真实姓名</label>
+                    <?php  if($withdrawInfo['realNameVerify']){  ?>
+                    <a class="tx-no-a" href="javascript:void(0)"><?php echo $withdrawInfo['realName']; ?></a>
+                    <?php  } else {  ?>
+                    <a class="tx-no-a" id="noRealName">未认证</a>
+                    <?php  }  ?>
+                    <input type="hidden" name="real_name" value="<?php echo $withdrawInfo['realName']; ?>">
+                </li>
+                <li>
+                    <label>手机号码</label>
+                    <?php  if($withdrawInfo['bindPhone']){  ?>
+                    <a class="tx-no-a" href="javascript:void(0)"><?php echo $userInfo['phone']; ?></a>
+                    <?php  } else {  ?>
+                    <a class="tx-no-a" id="noBound">未绑定</a>
+                    <?php  }  ?>
+                    <input type="hidden" name="phone" value="<?php echo $userInfo['phone']; ?>">
+                </li>
+                <li>
+                    <label>结算方式</label>
+                    <?php  if($withdrawInfo['signConfirmStatus']){  ?>
+                    <a class="tx-no-a no-settle">已确认</a>
+                    <?php  } else {  ?>
+                    <a class="tx-no-a" id="noSettle">未确认</a>
+                    <?php  }  ?>
+                </li>
+                <li>
+                    <label>提现账号</label>
+                    <input name="alipay_account" type="text" placeholder="请输入您的支付宝" class="tx-ul-i"
+                           value="<?php echo $withdrawInfo['alipayAccount']; ?>" maxlength="25"> <!-- disabled -->
+                    <input name="alipay_account_1" type="hidden" placeholder="请输入您的支付宝" class="tx-ul-i"
+                           value="<?php echo $withdrawInfo['alipayAccount']; ?>" maxlength="25"> <!-- disabled -->
+                </li>
+                <li>
+                    <label>提现魅力</label>
+                    <input name="meili" type="tel" placeholder="请输入大于300魅力的数量"
+                           class="tx-ul-i" maxlength="<?php echo strlen($withdrawInfo['meili']); ?>"
+                           onkeypress="return WST.isNumberKey(event)">
+                    <!-- disabled -->
+                </li>
+                <li>
+                    <label >到账金额<?php if($withdrawInfo['itemDouble']){ ?><font style="color:red;font-size:12px"> x2</font><?php } ?></label>
+                    <span  name="s_money" class="tx-ul-s tx-s-g">0元</span><!-- class = "tx-s-g" -->
+                    <input name="money" type="hidden" type="hidden">
+                </li>
+            </ul>
+            <div class="iMay-mes">注意：请仔细确认支付宝账号(打开支付宝在“我的-个人中心-个人主页”查看）和实名认证的姓名是否一致，否则提现操作都将失败!</div>
+            <div class="tx-but">
+                <a class="tx-but-a" id="btn-withdraw" href="javascript:void(0)" disabled>提现</a>
+                <!-- class = "tx-but-y" -->
+            </div>
+            <div class="tx-s-list">
+                <a class="tx-list-a" href="<?php echo url('withdraw/records'); ?>">查看提现记录</a>
+            </div>
+        </div>
+    </section>
+    <!-- 提示是否确认提现-->
+    <section>
+        <!-- 遮罩层 -->
+        <div class="g-mask"></div>
+        <div class="tx-pop m-pop" id="tx-pop-confirm-withdraw">
+            <div class="pop-c-d">
+                <img src="__IMG__/m-close.png" class="m-pop-close">
+            </div>
+            <div class="tx-pop-con">
+                <div class="tx-p-t1">
+                    <label>提现魅力：</label>
+                    <span class="tx-t1-a">1111</span>
+                </div>
+                <div class="tx-p-t1">
+                    <label>到账金额：</label>
+                    <span class="tx-t1-b">10000</span>
+                </div>
+                <div class="tx-p-t1">
+                    <div class="draw-agree">
+                        <input type="checkbox" class="draw-agree-i" id="userReg" checked>
+                        <label for="userReg">我已阅读并同意<a href="<?php echo url('about/exchange'); ?>">《用户兑换协议》</a></label>
+                    </div>
+                </div>
+            </div>
+            <div class="tx-pop-but">
+                <a class="tx-but-b" id="cancel-withdraw">放弃</a>
+                <a class="tx-but-c" id="confirm-withdraw">确定</a>
+            </div>
+        </div>
+        <!-- 实名验证 -->
+        <div class="tx-pop m-pop" id="realName">
+            <div class="pop-c-d">
+                <img src="__IMG__/m-close.png" class="m-pop-close">
+            </div>
+            <div class="m-r-con">
+                <h6>实名认证</h6>
+                <div class="m-s-t1">请去暧魅APP “<b>我的 > 我的收益 > 兑换收益</b>”中进行实名认证！</div>
+                <div class="m-s-t2">只有实名认证后才能提现！</div>
+            </div>
+            <div class="tx-but m-r-but">
+                <a class="tx-but-a i-know">我知道了</a><!-- class = "" -->
+            </div>
+        </div>
+        <!-- 绑定手机号 -->
+        <div class="tx-pop m-pop" id="bound">
+            <div class="pop-c-d">
+                <img src="__IMG__/m-close.png" class="m-pop-close">
+            </div>
+            <div class="m-r-con">
+                <h6>绑定手机号</h6>
+                <div class="m-s-t1">请去暧魅APP “<b>我的 > 我的收益 > 兑换收益</b>”中进行手机号绑定！</div>
+                <div class="m-s-t2">只有绑定手机号后才能提现！</div>
+            </div>
+            <div class="tx-but m-r-but">
+                <a class="tx-but-a i-know">我知道了</a><!-- class = "" -->
+            </div>
+        </div>
+        <!-- 结算方式 -->
+        <div class="tx-pop m-pop" id="settle">
+            <div class="pop-c-d">
+                <img src="__IMG__/m-close.png" class="m-pop-close">
+            </div>
+            <div class="m-r-con">
+                <h6>结算方式</h6>
+                <div class="m-s-t1">请去暧魅APP “<b>我的 > 个人资料 > 签约信息与结算方式</b>”中确认结算方式！</div>
+                <div class="m-s-t2">没有确认结算方式，不能提现哦~</div>
+            </div>
+            <div class="tx-but m-r-but">
+                <a class="tx-but-a">我知道了</a><!-- class = "" -->
+            </div>
+        </div>
+    </section>
+</article>
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript" src="__JS__/m-index.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/common.js"></script>
+<script type="text/javascript" src="__PUBLIC__/plugins/plugins.js"></script>
+<script>
+    function callWithdraw() {
+        if ($("#userReg").prop("checked") === false) {
+            return;
+        }
+        var params = {
+            alipayAccount: $("input[name='alipay_account_1']").val(),
+            meili        : $("input[name='meili']").val(),
+            
+        };
+        var isSigned = Number(<?php echo $withdrawInfo['isSigned']; ?>);
+        if (isSigned) {
+            $(".g-mask").hide();
+            $(".tx-pop").hide();
+            alert("您是按月结算主播，无需进行提现操作");
+            return;
+        }
+        
+        $.ajax({
+            type   : "POST",
+            url    : "<?php echo url('withdraw/aliWithDraw'); ?>",
+            data   : params,
+            success: function (data, textStatus) {
+                var json = WST.toJson(data);
+                $(".g-mask").hide();
+                $(".tx-pop").hide();
+                console.log(json);
+                if (json.status == 1) {
+                    alert("申请已提交，工作人员需三个工作日完成提现审核工作，请您耐心等待~");
+                    location.reload();
+                } else {
+                    if (json.errordesc) {
+                        alert("提现失败," + WST.getErrorMsg(json.errordesc));
+                    } else {
+                        alert("提现失败");
+                    }
+                }
+            }
+        })
+    }
+    /**
+     * 检查是否可提现
+     */
+    function checkParams() {
+        var isRealNameVerify    = Number("<?php echo (isset($withdrawInfo['realNameVerify'] ) && ($withdrawInfo['realNameVerify']  !== '')?$withdrawInfo['realNameVerify'] :0); ?>");
+        var isBindPhone         = Number("<?php echo (isset($withdrawInfo['bindPhone'] ) && ($withdrawInfo['bindPhone']  !== '')?$withdrawInfo['bindPhone'] :0); ?>");
+        var isSignConfirmStatus = Number("<?php echo (isset($withdrawInfo['signConfirmStatus'] ) && ($withdrawInfo['signConfirmStatus']  !== '')?$withdrawInfo['signConfirmStatus'] :0); ?>");
+        
+        $flag = true;
+        
+        if (!isRealNameVerify || !isBindPhone || !isSignConfirmStatus) {
+            $flag = false;
+        }
+        var meili    = Number($("input[name='meili']").val());
+        var meiliMin = 300;
+        var meiliMax = maxMeili;
+        if (!(meili >= meiliMin && meili <= meiliMax)) {
+            $flag = false;
+        }
+        
+        if ($("input[name='alipay_account']").val() == "") {
+            $flag = false;
+        }
+        
+        if ($flag) {
+            $("#btn-withdraw").addClass("tx-but-y");
+        } else {
+            $("#btn-withdraw").removeClass("tx-but-y");
+        }
+    }
+    
+    /**
+     * 把电话or邮箱的某些位置转换为*号
+     */
+    function transformToStar() {
+        var _this        = $(this);
+        var transformStr = _this.val();
+        $("input[name='alipay_account_1']").val(transformStr)
+        
+//        if (WST.isEmail(transformStr) ) {
+//            var index = transformStr.indexOf("@");
+//            if (index < 4) /*@前面的字符少于4个字母,只显示第一位,其他标为*号*/
+//                transformStr = transformStr.replace(/^(.).+(@.*)$/, "$1***$2");
+//             else { /*@前面的字符多于4个字母,把@前面的4个字母标为*号*/
+//                transformStr = transformStr.replace(/^(.*).{4}(@.*)$/, "$1****$2");
+//            }
+//        } else if (WST.isPhone(transformStr)) {
+//            transformStr = transformStr.substring(0, 3) + "****" + transformStr.substring(8, 11);
+//        }
+        if (transformStr) {
+            if (!WST.isEmail(transformStr) && !WST.isPhone(transformStr)) {
+                alert('请输入正确的支付宝账号！');
+            }
+        }
+
+    }
+    
+    /*
+     * 魅力转为钱
+     * */
+    function convertMeiliToMoney(meili) {
+        var doubleCard = <?php echo $withdrawInfo['itemDouble']; ?>;
+        var money      = 0;
+        if (meili) {
+            if (doubleCard) {
+                money = (meili / 100) * 3 * 2;
+            } else {
+                money = (meili / 100) * 3;
+            }
+        }
+        return money.toFixed(2);
+    }
+    /**
+     *
+     */
+    function convert() {
+        var meili = Number($(this).val());
+        if (meili > Number(maxMeili)) {
+            meili = maxMeili;
+            $(this).val(maxMeili);
+        }
+        var money = convertMeiliToMoney(meili);
+        $("span[name='s_money']").html(money + "元");
+        $("input[name='money']").val(money);
+        $(".tx-t1-a").html(meili);
+        $(".tx-t1-b").html(money);
+//        console.log(money.toFixed(2) + "元");
+    }
+    var maxMeili = Number("<?php echo $withdrawInfo['meili']; ?>");
+    $(function () {
+        $("input[name='alipay_account']").on("input valuechange", checkParams);
+        $("input[name='alipay_account']").on("blur", transformToStar);
+        $("input[name='alipay_account']").blur();
+        
+        $("input[name='meili']").on("input valuechange", checkParams);
+        $("input[name='meili']").on("input valuechange", convert);
+        $("input[name='meili']").trigger("valuechange");
+        
+        $(".tx-pro-b").html(convertMeiliToMoney(maxMeili));
+        
+        $("#noRealName").click(function () {
+            $(".g-mask").show();
+            $("#realName").show();
+        });
+        $("#noBound").click(function () {
+            $(".g-mask").show();
+            $("#bound").show();
+        });
+        /**
+         * 确定提现
+         */
+        $("#btn-withdraw").click(function () {
+            if ($(this).hasClass("tx-but-y")) {
+                $(".g-mask").show();
+                $("#tx-pop-confirm-withdraw").show();
+            }
+        });
+        /**
+         * 第二次确定提现
+         */
+        $("#confirm-withdraw").click(WST.throttle(callWithdraw, 1000));
+        
+        //切换账号
+        $(".m-tab-user").click(function () {
+            $.ajax({
+                type   : 'POST',
+                url    : "<?php echo url('login/signOut'); ?>",
+                success: function (data, textStatus) {
+                    var json = WST.toJson(data);
+                    if (json.status == 1) {
+                        window.location.href = "<?php echo url('login/toLogin'); ?>";
+                    }
+                    /*else {
+                     alert("退出失败");
+                     }*/
+                },
+                error  : function () {
+                    alert("网络出错");
+                }
+            });
+        });
+        $("#cancel-withdraw").click(function () {
+            $(".g-mask").hide();
+            $(".tx-pop").hide();
+        });
+        $(".m-pop-close").click(function () {
+            $(".g-mask").hide();
+            $(".tx-pop").hide();
+        });
+        $(".i-know").click(function () {
+            $(".g-mask").hide();
+            $(".tx-pop").hide();
+        });
+        $("#userReg").click(function(){
+           if ($(this).prop("checked")) {
+//               alert("checked");
+           } else {
+//               alert("unchecked");
+           }
+        });
+    });
+</script>
+</body>
+<script type="text/javascript">
+    $(function () {
+        var _hmt = _hmt || [];
+        $(function () {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?92271316ab45db908e0b6763467fea57";
+            var s  = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        });
+    })
+</script>
+</html>

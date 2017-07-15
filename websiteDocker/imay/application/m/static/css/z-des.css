@@ -1,0 +1,21 @@
+body{ background-color: #8f14fa;}
+img{ display: block;}
+.z-des-mod{ width: 100%; position: relative;}
+.z-d-j01,.z-d-j02{ width: 100%; display: block;}
+.z-d-pos{ position: absolute;}
+.z-d-i01{ top: 0; z-index: 2;}
+.z-d-i02{ top: 8%; left: 26%; z-index: 1; width: 33%;}
+.z-d-i01{ width: 84%; left: 8%; top: 25%;}
+.z-d-j02{ }
+.des-b-but{ width: 90%; top: 9.5%; left: 5%}
+.des-challenger-a,.des-Magistrate-a{ display: block; float: left; width: 48%; }
+.des-challenger-a{ margin-right: 3%;}
+.z-d-i05,.z-d-i06{ width: 80%; margin-left: 10%;}
+.des-mod-d{ padding: 3% 0;}
+.z-im-part{ display: block; width: 46%; float: left; margin-left: 14%; }
+.z-go{ display: block; width: 23%;float: right; margin: 3% 12% 0 0;}
+.des-mes{ top: 42%; display: table; vertical-align: middle; text-align: center; width: 100%; color: #FFF;}
+.des-head{ width: 17%; border-radius: 50%; display: inline-block;}
+.des-mes-nick{ font-size: 16px; margin: .5% 0;}
+.des-mes-txt{ font-size: 12px; }
+.z-d-i03,.z-d-i04{ width: 100%;}

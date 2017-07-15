@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>愚人乐大轰趴</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="__CSS__/fool-party.css">
+</head>
+<body>
+<header>
+    <div class="f-header">
+        <img class="f-i01">
+        <div class="f-txt1 f-pos">
+            <img class="f-i05">
+        </div>
+        <div class="f-txt2 f-pos">
+            <img class="f-i02 f-pos">
+        </div>
+    </div>
+</header>
+<article>
+    <section>
+        <div class="f-info">
+            <h2>
+                <img class="f-i03">
+            </h2>
+            <ul class="f-info-ul">
+                {volist name="page" id="vo" key="i"}
+                <li>
+                    <h5>
+                        {php} if ($i == 1) { {/php}
+                            <img  class="f-i04 f-i04c">
+                        {php} } else if ($i == 2) { {/php}
+                            <img class="f-i04 f-i04a">
+                        {php} } else { {/php}
+                            <img class="f-i04 f-i04b">
+                        {php} } {/php}
+                    </h5>
+                    <div class="f-i-c clearfix">
+                        <div class="s-bar-top">
+                            <a class="s-bar-a f-pos" href="{$vo.url}">
+                                {php} if ($vo['imgHead']) { {/php}
+                                    <img src="{$vo.imgHead}" class="s-bar-i">
+                                {php} } else { {/php}
+                                    <img src="__IMG__/no.png" class="s-bar-i">
+                                {php} } {/php}
+                            </a>
+                            <div class="s-bar-tit f-pos">
+                                <div class="s-tit-t1 clearfix">
+                                    <h5>{$vo.nick}</h5>
+                                    {php} if ($vo['sex'] == 1) { {/php}
+                                        <em class="s-sex s-sex-m"></em>
+                                    {php} } else { {/php}
+                                        <em class="s-sex s-sex-g"></em>
+                                    {php} } {/php}
+                                    {php} if ($vo['UserLv'] > 39) { {/php}
+                                        <b class="s-level level-e">{$vo.UserLv}</b>
+                                    {php} } else if ($vo['UserLv'] > 29) { {/php}
+                                        <b class="s-level level-d">{$vo.UserLv}</b>
+                                    {php} } else if ($vo['UserLv'] > 19) { {/php}
+                                        <b class="s-level level-c">{$vo.UserLv}</b>
+                                    {php} } else if ($vo['UserLv'] > 9) { {/php}
+                                        <b class="s-level level-b">{$vo.UserLv}</b>
+                                    {php} } else { {/php}
+                                        <b class="s-level level-a">{$vo.UserLv}</b>
+                                    {php} } {/php}
+                                </div>
+                                <div class="s-tit-t2">
+                                    魅号：{$vo.roomId}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="f-vi">
+                            <!-- video播放器 -->
+                            <div class="s-mid-video">
+                                <img src="{$vo.video}?vframe/jpg/offset/0/w/450" class="s-video-i">
+                                <video class="s-video-a f-pos" src="{$vo.video}" playsinline webkit-playsinline controls></video>
+                            </div>
+                            <!-- video播放器按钮 -->
+                            <div class="s-play f-pos">
+                                <a class="s-play-a"><img src="__IMG__/fool/s-play.png" class="s-play-i"></a>
+                            </div>
+                        </div>
+                        <div class="f-b-txt">
+                            <span class="f-txt-s1">{$vo.content}</span>
+                        </div>
+                    </div>
+                </li>
+                {/volist}
+            </ul>
+        </div>
+    </section>
+    <section>
+        <!-- 最佳作品 -->
+        <div class="f-info">
+            <h2>
+                <img src="__IMG__/fool/f-i03a.png" class="f-i03a">
+            </h2>
+            <ul class="f-info-ul">
+                {volist name="list" id="vo" key="i"}
+                <li>
+                    <h5>
+                        {php} if ($i == 1) { {/php}
+                            <img  class="f-i04 f-i06">
+                        {php} } else if ($i == 2) { {/php}
+                            <img class="f-i04 f-i06a">
+                        {php} } else { {/php}
+                            <img class="f-i04 f-i06b">
+                        {php} } {/php}
+                    </h5>
+                    <div class="f-i-c clearfix">
+                        <div class="s-bar-top">
+                            <a class="s-bar-a f-pos" href="{$vo.url}">
+                                {php} if ($vo['imgHead']) { {/php}
+                                    <img src="{$vo.imgHead}" class="s-bar-i">
+                                {php} } else { {/php}
+                                    <img src="__IMG__/no.png" class="s-bar-i">
+                                {php} } {/php}
+                            </a>
+                            <div class="s-bar-tit f-pos">
+                                <div class="s-tit-t1 clearfix">
+                                    <h5>{$vo.nick}</h5>
+                                    {php} if ($vo['sex'] == 1) { {/php}
+                                        <em class="s-sex s-sex-m"></em>
+                                    {php} } else { {/php}
+                                        <em class="s-sex s-sex-g"></em>
+                                    {php} } {/php}
+                                    {php} if ($vo['UserLv'] > 39) { {/php}
+                                        <b class="s-level level-e">{$vo.UserLv}</b>
+                                    {php} } else if ($vo['UserLv'] > 29) { {/php}
+                                        <b class="s-level level-d">{$vo.UserLv}</b>
+                                    {php} } else if ($vo['UserLv'] > 19) { {/php}
+                                        <b class="s-level level-c">{$vo.UserLv}</b>
+                                    {php} } else if ($vo['UserLv'] > 9) { {/php}
+                                        <b class="s-level level-b">{$vo.UserLv}</b>
+                                    {php} } else { {/php}
+                                        <b class="s-level level-a">{$vo.UserLv}</b>
+                                    {php} } {/php}
+                                </div>
+                                <div class="s-tit-t2">
+                                    魅号：{$vo.roomId}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="f-vi">
+                            <!-- video播放器 -->
+                            <div class="s-mid-video">
+                                <img src="{$vo.video}?vframe/jpg/offset/0/w/450" class="s-video-i">
+                                <video class="s-video-a f-pos" src="{$vo.video}" playsinline webkit-playsinline controls></video>
+                            </div>
+                            <!-- video播放器按钮 -->
+                            <div class="s-play f-pos">
+                                <a class="s-play-a"><img src="__IMG__/fool/s-play.png" class="s-play-i"></a>
+                            </div>
+                        </div>
+                        <div class="f-b-txt">
+                            <span class="f-txt-s1">{$vo.content}</span>
+                        </div>
+                    </div>
+                </li>
+                {/volist}
+            </ul>
+        </div>
+    </section>
+</article>
+<footer>
+    <div class="f-footer">
+        <div class="f-f-txt">关注“iMay服务中心”公众号，充值有惊喜！</div>
+        <div class="f-f-txt">本活动最终解释权归iMay所有</div>
+        <div class="f-f-txt">发布未授权内容引发的法律责任，由发布者自行负责</div>
+    </div>
+</footer>
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript" src="__JS__/fool-party.js"></script>
+<script>
+    var k = "__IMG__/fool";
+</script>
+
+<script type="text/javascript">
+    var _hmt = _hmt || [];
+    $(function () {
+
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?92271316ab45db908e0b6763467fea57";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })
+</script>
+</body>
+</html>

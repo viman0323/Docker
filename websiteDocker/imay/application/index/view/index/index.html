@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>iMay直播，可以玩的直播！</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <meta itemprop="name" content="iMay直播">
+    <meta name="keywords" content="交友，直播，游戏，年轻，才艺，文艺，校花，电影，90后，00后，大学生，音乐，自由职业，网红，宅男，女神，潮流，时尚，男神，夜店，唱K，秀场，土豪，富二代" />
+    <meta name="description" itemprop="description" content="首款可以玩的时尚手机直播APP，极简的产品设计，集离线动态图文、视频等为一体的全新社交点赞模式。意外的邂逅，点亮陌生而并不陌生的社交关系网" />
+    <meta name="application-name" content="iMay直播" />
+    <meta name="msapplication-tooltip" content="iMay直播" />
+    <link type="text/css" rel="stylesheet" href="__PC_CSS__/common.css">
+    <link type="text/css" rel="stylesheet" href="__CSS__/index.css">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+</head>
+<body>
+<header>
+    <div class="i-header">
+        <div class="i-nav">
+            <ul class="i-nav-ul">
+                <li>
+                    <a href="/" class="i-logo"></a>
+                </li>
+                <li>
+                    <a href="{:url('user/withdraw/index')}" class="i-nav-a"><span>提现</span><b></b></a>
+                </li>
+                <li>
+                    <a href="{:url('user/recharge/index')}" class="i-nav-a"><span>充值</span><b></b></a>
+                </li>
+                <!--<li>-->
+                    <!--<a href="{:url('index/game/index')}" class="i-nav-a"><span>直播助手</span><b></b></a>-->
+                <!--</li>-->
+                <li>
+                {php}if(!empty($login['user'])){ {/php}
+                        <a href="{:url('broker/Actor/index')}" class="i-nav-a" style="width: 100px"><span>我的信息</span><b></b></a>
+                {php>} } {/php}
+                </li>
+            </ul>
+            <div class="i-nav-r">
+                <div class="h-l-r">
+                    {php}if (empty($login['user'])) { {/php}
+                        <div class="g-no-i">
+                            <a class="h-log pop-login" href="#">登录</a>
+                        </div>
+                    {php} } else { {/php}
+                        <div class="g-r-i">
+                            <img class="h-l-img" src="{$login['user']['imgHead']|default='__IMG__/g-logo.png'}">
+                            <span class="g-l-m5">{$login['user']['nick']}</span>
+                        </div>
+                        <div class="i-exit">
+                            <a class="i-exit-a">退出</a>
+                        </div>
+                    {php} } {/php}
+                </div>
+            </div>
+        </div>
+        <div class="i-h-con">
+            <div class="i-c-l tab-scroll aniInLeft">
+                <div class="i-l-ic">
+                    <img src="__IMG__/g-ox.png">
+                </div>
+                <div class="i-l-but">
+                    <div class="i-l-l">
+                        <a class="i-ios" style="cursor: pointer;" href="https://itunes.apple.com/cn/app/imay-zhi-bo/id1144832626?mt=8">
+                        <!-- <a class="i-ios" style="cursor: pointer;" href="https://itunes.apple.com/cn/app/imay-zhi-bo/id1198166301?mt=8"> -->
+                            <!--<span class="i-ios-s">敬请期待...</span>-->
+                        </a>
+                        <a class="i-android" style="cursor: pointer" href="https://iosapp.imay.cn/Vanka.apk">
+                            <!--<span class="i-ios-s">敬请期待...</span>-->
+                        </a>
+                    </div>
+                    <div class="i-l-r">
+                        <img src="__IMG__/iMayCode.jpg">
+                    </div>
+                </div>
+                <!--<div class="i-cap-d">-->
+                    <!--<a class="i-cap" href="{:url('Download/indexInvite')}"></a>-->
+                <!--</div>-->
+            </div>
+            <div class="i-c-r">
+                <div class="i-r-img tab-scroll aniInRight">
+                    <img src="__IMG__/g-img01.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="i-wrap">
+    <div class="i-w-p i-w-m">
+        <div class="i-t-i01 tab-scroll">
+            <img src="__IMG__/i-img01.png">
+        </div>
+        <div class="i-t-i02 tab-scroll">
+            <img src="__IMG__/i-img02.png">
+        </div>
+
+    </div>
+    <div class="i-w-p i-w-h">
+        <div class="i-w-fly tab-scroll1">
+            <img src="__IMG__/fly.png">
+        </div>
+        <div class="i-t-i03">
+            <img src="__IMG__/i-img05.png">
+        </div>
+        <div class="i-t-i04">
+            <img src="__IMG__/i-img06.png">
+        </div>
+    </div>
+    <div class="i-w-p i-w-b">
+        <div class="i-t-i05">
+            <img src="__IMG__/i-img08.png">
+        </div>
+        <div class="i-t-i06">
+            <img src="__IMG__/i-img09.png">
+        </div>
+        <div class="i-t-i07">
+            <img src="__IMG__/i-img12.png">
+        </div>
+        <div class="i-t-i08">
+            <img src="__IMG__/i-img03.png">
+        </div>
+        <div class="i-t-i09">
+            <img src="__IMG__/i-img04.png">
+        </div>
+        <div class="i-t-i10">
+            <img src="__IMG__/i-img10.png">
+        </div>
+        <div class="i-t-i11">
+            <img src="__IMG__/i-img11.png">
+        </div>
+        <div class="i-t-i12">
+            <img src="__IMG__/i-img13.png">
+        </div>
+    </div>
+</div>
+
+<div class="footer-bar">
+    <img src="__IMG__/w-imay.png">
+</div>
+<!--底部信息-->
+{include file="../../common/view/default/footer" /}
+<!--登录、注册、忘记密码-->
+{include file="../../common/view/default/login" /}
+<div class="g-mask"></div>
+
+<script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/pc/js/g-index.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/common.js"></script>
+<script type="text/javascript">
+    var wait = 60;
+    var type = "{$type}";
+
+    $(function () {
+        if (type == 'register') {
+            $(".g-login-pop").show();
+            $(".g-mask").show();
+            $('.pop-l-l a').removeClass("pop-pouple");
+            $('.h-l-r a').removeClass("pop-pouple");
+            $(".register-sc").val('中国86');
+            $(".pop-reg-a").addClass("pop-pouple");
+            $('.pop-tab-c:last-child').show();
+            $('.pop-tab-c:first-child').hide();
+            $(".pop-sec-ul").css('display', 'block');
+        }
+    })
+
+</script>
+</body>
+</html>

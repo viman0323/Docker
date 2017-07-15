@@ -1,0 +1,187 @@
+body{ background-color: #f5f5f5;}
+.i-header{ background: url("../images/g-img03.jpg") no-repeat; width: 100%; height: 578px; overflow: hidden; }
+.i-nav{ width: 968px; padding-top: 20px;}
+.i-nav-ul li,.i-c-l,.i-c-r{ float: left;}
+.i-logo,.i-nav-c,.i-ios,.i-android{ background: url("../images/g-index.png") no-repeat;display: block;}
+.i-nav-ul li{padding: 0 8px; min-width: 60px; text-align: center; font-size: 18px; height: 45px;  position: relative;}
+.i-nav-ul li .i-logo{ width: 125px; height: 45px; background-position: 0 -556px; margin-right: 50px;}
+a.i-nav-a,a.i-nav-a:active,a.i-nav-a:visited,a.i-nav-a:hover{ color: #FFF !important;}
+.i-nav-ul li a:hover{ color: #ccc;}
+a.i-nav-a{ display: block; margin-top: 15px; width: 62px; height: 35px; cursor: pointer; color: #FFF !important;}
+.i-nav-c{ background-position: -133px -556px;}
+.i-h-con{ clear: both; width: 968px;}
+.i-c-l{ width: 550px; height: 420px; position: relative;}
+.i-l-but a{ float: left; width: 185px; height: 58px; cursor: default; position: relative;}
+.i-android{ background-position: 0 -678px;}
+.i-ios{background-position: 0 -614px; margin-right: 12px; }
+.i-ios-s{ position: absolute; color: #fff; bottom: -25px;text-align: center; display: block; width: 185px; display: none;}
+.i-ios:hover span,.i-android:hover span{ display: block;}
+/*.i-ios:hover{ background-position: 0 -741px;}*/
+/*.i-android:hover{ background-position: 0 -805px;}*/
+.i-wrap{ width: 1349px;}
+.i-wrap img{ width: 1349px;}
+.i-l-ic{ position: absolute; top: 90px;}
+.i-l-but{ top: 402px; position: absolute;}
+.i-wrap .i-w-m{ margin-top: 0;}
+.i-w-m{ height: 636px;}
+.i-w-p{ width: 1349px; position: relative; }
+.i-t-i01,.i-t-i02,.i-t-i03,.i-t-i04,.i-t-i05,.i-t-i06,.i-t-i07,.i-t-i08,.i-t-i09,.i-t-i10,.i-t-i11,.i-t-i12,.i-t-i13,.i-t-i14,.i-t-i15{ position: absolute;}
+.i-t-i01{ left: 133px; top: 41px;}
+.i-t-i02{ right: 157px; top: 91px;}
+.i-t-i03{ left: 134px; top: 4px;}
+.i-t-i04{ right: 160px; top: -32px;}
+.i-t-i05{ left: 270px; top: 138px;}
+.i-t-i06{ right: 250px;}
+.i-t-i07{ left: 492px; top: 362px;}
+.i-t-i08{ left: 545px; top: 256px;}
+.i-t-i09{ left: 700px; top: 278px;}
+.i-t-i10{ left: 80px;}
+.i-t-i11{ right: 108px; top:390px;}
+.i-t-i12{ left: 222px; top: 50px;}
+.i-w-p div img{ width: 100%;}
+.i-t-i03,.i-w-fly,.i-t-i04,.i-t-i06{ display: none;}
+
+.i-wrap{ position: relative;}
+.i-w-fly{ position: absolute; z-index: 1000;width: 360px; height: 406px;right: 665px; top: 293px;}
+.i-w-fly img{ width: 100%; }
+.i-w-h{ height: 800px; background: url("../images/i-img07.png")  #f5f5f5 no-repeat; }
+.i-w-b{ height: 850px; background-color: #f5f5f5;}
+
+.tab-scroll{animation-duration:1s;-webkit-animation-duration:1s; -moz-animation-duration: 1s; -o-animation-duration: 1s;}
+.tab-scroll1{animation-duration:6s;-webkit-animation-duration:6s; -moz-animation-duration: 6s; -o-animation-duration: 6s;}
+.aniInLeft{ animation-name: aniInLeft;-webkitanimation-name: aniInLeft; -moz-animation-name: aniInLeft; -o-animation-name:aniInLeft; }
+.aniInRight{ animation-name: aniInRight;-webkitanimation-name: aniInRight;-moz-animation-name: aniInRight; -o-animation-name:aniInRight; }
+.anFadeIn{animation-name: anFadeIn;-webkitanimation-name: anFadeIn;-moz-animation-name: anFadeIn; -o-animation-name:anFadeIn;}
+.flyIn{animation-name: flyIn;-webkitanimation-name: flyIn;-moz-animation-name: flyIn; -o-animation-name:flyIn;}
+.but-scroll{animation-duration:3s;-webkit-animation-duration:3s; -moz-animation-duration: 3s; -o-animation-duration: 1s;}
+.twinkling{ animation: twinkling 1.5s ease-in-out 0s infinite normal;-webkit-animation: twinkling 1.5s ease-in-out 0s infinite normal;-moz-animation: twinkling 1.5s ease-in-out 0s infinite normal;-o-animation: twinkling 1.5s ease-in-out 0s infinite normal;}
+.twinkling1{ animation: twinkling 1.5s ease-in-out 0.5s infinite normal;-webkit-animation: twinkling 1.5s ease-in-out 0.5s infinite normal;-moz-animation: twinkling 1.5s ease-in-out 0.5s infinite normal;-o-animation: twinkling 1.5s ease-in-out 0.5s infinite normal;}
+.twinkling2{ animation: twinkling 1s ease-in-out 1s 1 normal;-webkit-animation: twinkling 1s ease-in-out 1s 1 normal;-moz-animation: twinkling 1s ease-in-out 1s 1 normal;-o-animation: twinkling 1s ease-in-out 1s 1 normal;}
+.twinkling3{ animation: twinkling 3s ease-in-out 0s;-webkit-animation: twinkling 3s ease-in-out 0s;-moz-animation: twinkling 1s ease-in-out 0s;-o-animation: twinkling 1s ease-in-out 0s;}
+.i-l-ic{ position: absolute; top: 90px;}
+.i-l-but{ top: 402px; position: absolute;}
+.i-scroll{animation: i-scroll 20s linear 0s infinite  normal;-webkit-animation: i-scroll 20s linear 0s infinite  normal;-moz-animation: i-scroll 20s linear 0s infinite  normal;-o-animation: i-scroll 20s linear 0s infinite  normal; }
+#g-footer{ background-color: #e5e5e5;}
+
+
+@keyframes aniInLeft {
+    0% {
+        opacity: 0;
+        transform: translate3d(-100%, 0px, 0px);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+@keyframes aniInRight {
+    0% {
+        opacity: 0;
+        transform: translate3d(100%, 0px, 0px);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes anFadeIn {
+    0% {
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+@keyframes flyIn {
+    0% {
+        opacity: 1;
+        transform: translate3d(400%, 0px, 0px);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes i-scroll  {
+    0% {
+        transform: none;
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+@keyframes twinkling {
+    0% {
+        opacity: 0;
+        transform: none;
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .i-header{ height: 420px; background-size: auto 420px;}
+    .i-nav{ width: 80%;}
+    .i-login-d{ clear: both;}
+    .i-c-r{ display: none;}
+    .i-h-con{ width: 100%; }
+    .i-c-l{ width: 100%;height: auto;}
+    .i-c-l img,.i-t-i03 img,.i-t-i04 img,.i-w-fly img,.i-t-i05 img,.i-t-i12 img,.i-t-i06 img,.i-t-i10 img,.i-t-i11 img,.i-t-i07 img{ width: 100%;}
+    .i-l-ic{ top: 25px;width: 40%; margin-left: 12%;}
+    .i-l-but{ top: 200px;}
+    .i-ios,.i-android{ background-size: 260px auto;}
+    .i-l-but{  width: 315px; left: 50%; margin-left: -155px;}
+    .i-l-but a{ width: 155px; height: 50px;}
+    .i-ios{ background-position: 0 -610px; margin-right: 5px;}
+    .i-android{background-position: 0 -662px;}
+    .i-w-p,.i-wrap{ width: 100%;}
+    .i-t-i01{left: 0; width: 70%; top: 10%;}
+    .i-t-i01 img{ width: 100%; }
+    .i-t-i02{ left: 8%; top: 0; width: 90%;height: 20%; overflow: hidden;}
+    .i-w-m{ height: 327px;}
+    .i-t-i04{ right: 0; width: 80%; top: 20px;}
+    .i-t-i03{ width: 40%; height: 37%; overflow: hidden; left: 50px;}
+    .i-w-fly{ top: 40%; right: 50%; width: 25%; height: auto;}
+    .i-w-h{ height: 327px; background-size: auto 327px;}
+    .i-t-i05{ left: 15%; top: 10%; width: 70%;}
+    .i-t-i12{ left: 10%; width: 80%;top: 10%;}
+    .i-t-i06{ width: 30%; height: 45px; overflow: hidden;  top: 5%; right: 15%;}
+    .i-t-i10{ left: 15%; top: 5%; width: 5%;}
+    .i-t-i11{ right: 5%; width: 7%; top:30%;}
+    .i-w-b{ height: 330px; background-color: #f8f8f8;}
+    .i-t-i07{ top: 40.4%; width: 22%; left: 50%; margin-left: -11%;}
+}
+    @media screen and (max-width: 375px){
+        .i-t-i07{ top: 37.2%;}
+    }
+
+    @media screen and (max-width: 360px) {
+    .i-header{ height: 380px; background-size: auto 380px;}
+    .i-ios,.i-android{ background-size: 230px auto;}
+    .i-l-but a{ width: 135px; height: 42px;}
+    .i-ios{ background-position: 0 -587px; }
+    .i-android{background-position: 0 -540px;}
+    .i-l-but{  width: 279px; margin-left: -135px; top: 160px;}
+    .i-nav-ul li .i-logo{ background-size: 280px auto; background-position: 0 -493px; width: 116px;}
+    .i-t-i07{ top: 36%;}
+}
+@media screen and (max-width: 320px){
+    .i-t-i07{ top: 33.5%;}
+}
+
+@media screen and (min-width: 580px) and (max-width: 800px) {
+    .i-header{ height: 480px; background-size: auto 480px;}
+    .i-l-but{ top: 250px;}
+    .i-t-i02{ height: 40%;}
+    .i-w-h,.i-w-m{ height: 640px;}
+    .i-w-b{ height: 630px;}
+    .i-t-i07{  top: 44%;}
+    .i-t-i06{ height: 100px;}
+    .i-t-i03{ height: 48%;}
+}

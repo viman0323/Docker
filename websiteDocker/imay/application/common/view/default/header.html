@@ -1,0 +1,57 @@
+<header>
+    <div id="header">
+        <div class="h-con">
+            <a href="/" class="logo"></a>
+            <ul class="h-nav">
+                <li>
+                    <a href="/">官网</a>
+                </li>
+                <li>
+                    <a href="{:url('user/withdraw/index')}">提现</a>
+                </li>
+                <li>
+                    <a href="{:url('user/recharge/index')}">充值</a>
+                </li>
+                <li>
+                    <a href="{:url('index/game/index')}" target="_blank">直播助手</a>
+                </li>
+                <script>
+                    var curController = "{$Think.CONTROLLER_NAME}".toLocaleLowerCase();
+                    switch (curController) {
+                        case 'recharge':
+                            $(".h-nav").children().removeClass("nav-checked").eq(2).addClass("nav-checked")
+                            break;
+                        case 'withdraw':
+                            $(".h-nav").children().removeClass("nav-checked").eq(1).addClass("nav-checked")
+                            break;
+                        default:
+                            break;
+                    }
+                </script>
+                <li>
+                    <div class="h-l-r">
+                        {php}if (empty($login['user'])) { {/php}
+                        <div class="h-l-r">
+                            <a class="h-log pop-login" href="javascript:;">登录</a>
+                            <span>|</span>
+                            <a class="pop-reg-a pop-login" href="javascript:;">注册</a>
+                        </div>
+                        {php} } else { {/php}
+                        <div class="g-r-i">
+                            <img class="h-l-img" src="{$login['user']['imgHead']|default='__IMG__/g-logo.png'}">
+                            <span class="g-l-m5">{$login['user']['nick']|default=''}</span>
+                        </div>
+                        {php} } {/php}
+                        <!-- 退出 -->
+                        {php}if (empty($login['user'])) { {/php}
+                        {php} } else { {/php}
+                        <div class="i-exit">
+                            <a class="i-exit-a">退出</a>
+                        </div>
+                        {php} } {/php}
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>

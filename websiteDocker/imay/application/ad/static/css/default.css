@@ -1,0 +1,35 @@
+.g-con{ background-color: #FFF; border: 1px solid #dee1e2;}
+.g-con:after,.g-c-log:after,.pay-c-m:after{ content: ''; display: block; clear: both;}
+.g-h3-bg{ width: 132px; padding-left: 20px; left: 0; cursor: pointer; height: 50px; background-position: -94px -43px; line-height: 50px; text-align: center; font-size: 18px; color: #95a5a6; position: absolute; top: -48px;}
+.g-c-log{ padding: 40px 0; }
+.g-log-l{ margin-left: 22px; float: left;}
+.g-log-r{ float: right;}
+.g-log-t{}
+.g-l-m1,.g-l-m2{ display: block; font-size: 16px; color: #767878; line-height: 22px;}
+.g-l-m2{ font-size: 12px; color: #a0a0a0;}
+.g-i-r,.g-l-img,.g-code{ float: left;}
+.g-i-r{ margin: 18px 0 0 12px;}
+.g-rc-ul li,.pay-img0,.pay-go-a span{ float: left;}
+.g-pay-b{ font-size: 18px; color: #797b7b; clear: both; margin: 25px 0 0 22px;}
+.g-pay-b b{ color: #04d528; display: inline-block; margin: 0 5px;}
+.g-rec-i{ margin: 77px 0 0 140px;}
+.g-rec-i h5{ font-size: 18px; color: #575455; margin-bottom: 48px;}
+.imay-i0{ border: 1px solid #cdcdcd; border-radius: 5px; width: 245px; padding: 5px 10px; height: 22px; background-color: #FFF; font-size: 12px; color: #a7a7a7; cursor: text;}
+.imay-a0,.g-arrow,.pay-go-a b{ background: url("../images/g-index.png") no-repeat; display: block;}
+.imay-a0{ width: 270px; height: 35px; background-position: 0 -514px; margin-top: 50px; text-align: center; line-height: 33px;}
+a.imay-a0,a.imay-a0:active,a.imay-a0:visited,a.imay-a0:hover{ color: #FFF;}
+.pay-con h5{ font-size: 18px; color: #828187; margin: 0 0 50px 30px;}
+.pay-c-m{ width: 635px; border-bottom: 1px solid #f3f6f6;}
+.pay-img0{ margin: 0 65px 0 30px;}
+.g-arrow{ width: 22px; height: 57px; background-position: -277px 0; float: left; margin: 148px 60px 0 0;}
+.g-code span{ display: block; text-align: center; line-height: 28px;}
+.g-code-t1{ font-size: 18px; color: #6441a5;}
+.g-code-t2,.g-code-t3{  color: #888;}
+.pay-img01{ margin-top: 10px;}
+.pay-go-back{ width: 140px; padding: 92px 0 140px 0;}
+.pay-go-a{ display: block; cursor: pointer;}
+.pay-go-a b{ width: 5px; height: 10px; background-position: -199px -5px; float: left; margin: 8px 7px 0 0;}
+.pay-go-a span{ color: #797b7b; font-size: 16px;}
+.g-l-m3{ color: #606060;}
+.g-l-m4{ color: #a0a0a0; font-size: 12px; display: block;}
+.g-no-i,.g-no-i{ display: none;}

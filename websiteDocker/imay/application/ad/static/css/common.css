@@ -1,0 +1,67 @@
+body{font-size: 14px;color: #383f46;text-decoration: none;margin:0;overflow-x:hidden; width:100%; height:100%; position:relative; }
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,
+menu,nav,section,iframe{margin:0;padding:0}
+div{margin:0 auto;}
+article,aside,details,figcaption,figure,footer,header,menu,nav,section{display:block}
+body,button,input,select,textarea{font:14px/1.5 tahoma,Microsoft Yahei;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500}
+input,select,textarea{font-size:100%;vertical-align:middle; border:0;background:none; cursor:pointer;}
+input{cursor:pointer; outline: none;}
+ol,ul{list-style:none;}
+b{ font-weight:normal;}
+table{border-collapse:collapse;border-spacing:0}
+img{border:none}
+em,i,code,cite,address,th{font-style:normal;font-weight:500}
+.clear{clear:both;line-height:0;font-size:0}
+q:before,q:after{ content:''}
+a{text-decoration:none}
+a:link,a:visited,a:active{color: #383f46;text-decoration: none; outline:none;}
+a:hover{text-decoration: none;}
+a { -webkit-tap-highlight-color: transparent; -webkit-touch-callout: none; -webkit-user-select: none;}
+
+body{ background-color: #ecf0f1;}
+#header{ height: 62px; border-bottom: 1px solid #d4d8d8; background-color: #FFF;}
+.h-con{ width: 1190px;}
+.logo,.g-h3-bg,.imay-rc,.rc-bg,.g-wechat,.g-alipay,.imay-pay-no,.pop-close,.imay-sw-ac,.imay-pay{ background: url("../images/g-index.png") no-repeat; display: block;}
+.logo{ width: 140px; height: 38px; float: left; background-position: 0 0; margin-top: 10px;}
+.h-nav{ float: right;}
+.h-nav li{ padding: 0 30px; float: left;line-height: 60px; font-size: 16px;}
+.h-l-r{ margin: 0 20px 0 130px;}
+.g-wrap{ margin-top: 77px; width: 1190px; background-color: #f6f8fc; position: relative;}
+a.g-m2-login,a.g-m2-login:active,a.g-m2-login:visited,a.g-m2-login:hover{ color: #6441a5; font-weight: bold;}
+.imay-rc,.imay-sw-ac{ width: 135px; height: 42px;  margin:22px 62px 0 0;}
+.imay-rc{background-position: 0 -138px;}
+.imay-sw-ac{background-position: 0 -188px;}
+.g-c-tit{ height: 55px; line-height: 55px; background-color: #f6f8fc; font-size: 18px; color: #828187; padding-left: 50px;}
+.g-rc-ul{ margin-left: 46px; width: 525px;}
+.g-rc-ul li{ margin: 0 18px 18px 0; float: left; cursor: pointer;}
+.rc-bg{ width: 156px; height: 79px; background-position: -142px -197px;}
+.tc-checked{ background-position: -144px -113px;}
+.tc-m1,.tc-m2{  height: 35px; text-align: center; line-height: 35px; font-weight: bold; float: left; display: block; margin-top: 22px;}
+.tc-m2{ width: 52px; margin: 22px 12px 0 2px ;}
+.tc-checked .tc-m1{ color: #FFF;}
+.tc-m1{ color: #7d7b7b; padding-left: 10px; width: 77px;}
+.tc-m1 b{ font-size: 18px; display: inline-block; margin-right: 5px;}
+.tc-m2{ color: #f85858; }
+.tc-checked .tc-m2{ color: #f8f658; }
+.tc-m2 b{ font-weight: bold; font-size: 16px;}
+.g-pay-t{ height: 42px;}
+.g-wechat,.g-alipay{ width: 145px; height: 42px;float: left; cursor: pointer;}
+.g-wechat{ background-position: 0 -289px;  margin: 0 38px 0 22px;}
+.g-alipay{ background-position: 0 -343px;}
+.imay-pay-no,.imay-pay{ width: 158px; height: 48px;margin-right: 40px; margin-top: 50px;}
+.imay-pay-no{ background-position: 0 -398px; display: none;}
+.imay-pay{ background-position: 0 -455px;}
+.wechat-ckecked{ background-position: -154px -289px;}
+.alipay-ckecked{background-position: -154px -343px;}
+#g-footer{text-align: center; width: 100%; padding-top: 14px; font-size: 12px;}
+.g-f-txt{ color: #a7a7a7; margin: 14px 0;}
+.g-f-txt a,.g-f-txt a:active,.g-f-txt a:visited,.g-f-txt a:hover{color: #a7a7a7;}
+.g-f-txt a,.g-f-txt span{ display: inline-block; margin: 0 5px;}
+.g-mask{ background: url("../images/g-mask.png") repeat; width: 100%; height: 100%; position: fixed; top: 0;z-index: 0; display: none;}
+#g-pop{ position: fixed; z-index: 1; display: none;}
+.g-rc-pop{ background: url("../images/g-bg1.png") no-repeat; width: 468px; height: 385px;top: 50%; left: 50%; margin-left: -234px; margin-top: -192px;}
+.pop-close{ width: 20px; height: 20px; background-position: -172px -9px; position: absolute; right: 20px; top: 20px; cursor: pointer;}
+.pop-con{ clear: both;}
+.h-l-img{ width: 40px; float: left; margin: 10px 10px 0 0;}
+.g-l-m5{ float: left; color: #383f46;}

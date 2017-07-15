@@ -1,0 +1,111 @@
+@charset "utf-8";
+/* CSS Document */
+/*reset*/
+*{-webkit-tap-highlight-color:rgba(0, 0, 0, 0);}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,iframe{margin:0;padding:0;border:0; word-wrap: break-word; -webkit-text-size-adjust:none; -webkit-tap-highlight-color:rgba(0,0,0,0);}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+body,button,input,select,textarea{font:12px/1.5 tahoma,Microsoft YaHei;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500}
+input,select,textarea{font-size:100%; vertical-align:middle; border:0;background:none;box-shadow:none; -moz-appearance:none; appearance:none; outline:none; -webkit-outline:none;-webkit-appearance:searchfield;-webkit-rtl-ordering:logical;-webkit-user-select:text;-webkit-appearance:none;-webkit-tap-highlight-color:rgba(255,0,0,0);}
+input:focus,textarea:focus{outline:none}
+ol,ul{list-style:none}
+table{border-collapse:collapse;border-spacing:0}
+img{border:0 none; padding: 0; margin: 0;}
+img, object {max-width: 100%;}
+em,i,code,cite,address,th{font-style:normal;font-weight:500}
+.clear{clear:both;line-height:0;font-size:0}
+.clearfix{*zoom:1;_height:1px}
+.clearfix:after{content:" ";display:block;height:0;clear:both;visibility:hidden}
+q:before,q:after{ content:''}
+abbr,acronym{ border:0}
+a{text-decoration:none;-webkit-user-select:none;}
+.none{ display:none;}
+.hr_10{clear:both;height:10px;line-height:1px;font-size:1px}
+.hr_5{clear:both;height:5px;line-height:1px;font-size:1px}
+.hr_1{clear:both;height:1px;line-height:1px;font-size:0}
+.wb{clear:both; border:none; height:1px; line-height:1px; background:#FFF; font-size:0; overflow:hidden}
+a:link,a:visited,a:hover,a:active{color:#999;text-shadow:none}
+.w320{ width:320px; margin:0 auto; clear:both; position:relative;}
+.w360{ width:360px; margin:0 auto; clear:both; position:relative;}
+.w480{ width:480px; margin:0 auto; clear:both; position:relative;}
+* { -webkit-touch-callout:none;  -webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
+/*reset end*/
+body{ background: url("../images/fool/f-bg.jpg") #fff231 no-repeat; width: 100%; height:100%; }
+.f-header{ width: 100%; position: relative;}
+.f-i01,.f-i02,.f-i05{ width: 100%;}
+.f-pos{ position: absolute;}
+.f-txt1{ width: 100%; top: 12%;  margin-top: 8%; z-index: 2;}
+.f-i02{ width: 80%;}
+.f-i05{}
+.f-txt2{ width: 32%; z-index: 1; margin: 7.5% 0 0 25%; top: 0;}
+.f-i03{ width: 50%; margin: 0 0 0 25%;}
+.f-info{ position: relative; display: none;}
+.f-i04{ width: 36%; margin: -2% 0 0 32%;}
+.f-i-c{ background-color: #FFF; margin:-4px 6px 0 6px;}
+.f-info-ul,.f-i-c{position: relative;}
+.f-info-ul li{ margin-bottom: 15px;}
+.s-bar-a{ width:45px; height: 45px; border-radius: 25px; left: 10px;top: 12px; display: none; }
+.s-bar-i{ width: 100%; height: 100%;border-radius: 25px; }
+.s-bar-tit{ left: 68px; top: 12px; display: none;}
+.s-bar-top{ height: 58px;}
+.s-tit-t1 h5{ color: #6542a5; font-size: 15px; float: left;}
+.s-sex,.s-level{ background: url("../images/fool/s-level.png") no-repeat; background-size: 35px auto;display: block;}
+.s-sex{ margin: 0 5px; float: left; }
+.s-sex-g{ background-position: 0 4px; width: 12px; height: 22px; }
+.s-sex-m{ background-position: -10px 4px; width: 18px; height: 22px;}
+.s-level{ width: 25px; padding-left: 10px; font-size: 11px; height: 19px; line-height: 17px; float: left; text-align: center; color: #FFF; margin-top: 3px;}
+.level-a{background-position: 0 -17px; }
+.level-b{background-position: 0 -36px; }
+.level-c{background-position: 0 -54px; }
+.level-d{background-position: 0 -73px; }
+.level-e{background-position: 0 -92px; }
+.s-tit-t2{ clear: both; color: #959595;}
+.s-mid-video video{ margin: 0 auto; padding: 0;object-fit:cover;}
+.s-video-i{ width: 100%;}
+.s-video-a{ visibility:hidden; width:1px; height:1px;left: 0; top: 0; }
+.s-video-s{ visibility: visible; width: 100%; height: auto;}
+.s-mid-video{ width: 100%;}
+.s-play{ width: 20%; top: 50%; left: 50%; z-index: 100; margin: -10% 0 0 -10%; height: auto;display: none;}
+.f-vi{ position: relative; }
+.f-b-txt{ color: #000; margin: 0 8px; padding: 8px 0;}
+.f-i03a{ width: 38%; margin: 0 31% 2% 31%;}
+.f-footer{ margin: 10px 0; display: none;}
+.f-f-txt{ text-align: center;}
+.f-loading{ position: absolute; width: 50px; top: 50%; left: 50%; margin: -25px 0 0 -25px; display: none;}
+.f-loading-i{ width: 100%;}
+
+
+
+
+.tab-scroll{animation-duration:.3s;-webkit-animation-duration:.3s; -moz-animation-duration: .3s; -o-animation-duration: .3s;display: block;  }
+.aniInTop{ animation-name: aniInTop;-webkitanimation-name: aniInTop; -moz-animation-name: aniInTop; -o-animation-name:aniInTop; }
+.aniInBottom{ animation-name: aniInBottom;-webkitanimation-name: aniInBottom; -moz-animation-name: aniInBottom; -o-animation-name:aniInBottom; }
+.aniInRight{ animation-name: aniInRight;-webkitanimation-name: aniInRight; -moz-animation-name: aniInRight; -o-animation-name:aniInRight; }
+.aniShow{ animation-name: aniShow;-webkitanimation-name: aniShow; -moz-animation-name: aniShow; -o-animation-name:aniShow; }
+.aniInLeft{ animation-name: aniInLeft;-webkitanimation-name: aniInLeft; -moz-animation-name: aniInLeft; -o-animation-name:aniInLeft; }
+.aniBeat{ animation-name: aniBeat;-webkitanimation-name: aniBeat; -moz-animation-name: aniBeat; -o-animation-name:aniBeat; }
+@keyframes aniInTop {
+    0% {transform: translate3d(0px, -30px, 0px);  }
+    100% { transform: translate3d(0px, 5px, 0px);}
+}
+@keyframes aniInBottom {
+    0% { opacity: 0;  transform: translate3d(0px, 20px, 0px);  }
+    100% {  opacity: 1;  transform: none;}
+}
+@keyframes aniInRight {
+    0% { opacity: 0;  transform: translate3d(30px, 0px, 0px);  }
+    100% {  opacity: 1;  transform: none;}
+}
+@keyframes aniInLeft {
+    0% { opacity: 0;  transform: translate3d(-30px, 0px, 0px);  }
+    100% {  opacity: 1;  transform: none;}
+}
+@keyframes aniShow {
+    0% { opacity: 0; transform: none;}
+    100% {  opacity: 1; transform: none;}
+}
+@keyframes aniBeat {
+    0% { transform: scaleX(1);}
+    50% { transform: scaleX(1.2);}
+    100% { transform: scaleX(1);}
+}

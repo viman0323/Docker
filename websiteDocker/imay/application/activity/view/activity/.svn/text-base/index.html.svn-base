@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>首充活动-iMay</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta content="telephone=no" name="format-detection">
+	<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+	<link type="text/css" rel="stylesheet" href="__CSS__/h-i01.css">
+</head>
+<body id="h1-bg">
+<header>
+	<div class="h1-top">
+		<div class="h1-top-d1 aniInLeft tab-scroll">
+			<img src="__IMG__/h1-img02.png">
+		</div>
+		<div class="h1-top-d2 aniInTop tab-scroll">
+			<img src="__IMG__/h1-img01.png">
+		</div>
+		<div class="h1-top-d3 aniInRight tab-scroll">
+			<img src="__IMG__/h1-img03.png">
+		</div>
+	</div>
+</header>
+<article>
+	<div class="h1-con">
+		<div class="h1-con-m1 twinkling">
+			<img src="__IMG__/h1-img08.png">
+			<div class="h1-m1-get">
+				<div class="h1-get-i">
+                    {if condition="$level == '1'"}
+						{if condition="$getGift == '0'"}
+							<img src="__IMG__/h1-img07.png">
+						{else /}
+                        	<img value="3005" type="1" src="__IMG__/h1-img06.png" class="receive twinkling1">
+						{/if}
+                    {else /}
+                        <img src="__IMG__/h1-img07.png">
+                    {/if}
+				</div>
+				<div class="h1-get-i">
+                    {if condition="$level == '2'"}
+                        {if condition="$getGift == '0'"}
+                            <img src="__IMG__/h1-img07.png">
+                        {else /}
+					        <img value="3004" type="3" src="__IMG__/h1-img06.png" class="receive twinkling1">
+                        {/if}
+                    {else /}
+                        <img src="__IMG__/h1-img07.png">
+                    {/if}
+				</div>
+				<div class="h1-get-i">
+                    {if condition="$level == '3'"}
+                        {if condition="$getGift == '0'"}
+                            <img src="__IMG__/h1-img07.png">
+                        {else /}
+                            <img value="3006" type="7" src="__IMG__/h1-img06.png" class="receive twinkling1">
+                        {/if}
+                    {else /}
+                        <img src="__IMG__/h1-img07.png">
+                    {/if}
+				</div>
+			</div>
+		</div>
+		<div class="h1-m2-but tab-scroll aniInBottom">
+			<a href="{:url('user/recharge/index')}"><img src="__IMG__/h1-img05.png"></a>
+			<span class="h1-but-txt">注：充值完成后，请返回页面进行领奖。</span>
+		</div>
+	</div>
+    <!-- 提示 -->
+    <div class="h1-alert" style="display: none;">
+        <div class="h1-a-ocn">
+            <a class="h1-a-close" style="cursor: pointer;">
+                <img src="__IMG__/h1-img09.png">
+            </a>
+            <img src="__IMG__/h1-img11.png" class="h1-s-i h1-success">
+            <img src="__IMG__/h1-img10.png" class="h1-s-i h1-fail">
+        </div>
+    </div>
+</article>
+<footer>
+	<div class="h1-footer">
+		<span>本活动最终解释权归IMAY所有</span>
+		<span>QQ：1033217615</span>
+	</div>
+</footer>
+<script src="__JS__/jquery.js"></script>
+<script type="text/javascript">
+	$(function () {
+		$(".h1-get-i").click(function () {
+            $(this).find("img").removeClass("twinkling1");
+            var img = '__IMG__/h1-img07.png';
+            var obj = {};
+            var classname = $(this).find('img').attr('class');
+            obj.date = $(this).find('img').attr('type');
+            obj.gift_id = $(this).find('img').attr('value');
+            obj.uid = '{$uid}';
+            if (classname == 'receive') {
+                $.post("{:url('activity/activity/receive')}", obj, function (data) {
+                    if (data.status == '1') { // 领取成功
+                        $(".h1-get-i").find('img').removeClass('receive');
+                        $(".h1-get-i").find('img').attr('src', img);
+                        $('.h1-alert').show();
+                        $('.h1-success').show();
+                        $('.h1-fail').hide();
+                    } else { // 领取失败
+                        $('.h1-alert').show();
+                        $('.h1-success').hide();
+                        $('.h1-fail').show();
+                    }
+                }, 'json')
+            }
+		});
+
+        $('.h1-a-close').click(function () {
+            $('.h1-alert').hide();
+        })
+	})
+</script>
+</body>
+</html>

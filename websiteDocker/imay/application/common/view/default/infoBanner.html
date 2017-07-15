@@ -1,0 +1,125 @@
+<section>
+    <div class="art-nav">
+        <div class="art-nav-c">
+            <div class="art-nav-l">
+                <div class="art-nav-head">
+                    {php}if(empty($userInfo['user']['imgHead'])) { {/php}
+                    <img src="__PC_IMG__/img01.jpg" class="art-head-i">
+                    {php} } else { {/php}
+                    <img src="{$userInfo['user']['imgHead']}" class="art-head-i">
+                    {php} } {/php}
+                </div>
+                <div class="art-nav-detail">
+                    <div class="art-det-top clearfix ">
+                        <div class="det-top-l">
+                            <div class="det-l-t">
+                                <h5>{$userInfo['user']['nick'] | default=""}</h5>
+                                <b class="art-level">{$userInfo['user']['LiveLv'] | default=0}</b>
+                            </div>
+                            <div class="det-l-b">
+                                <span>魅号：<b>{$userInfo['user']['roomId'] | default=""}</b></span>
+                                <span>粉丝：<em>{$userInfo['user']['follower'] | default=0}</em></span>
+                            </div>
+                        </div>
+                        <div class="det-top-r">
+                            {php}if(!empty($login['user']['BrokerStatus']) && $login['user']['BrokerStatus'] == 3) { {/php}
+                            <a href="{:url('Broker/Broker/info')}" class="agent-select art-a">经纪人查询</a>
+                            {php} } {/php}
+                        </div>
+                    </div>
+                    <div class="art-det-bot clearfix">
+                        <ol class="art-det-ol">
+                            <li>
+                                <em>{$userInfo['user']['UserLv'] | default=0}</em>
+                                <span>用户等级</span>
+                            </li>
+                            <li>
+                                <em>{$userInfo['user']['LiveLv'] | default=0}</em>
+                                <span>直播等级</span>
+                            </li>
+                            <li>
+                                <em>{$userInfo['user']['meiliGain'] | default=0}</em>
+                                <span>总魅力收入</span>
+                            </li>
+                            <!--<li>-->
+                                <!--<em>{$userInfo['user']['Medal'] | default=0}</em>-->
+                                <!--<span>获得勋章</span>-->
+                            <!--</li>-->
+                            <li>
+                                <em>{$userInfo['user']['follow'] | default=0}</em>
+                                <span>关注</span>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="art-nav-r">
+                <div class="art-nav-menu">
+                    <ul class="art-menu-ul">
+                        <li>
+                            <a href="{:url('Broker/Actor/index', array('uid'=> $userInfo['user']['uid']))}" class="art-index art-a">
+                                <b></b>
+                                <span>首页</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{:url('Broker/Actor/info', array('uid'=> $userInfo['user']['uid']))}" class="art-artist art-a">
+                                <b></b>
+                                <span>艺人信息</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{:url('Broker/Actor/statIncome', array('uid'=> $userInfo['user']['uid']))}" class="art-income art-a">
+                                <b></b>
+                                <span>收入统计</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{:url('Broker/Actor/statFans', array('uid'=> $userInfo['user']['uid']))}" class="art-fans art-a">
+                                <b></b>
+                                <span>粉丝统计</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{:url('Broker/Actor/statFeed', array('uid'=> $userInfo['user']['uid']))}" class="art-dy art-a">
+                                <b></b>
+                                <span>动态统计</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{:url('Broker/Actor/statLive', array('uid'=> $userInfo['user']['uid']))}" class="art-line art-a">
+                                <b></b>
+                                <span>直播间统计</span>
+                            </a>
+                        </li>
+                        <script>
+                            var curMethod = "{$Think.ACTION_NAME}".toLocaleLowerCase();
+                            switch (curMethod) {
+                                case 'index':
+                                    $(".art-menu-ul").children().removeClass("art-checked").eq(0).addClass("art-checked");
+                                    break;
+                                case 'info':
+                                    $(".art-menu-ul").children().removeClass("art-checked").eq(1).addClass("art-checked");
+                                    break;
+                                case 'statincome':
+                                    $(".art-menu-ul").children().removeClass("art-checked").eq(2).addClass("art-checked");
+                                    break;
+                                case 'statfans':
+                                    $(".art-menu-ul").children().removeClass("art-checked").eq(3).addClass("art-checked");
+                                    break;
+                                case 'statfeed':
+                                    $(".art-menu-ul").children().removeClass("art-checked").eq(4).addClass("art-checked");
+                                    break;
+                                case 'statlive':
+                                    $(".art-menu-ul").children().removeClass("art-checked").eq(5).addClass("art-checked");
+                                    break;
+                                default:
+                                    break;
+                            }
+                        </script>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

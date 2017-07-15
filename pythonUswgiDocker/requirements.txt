@@ -1,0 +1,16 @@
+uwsgi
+xlsxwriter
+python-redis
+Flask==0.10.1
+Jinja2==2.7.1
+appdirs==1.4.2
+gevent==1.2.1
+greenlet==0.4.12
+packaging==16.8
+PyMySQL==0.7.10
+pyparsing==2.1.10
+redis==2.10.5
+six==1.10.0
+backports-abc==0.5
+tornado==4.5.1
+Tornado-MySQL==0.5.1

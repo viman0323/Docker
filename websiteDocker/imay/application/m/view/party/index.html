@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>新年活动</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <script type="text/javascript" src="__JS__/jquery.js"></script>
+    <style type="text/css">
+        *{-webkit-tap-highlight-color:rgba(0, 0, 0, 0);}
+        body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,iframe{margin:0;padding:0;border:0; word-wrap: break-word; -webkit-text-size-adjust:none; -webkit-tap-highlight-color:rgba(0,0,0,0);}
+        article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+        body,button,input,select,textarea{font:12px/1.5 tahoma,arial;font-family:\5FAE\8F6F\96C5\9ED1,Arial,sans-serif;}
+        h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500}
+        input,select,textarea{font-size:100%; vertical-align:middle; border:0;background:none;box-shadow:none; -moz-appearance:none; appearance:none; outline:none; -webkit-outline:none;-webkit-appearance:searchfield;-webkit-rtl-ordering:logical;-webkit-user-select:text;-webkit-appearance:none;-webkit-tap-highlight-color:rgba(255,0,0,0);}
+        input:focus,textarea:focus{outline:none}
+        ol,ul{list-style:none}
+        table{border-collapse:collapse;border-spacing:0}
+        img{border:0 none; padding: 0; margin: 0;width: 100%; }
+        img, object {max-width: 100%;}
+        em,i,code,cite,address,th{font-style:normal;font-weight:500}
+        .clear{clear:both;line-height:0;font-size:0}
+        .clearfix{*zoom:1;_height:1px}
+        .clearfix:after{content:" ";display:block;height:0;clear:both;visibility:hidden}
+        q:before,q:after{ content:''}
+        abbr,acronym{ border:0}
+        a{text-decoration:none;-webkit-user-select:none;}
+        a:link,a:visited,a:hover,a:active{color:#999;text-shadow:none}
+        body{  background: url("__IMG__/party/t-bg.jpg") no-repeat; background-size: cover; }
+        .t-mid{ top: 46%; position: absolute;width: 100%;}
+        .t-mid-i{ width: 36%; position: absolute;left: 50%; top: 0; margin: 15% 0 0 -18%; }
+        .t-i-bg{width: 100%;}
+        .t-i-i{ width: 96%; padding: 4% 2%;border-radius: 5px;  cursor: text; position: absolute; top: 0; left:0;}
+        .t-mid-a{ width: 80%; display: block; margin: 3% 0 0 10%;}
+        @media screen and (max-width: 398px) {
+            .t-mid{ top: 50%;}
+        }
+    </style>
+</head>
+<body>
+<div class="t-mid">
+    <img src="__IMG__/party/bar.png">
+    <div class="t-mid-i">
+        <img src="__IMG__/party/t-i.png" class="t-i-bg">
+        <input type="text" class="t-i-i">
+        <a class="t-mid-a"><img src="__IMG__/party/sure.png"></a>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('.t-mid-a').click(function () {
+            var name = $('.t-i-i').val();
+            if(name == ''){
+            	alert('请输入您的大名！^_^');
+            	return false;
+            }
+            var type = 'draw';
+            $.post("{:url('m/party/index')}", { "name": name,"type": type }, function (data) {
+                if (data['status'] == '-1') {
+                    alert('您输错名字了吧！^_^');
+                } else {
+                	window.location.href=window.location.href+"?t="+10000*Math.random();
+                }
+            }, 'json')
+        })
+    });
+
+</script>
+</body>
+</html>

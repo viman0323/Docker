@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>#{$title}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta content="telephone=no" name="format-detection">
+    <!--<meta name="apple-mobile-web-app-capable" content="yes" />-->
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="full-screen" content="yes">
+    <link rel="stylesheet" href="__CSS__/share.css">
+</head>
+<body id="topic">
+<header>
+    <div class="s-header s-h-header tab-scroll aniInTop">
+        <div class="s-header-c clearfix">
+            <div class=s-h-l>
+                <img src="__IMG__/superlive/z-i-i01.png" class="s-logo-i">
+                <div class="s-h-txt">
+                    <h1>玩咖直播</h1>
+                    <h5>可以玩的直播</h5>
+                </div>
+            </div>
+            <div class=s-h-r>
+                <a class="s-o-a openIMay"><img src="__IMG__/superlive/z-i-i02.png" class="s-open"></a>
+            </div>
+        </div>
+    </div>
+</header>
+<article>
+    <section>
+        <div class="topic-nav">
+            <div class="topic-nav-c">
+                <label>相关：</label>
+                <ul class="topic-nav-ul">
+                    {volist name="list['label']" id="vo"}
+                    <li>
+                        <a href="/share/topic.html?LabelContent={$vo}&Nick={$nick_de}&scheme={$scheme}&host={$host}" class="s-bot-h">#{$vo}</a>
+                    </li>
+                    {/volist}
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="s-list">
+            <!-- 热门动态 -->
+            {if condition="$list['hotFeeds']"}
+            <div class="s-hot">
+                <div class="s-list-tit">
+                    <h2>热门动态</h2>
+                </div>
+                <div class="s-list-c">
+                    <ul class="s-list-ul clearfix">
+                        {volist name="list['hotFeeds']" id="vo"}
+                        <li>
+                            <div class="li-d-top">
+                                {if condition="$vo['FeedData']['FeedType'] == 2"}
+                                    <a href="/share/feed.html?FeedId={$vo.FeedData.FeedId}&scheme={$scheme}&host={$host}" class="s-list-a" style="background-image: url('{$vo.FeedData.VideoUrl}?vframe/jpg/offset/0/w/450')"></a>
+                                    <img src="__IMG__/share/s-play-s.png" class="s-play-s">
+                                {else /}
+                                    <a href="/share/feed.html?FeedId={$vo.FeedData.FeedId}&scheme={$scheme}&host={$host}" class="s-list-a" style="background-image: url('{$vo.FeedData.ImgUrl}?imageView2/2/w/200')"></a>
+                                {/if}
+                            </div>
+                        </li>
+                        {/volist}
+                    </ul>
+                </div>
+            </div>
+            {/if}
+            <!-- 最新动态 -->
+            <div class="s-new">
+                <div class="s-list-tit">
+                    <h2>最新动态</h2>
+                </div>
+                <div class="s-list-c">
+                    <ul class="s-list-ul new-ul clearfix">
+                        {volist name="page['feeds']" id="vo"}
+                        <li>
+                            <div class="li-d-top">
+                                {if condition="$vo.feedType == 2"}
+                                    <a href="/share/feed.html?FeedId={$vo.feedId}&scheme={$scheme}&host={$host}" class="s-list-a" style="background-image: url('{$vo.videoUrl}?vframe/jpg/offset/0/w/450')"></a>
+                                    <img src="__IMG__/share/s-play-s.png" class="s-play-s">
+                                {else /}
+                                    <a href="/share/feed.html?FeedId={$vo.feedId}&scheme={$scheme}&host={$host}" class="s-list-a" style="background-image: url('{$vo.imgUrl}?imageView2/2/w/200')"></a>
+                                {/if}
+                            </div>
+                        </li>
+                        {/volist}
+                    </ul>
+                    <div class="list-loading">
+                        <img src="__IMG__/share/s-loading-a.gif" class="s-loading-a">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div id="imay-mask">
+            <div class="iMay-shadow"></div>
+            <div class="w-mes">
+                <img src="__IMG__/superlive/z-i-i10.png" class="w-mes-img">
+            </div>
+        </div>
+    </section>
+</article>
+<footer>
+    <!-- 底部 -->
+    <div class="z-footer clearfix">
+        <img src="__IMG__/superlive/z-i-i05.png" class="z-i-i05">
+        <div class="z-footer-r">
+            <h6>都翻到这了，就下载个玩咖体验一下吧</h6>
+            <a class="t-footer-challenge openIMay">
+                <img src="__IMG__/share/s-down.png" class="z-i-i06">
+            </a>
+        </div>
+    </div>
+</footer>
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript" src="__JS__/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="__JS__/share.js"></script>
+
+<script type="text/javascript">
+    var type = "{$page.feeds['0']['feedType']}";
+    //话题分享
+    var nick = "【" + '{$nick}' + '】分享【#' + '{$title}' + '】' + "{$content}";
+    var desc = "可以玩的直播";
+    var imgURL = '';
+    var url = "{$url}" + "/share/topic";
+    var val = '?LabelContent=' + "{$titles}" + '&Nick=' + '{$nick_de}' + '&scheme=' + '{$scheme}' + '&host=' + '{$host}';
+    var wxURL ='{:url("Capturemonster/getJsapiTicket")}';
+    var ifrSrc = '{$scheme}' + '://' + '{$host}' + '/openwith?type=9&LabelContent=' + "{$titles}";
+    if (type == '1') {
+        imgURL = "{$page.feeds['0']['imgUrl']}" + "?imageView2/2/w/200";
+    } else if (type == '2') {
+        imgURL = "{$page.feeds['0']['videoUrl']}" + "?vframe/jpg/offset/0/w/450";
+    }
+    var parameter = '&type=9&LabelContent=' + "{$titles}" + '&scheme=' + '{$scheme}' + '&host=' + '{$host}';
+
+    $(function () {
+        getWXData(wxURL, nick, desc, url + val, imgURL);
+        $(".openIMay").click(function () {
+            openApp(ifrSrc);
+        });
+        var throldHold = 30; //两次scroll事件触发之间最小的事件间隔
+        var clientHeight = document.documentElement.clientHeight||document.body.clientHeight;
+        var s_header = $(".s-header").height();
+        window.onscroll = function () {
+            if (arguments.callee.timer) clearTimeout(arguments.callee.timer);
+            arguments.callee.timer = setTimeout(function () {
+                var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;//Y轴滚动距离
+                if(scrollTop>s_header){
+                    $(".s-header").removeClass("s-h-header").addClass("s-h-fix tab-scroll aniInTop");
+                    $(".s-open").attr("src","__IMG__/share/s-open.png");
+                }else if (scrollTop<s_header&&scrollTop>=0){
+                    $(".s-header").removeClass("s-h-fix").addClass("s-h-header");
+                    $(".s-open").attr("src","__IMG__/share/s-open-a.png");
+                }else if(scrollTop<0){
+                    event.preventDefault();
+                }
+            }, throldHold);
+
+        };
+    });
+
+</script>
+
+
+{include file="statistics/baiduStatistcs"}
+</body>
+</html>

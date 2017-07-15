@@ -1,0 +1,100 @@
+.g-con{ background-color: #FFF; border: 1px solid #dee1e2;}
+.g-con:after,.g-c-log:after,.g-c-log-success:after,.g-c-log-fail:after,.pay-c-m:after{ content: ''; display: block; clear: both;}
+.g-h3-bg{ width: 132px; padding-left: 20px; left: -1px; cursor: pointer; height: 50px; background-position: -94px -43px; line-height: 50px; text-align: center; font-size: 18px; color: #95a5a6; position: absolute; top: -48px;}
+.g-c-log,.g-c-log-fail,.g-c-log-success{ padding: 40px 0; }
+.g-log-l{ margin-left: 22px; float: left;}
+.g-log-r{ float: right;}
+.g-log-t{}
+.g-l-m1,.g-l-m2{ display: block; font-size: 16px; color: #767878; line-height: 22px;}
+.g-l-m2{ font-size: 12px; color: #a0a0a0;}
+.g-i-r,.g-l-img,.g-code{ float: left;}
+.g-i-r{ margin: 18px 0 0 12px;}
+.g-rc-ul li,.pay-img0,.pay-go-a span{ float: left;}
+.g-pay-b{ font-size: 18px; color: #797b7b; clear: both; margin: 25px 0 0 22px;}
+.g-pay-b b{ color: #04d528; display: inline-block; margin: 0 5px;}
+.g-rec-i{ margin: 77px 0 0 100px;}
+.g-rec-i h5{ font-size: 18px; color: #575455; margin-bottom: 48px;}
+.imay-a0,.g-arrow,.pay-go-a b,.pop-line-c a,.a-val-s,.pay-t-icon,.pay-s-icon,.ali-but-a,.ali-but-b,.g-h3-ic{ background: url("../images/g-index.png") no-repeat; display: block;}
+.imay-a0{ width: 270px; height: 35px; background-position: 0 -514px; margin-top: 50px; text-align: center; line-height: 33px;}
+a.imay-a0,a.imay-a0:active,a.imay-a0:visited,a.imay-a0:hover{ color: #FFF;}
+.pay-con h5{ font-size: 18px; color: #828187; margin: 0 0 50px 30px;}
+.pay-c-m{ width: 635px; border-bottom: 1px solid #f3f6f6;}
+.pay-img0{ margin: 0 65px 0 30px;}
+.g-arrow{ width: 22px; height: 57px; background-position: -277px 0; float: left; margin: 148px 60px 0 0;}
+.g-code span{ display: block; text-align: center; line-height: 28px;}
+.g-code-t1{ font-size: 18px; color: #6441a5;}
+.g-code-t2,.g-code-t3{  color: #888;}
+.pay-img01{ margin-top: 10px; width: 240px;}
+.pay-go-back{ width: 140px; padding: 92px 0 140px 0;}
+.pay-go-a{ display: block; cursor: pointer;}
+.pay-go-a b{ width: 5px; height: 10px; background-position: -199px -5px; float: left; margin: 8px 7px 0 0;}
+.pay-go-a span{ color: #797b7b; font-size: 16px;}
+.g-l-m3{ color: #606060;}
+.g-l-m4{ color: #a0a0a0; font-size: 12px; display: block;}
+.g-no-i,.g-no-i{ display: none;}
+.pay-t-but{ clear: both; width: 310px; padding-bottom: 220px; height: 42px;}
+.pay-t-but a{ float: left;}
+.pay-t-icon{ width: 30px; height: 28px; background-position: -228px 0; float: left; margin-right: 10px;}
+.pay-txt{ text-align: center; width: 161px;height: 26px;  line-height: 28px; color: #ff0c29; font-size: 24px; margin: 100px auto;}
+.pay-t-but .imay-sw-ac{ margin-right: 30px;}
+.pay-t-but .imay-rc{ margin-right: 0;}
+.pay-s-icon{width: 28px; height: 28px; background-position: -250px -62px; float: left; margin-right: 10px;}
+.pay-txt-g{ color: #1ba211;}
+.pay-but-a{ width: 135px;}
+.g-c-log-fail,.g-c-log-success{display: none; }
+.p-l-error{ color: #ff0c29; font-size: 12px; display: none; text-align: center; margin-top: 5px; width: 278px;}
+.g-m6-a{ color: #6b6b6b; display: block; float: left; margin-right: 20px;}
+.g-m6-a b{ color: #eb2525;}
+.g-m6-b{ margin-left: 38px; display: block; float: left;}
+.g-m6-edit{ display: block; float: left; margin-left: 5px; cursor: pointer;}
+.g-m6-edit,.g-m6-edit:hover,.g-m6-edit:visited,.g-m6-edit:active{ color: #6a3fbe;}
+.g-l-m7{ color: #a0a0a0; font-size: 12px;}
+.g-m-con{ clear: both;}
+.i-r-a{ margin: 0 0 0 12px;}
+.g-c1-a{ height: 80px; padding: 60px 0 70px 0; border-top: 1px solid #dee1e2; border-bottom: 1px solid #dee1e2;}
+.g-m-l,.g-m-r{ width: 511px; float: left;}
+.g-m-l{ margin-right: 82px; }
+.g-m-r{ margin-left: 82px;}
+.g-m-l span,.g-m-r span{ display: block;}
+.g-c1-t1{ color: #7e7a7a; font-size: 16px;}
+.g-c1-t2{ font-size: 20px; color: #7e7a7a;}
+.g-c1-t2 b{ color: #49c136; font-size: 50px;}
+.gl-d1{ float: right; }
+.gl-d1 .g-c1-t2 b{ color: #7e7a7a;}
+.g-line{ float: left; width: 1px; border-left: 1px dotted #e7e7e7; height: 80px; margin-top: 10px;}
+.gt-t label{ display: block; float: left; height: 36px; line-height: 36px; color: #797b7b}
+.gt-t{ margin: 50px 0 60px 50px;}
+.gt-t:after{ content: ''; display: block; clear: both;}
+.gt-t-t1{ display: block; float: left;  line-height: 36px; margin-left: 50px; color: #797b7b;}
+.gt-t-t1 b{ font-size: 24px;}
+.gt-but{ clear: both; text-align: center; margin-bottom: 100px;}
+.imay-pay,.imay-pay-no{ line-height: 48px; text-align: center;}
+.gt-but .imay-pay,.gt-but .imay-pay-no{ margin: 0 auto;}
+.imay-pay,.imay-pay:hover,.imay-pay:active,.imay-pay:visited,.imay-pay-no,.imay-pay-no:hover,.imay-pay-no:active,.imay-pay-no:visited{ color: #FFF !important; font-size: 18px;}
+.pop-ad-ul{ margin-top: 35px;}
+.pop-ad-ul li{ margin-bottom: 20px;}
+.ali-but{ width: 250px; margin-top: 28px;}
+.ali-but a{ display: block; width: 112px; height: 36px; line-height: 34px; text-align: center; float: left; cursor: pointer;}
+.ali-but-a{ background-position: -199px -745px; margin-right: 25px;}
+.ali-but-b{  background-position: -199px -793px;}
+.ali-but-a,.ali-but-a:hover,.ali-but-a:active,.ali-but-a:visited{ color: #656565;}
+.ali-but-b,.ali-but-b:hover,.ali-but-b:active,.ali-but-b:visited{ color: #FFF;}
+.ali-p-t2 b{ font-size: 18px; color: #585858;}
+.ali-p-t3 b{ font-size: 18px; color: #279e14;}
+.g-con{ position: relative;}
+.g-h3-ic{ width: 20px; height: 30px; background-position: -292px -60px; position: absolute; z-index: 1; top: -40px; left: 22px; background-color: #FFF;}
+.ex-earn-t{ width: 310px;}
+.ex-earn-mes{ margin: 100px auto 25px;}
+.ex-earn-txt{ color: #888a88; margin-bottom: 80px; }
+.g-error{ min-height: 500px; vertical-align: middle; text-align: center;}
+.g-error-img{ margin-top: 130px;}
+.g-error-txt{ display: block; color: #f82736; font-size: 16px; margin-top: 10px;}
+
+/* 修改提现帐号 */
+.ali-mes{ clear: both; padding-top: 10px;}
+.ali-mes span{ text-align: center; }
+.pay-t-c{ float: left; margin-right: 30px;}
+.pay-t-c input,.pay-t-c a{ float: left; display: block; }
+.pay-t-c input{ margin: 12px 10px 0 0;width: 15px; height: 15px;}
+.g-m6-settle{ color: #3aa828 !important;}
+

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>玩咖直播动态分享</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <link rel="stylesheet" href="__CSS__/share.css">
+</head>
+<body>
+<header>
+    <div class="s-header tab-scroll aniInTop">
+        <div class="s-header-c clearfix">
+            <div class=s-h-l>
+                <img src="__IMG__/superlive/z-i-i01.png" class="s-logo-i">
+                <div class="s-h-txt">
+                    <h1>玩咖直播</h1>
+                    <h5>可以玩的直播</h5>
+                </div>
+            </div>
+            <div class=s-h-r>
+                <a class="s-o-a openIMay"><img src="__IMG__/superlive/z-i-i02.png" class="s-open"></a>
+            </div>
+        </div>
+    </div>
+</header>
+<article>
+    {if condition="$list.feeds['0']['show'] == 1"}
+    <section>
+        <div class="s-mid">
+            <div class="s-mid-c">
+                {if condition="$list.feeds['0']['feedType'] == 2" }
+                    <!-- video播放器 -->
+                    <div class="s-mid-video">
+                        <img src="{$list.feeds['0']['videoUrl']}?vframe/jpg/offset/0/w/450" class="s-video-i">
+                        <video class="s-video-a s-pos" id="iMayVideo" playsinline -webkit-playsinline>
+                            <source type="video/mp4" src="{$list.feeds['0']['videoUrl']}" -webkit-playsinline=true>
+                        </video>
+                    </div>
+                    <!-- video播放器按钮 -->
+                    <div class="s-play s-pos">
+                        <a class="s-play-a" id="iMayPlay"><img src="__IMG__/share/s-play.png" class="s-play-i"></a>
+                    </div>
+                {else /}
+                    <div class="s-mid-video">
+                        <img src="{$list.feeds.0.imgUrl}" class="s-video-i">
+                    </div>
+                {/if}
+                <div class="s-loading" >
+                    <img src="__IMG__/share/loading.gif">
+                </div>
+                <!-- 头像bar -->
+                <div class="s-d-bar clearfix">
+                    {if condition="$list.feeds['0']['show'] == 1"}
+                    <div class="s-bar-top">
+                        <a class="s-bar-a s-pos">
+                            {if condition="$list.feeds['0']['user']['imgHead']"}
+                            <img src="{$list.feeds['0']['user']['imgHead']}?imageView2/2/w/200" class="s-bar-i">
+                            {else /}
+                            <img src="__IMG__/no.jpg" class="s-bar-i">
+                            {/if}
+                        </a>
+                        <div class="s-bar-tit s-pos">
+                            <div class="s-tit-t1 clearfix">
+                                <h5>{$list.feeds['0']['user']['nick']}</h5>
+
+                                {php} if ($list['feeds']['0']['user']['sex'] == 1) { {/php}
+                                <em class="s-sex s-sex-m"></em>
+                                {php} } else { {/php}
+                                <em class="s-sex s-sex-g"></em>
+                                {php} } {/php}
+
+                                {php} if ($list['feeds']['0']['user']['UserLv'] > 39) { {/php}
+                                <b class="s-level level-e">{$list.feeds['0']['user']['UserLv']}</b>
+                                {php} } else if ($list['feeds']['0']['user']['UserLv'] > 29) { {/php}
+                                <b class="s-level level-d">{$list.feeds['0']['user']['UserLv']}</b>
+                                {php} } else if ($list['feeds']['0']['user']['UserLv'] > 19) { {/php}
+                                <b class="s-level level-c">{$list.feeds['0']['user']['UserLv']}</b>
+                                {php} } else if ($list['feeds']['0']['user']['UserLv'] > 9) { {/php}
+                                <b class="s-level level-b">{$list.feeds['0']['user']['UserLv']}</b>
+                                {php} } else { {/php}
+                                <b class="s-level level-a">{$list.feeds['0']['user']['UserLv']}</b>
+                                {php} } {/php}
+
+                            </div>
+                            <div class="s-tit-t2">
+                                魅号：{$list.feeds['0']['user']['roomId']}
+                            </div>
+                        </div>
+                        <a class="s-more s-pos openIMay" href="javascript:;">
+                            <img src="__IMG__/share/s-more.png" class="s-more-a">
+                        </a>
+                    </div>
+                    <div class="s-bar-bot">
+                        {php}if (isset($list['feeds'][0]['msg'])) { {/php}
+                        <span>{$list['feeds'][0]['msg']}
+                            <a class="s-bot-h">
+                                {php}if (isset($list['feeds'][0]['atUsers'])) { {/php}
+                                    {volist name="list['feeds'][0]['atUsers']" id="vo"}
+                                        @{$vo['nick']}
+                                    {/volist}
+                                {php} } {/php}
+
+                                {php}if (isset($list['feeds'][0]['labels'])) { {/php}
+                                    {volist name="list['feeds'][0]['labels']" id="v"}
+                                        #{$v}
+                                    {/volist}
+                                {php} } {/php}
+                            </a>
+                        </span>
+                        {php} } else { {/php}
+                        <span><a class="s-bot-h">
+                            {php}if (isset($list['feeds'][0]['atUsers'])) { {/php}
+                                {volist name="list['feeds'][0]['atUsers']" id="vo"}
+                                    @{$vo['nick']}
+                                {/volist}
+                            {php} } {/php}
+
+                            {php}if (isset($list['feeds'][0]['labels'])) { {/php}
+                                {volist name="list['feeds'][0]['labels']" id="v"}
+                                    #{$v}
+                                {/volist}
+                            {php} } {/php}
+                        </a></span>
+                        {php} } {/php}
+                    </div>
+                    {/if}
+                </div>
+            </div>
+        </div>
+    </section>
+    {else /}
+    <section>
+        <div class="no-dy">
+            <img src="__IMG__/share/no-dy.jpg" class="no-dy-i">
+        </div>
+    </section>
+    {/if}
+    <section>
+        <div class="s-list">
+            <div class="s-list-tit">
+                <h2>推荐动态</h2>
+            </div>
+            <div class="s-list-c">
+                <ul class="s-list-ul clearfix">
+                    {volist name="page['feeds']" id="vo"}
+                        <li>
+                            <div class="li-d-top">
+                                {if condition="$vo.feedType == 2" }
+                                    <a href="/share/feed.html?FeedId={$vo.feedId}&scheme={$scheme}&host={$host}" class="s-list-a" style="background-image: url('{$vo.videoUrl}?vframe/jpg/offset/0/w/450')"></a>
+                                    <img src="__IMG__/share/s-play-s.png" class="s-play-s">
+                                {else /}
+                                    <a href="/share/feed.html?FeedId={$vo.feedId}&scheme={$scheme}&host={$host}" class="s-list-a" style="background-image: url('{$vo.imgUrl}?imageView2/2/w/200')"></a>
+                                {/if}
+                            </div>
+                        </li>
+                    {/volist}
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div id="imay-mask">
+            <div class="iMay-shadow"></div>
+            <div class="w-mes">
+                <img src="__IMG__/superlive/z-i-i10.png" class="w-mes-img">
+            </div>
+        </div>
+    </section>
+</article>
+<footer>
+    <!-- 底部 -->
+    <div class="z-footer clearfix">
+        <img src="__IMG__/superlive/z-i-i05.png" class="z-i-i05">
+        <div class="z-footer-r">
+            <h6>都翻到这了，就下载个玩咖体验一下吧</h6>
+            <a class="t-footer-challenge openIMay">
+                <img src="__IMG__/share/s-down.png" class="z-i-i06">
+            </a>
+        </div>
+    </div>
+</footer>
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript">
+    var type = "{$list.feeds['0']['feedType']}";
+    //分享自「用户昵称」的动态@i玩咖直播
+    var nick = "分享自「"+"{$list.feeds['0']['user']['nick']}"+"」的动态@玩咖直播";
+    var desc = "一言不合就发动态啦，快来围观~";
+    var imgURL = '';
+    var url = "{$url}" + "/share/feed";
+    var val = '?FeedId='+ "{$list.feeds['0']['feedId']}" + '&scheme=' + '{$scheme}' + '&host=' + '{$host}';
+    var wxURL ='{:url("Capturemonster/getJsapiTicket")}';
+    var ifrSrc = '{$scheme}' + '://' + '{$host}' + '/openwith?type=3&uid=' + "{$list.feeds['0']['user']['uid']}" + '&FeedId=' + "{$list.feeds['0']['feedId']}";
+    if (type == '1') {
+        imgURL = "{$list.feeds['0']['imgUrl']}" + "?imageView2/2/w/200";
+    } else if (type == '2') {
+        imgURL = "{$list.feeds['0']['videoUrl']}" + "?vframe/jpg/offset/0/w/450";
+    }
+    var parameter = '&type=3&uid=' + "{$list.feeds['0']['user']['uid']}" + '&FeedId=' + "{$list.feeds['0']['feedId']}" + '&scheme=' + '{$scheme}' + '&host=' + '{$host}';
+
+    $(function () {
+        getWXData(wxURL, nick, desc, url + val, imgURL);
+        $(".openIMay").click(function () {
+           openApp(ifrSrc);
+        });
+    });
+
+</script>
+<script type="text/javascript" src="__JS__/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="__JS__/share.js"></script>
+{include file="statistics/baiduStatistcs"}
+</body>
+</html>

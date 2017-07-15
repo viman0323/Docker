@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>艺人管理</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <link type="text/css" rel="stylesheet" href="__PC_CSS__/common.css">
+    <link type="text/css" rel="stylesheet" href="__PC_CSS__/artist.css">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+</head>
+<body>
+<!--头部信息-->
+{include file="../../common/view/default/header" /}
+<article>
+    <!--展示个人信息的banner-->
+    {include file="../../common/view/default/infoBanner" /}
+    <section>
+        <div class="charm-bar clearfix">
+            <ul class="charm-bar-ul">
+                <li>
+                    <div class="charm-bar-c">
+                        <div class="charm-bar-l">
+                            <h5 class="charm-bar-tit">今日</h5>
+                            <span class="charm-txt-a">新增粉丝：</span>
+                            <span class="charm-txt-b art-red"><b>{$statData['fansincrday']|default=0}</b></span>
+                            <div class="charm-line-a"></div>
+                        </div>
+                        <div class="charm-bar-l">
+                            <h5 class="charm-bar-tit">本周</h5>
+                            <span class="charm-txt-a">新增粉丝：</span>
+                            <span class="charm-txt-b art-red"><b> {$statData['fansincrweek']|default=0} </b> 名 </span>
+                            <div class="charm-line-a"></div>
+                        </div>
+                        <div class="charm-bar-l">
+                            <h5 class="charm-bar-tit">本月</h5>
+                            <span class="charm-txt-a">新增粉丝：</span>
+                            <span class="charm-txt-b art-blue"><b> {$statData['fansincrmonth']|default=0} </b></span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="charm-bar-c">
+                        <div class="charm-bar-l">
+                            <h5 class="charm-bar-tit">上周</h5>
+                            <span class="charm-txt-a">新增粉丝：</span>
+                            <span class="charm-txt-b art-red"><b>{$statData['fansincrlastweek']|default=0}</b></span>
+                            <div class="charm-line-a"></div>
+                        </div>
+                        <div class="charm-bar-l">
+                            <h5 class="charm-bar-tit">上上周</h5>
+                            <span class="charm-txt-a">新增粉丝：</span>
+                            <span class="charm-txt-b art-red"><b> {$statData['fansincrlast2week']|default=0} </b> 名 </span>
+                            <div class="charm-line-a"></div>
+                        </div>
+                        <div class="charm-bar-l">
+                            <h5 class="charm-bar-tit">涨跌</h5>
+                            <span class="charm-txt-a">新增粉丝：</span>
+                            <span class="charm-txt-b art-blue"><b> {$statData['percent']|default=0} </b></span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="charm-bar-c">
+                        <div class="charm-bar-l">
+                            <h5 class="charm-bar-tit">15级以上</h5>
+                            <span class="charm-txt-a">新增粉丝：</span>
+                            <span class="charm-txt-b art-red"><b>{$statData['fanslv15']|default=0}</b></span>
+                            <div class="charm-line-a"></div>
+                        </div>
+                        <div class="charm-bar-l">
+                            <h5 class="charm-bar-tit">30级以上</h5>
+                            <span class="charm-txt-a">新增粉丝：</span>
+                            <span class="charm-txt-b art-red"><b> {$statData['fanslv30']|default=0} </b> 名 </span>
+                            <div class="charm-line-a"></div>
+                        </div>
+                        <div class="charm-bar-l">
+                            <h5 class="charm-bar-tit">40级以上</h5>
+                            <span class="charm-txt-a">新增粉丝：</span>
+                            <span class="charm-txt-b art-blue"><b> {$statData['fanslv40']|default=0} </b></span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section>
+        <div class="art-warp art-bot">
+            <table class="charm-table fan-table">
+                <thead>
+                <tr>
+                    <th>日期</th>
+                    <th>新增粉丝</th>
+                    <th>取关粉丝</th>
+                    <th>粉丝累计</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {volist name="statData['last30fansstat']" id="vo" key="i"}
+                    <tr>
+                        <td>{:date('Y-m-d',strtotime($vo['Date']))}</td>
+                        <td>{$vo['IncrFans']}</td>
+                        <td>{$vo['DecrFans']}</td>
+                        <td>{$vo['TotalFans']}</td>
+                    </tr>
+                    {/volist}
+                </tbody>
+            </table>
+        </div>
+    </section>
+</article>
+<!--登录、注册、忘记密码-->
+{include file="../../common/view/default/login" /}
+<script type="text/javascript" src="__PC_JS__/g-index.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+body{ background-color: #f5f5f5;}
+.i-header{ background: url("../images/g-img03.jpg") no-repeat; width: 100%; height: 578px; overflow: hidden; }
+.i-nav{ width: 968px; padding-top: 20px;}
+.i-nav-ul li,.i-c-l,.i-c-r{ float: left;}
+.i-logo,.i-nav-c,.i-ios,.i-android{ background: url("../images/g-index.png") no-repeat;display: block;}
+.i-nav-ul li{padding: 0 8px; min-width: 60px; text-align: center; font-size: 18px; height: 45px;  position: relative;}
+.i-nav-ul li .i-logo{ width: 125px; height: 45px; background-position: 0 -556px; margin-right: 50px;}
+a.i-nav-a,a.i-nav-a:active,a.i-nav-a:visited{ color: #FFF;}
+.i-nav-ul li a:hover{ color: #CCC;}
+a.i-nav-a{  display: block; margin-top: 15px; width: 62px; height: 35px; cursor: pointer;}
+.i-nav-c{ background-position: -133px -556px;}
+.i-h-con{ clear: both; width: 968px;}
+.i-c-l{ width: 550px; height: 420px; position: relative;}
+.i-l-but a{ float: left; width: 185px; height: 58px; cursor: pointer;}
+.i-android{ background-position: 0 -678px;}
+.i-ios{background-position: 0 -614px; margin-right: 12px;}
+.i-ios:hover{ background-position: 0 -741px;}
+.i-android:hover{ background-position: 0 -805px;}
+.i-wrap{ width: 1349px;}
+.i-wrap img{ height: 216px;width: 1349px; margin-top: -5px;}
+.tab-scroll{animation-duration:1s;-webkit-animation-duration:1s; -moz-animation-duration: 1s; -o-animation-duration: 1s; left: 0 ; top: 0}
+.aniInLeft{ animation-name: aniInLeft;-webkitanimation-name: aniInLeft; -moz-animation-name: aniInLeft; -o-animation-name:aniInLeft; }
+.aniInRight{ animation-name: aniInRight;-webkitanimation-name: aniInRight;-moz-animation-name: aniInRight; -o-animation-name:aniInRight; }
+.anFadeIn{animation-name: anFadeIn;-webkitanimation-name: anFadeIn;-moz-animation-name: anFadeIn; -o-animation-name:anFadeIn;}
+.but-scroll{animation-duration:3s;-webkit-animation-duration:3s; -moz-animation-duration: 3s; -o-animation-duration: 1s; left: 0 ; top: 0;}
+.i-l-ic{ position: absolute; top: 90px;}
+.i-l-but{ top: 402px; position: absolute;}
+.i-wrap .i-w-m{ margin-top: 0;}
+@keyframes aniInLeft {
+    0% {
+        opacity: 0;
+        transform: translate3d(-100%, 0px, 0px);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+@keyframes aniInRight {
+    0% {
+        opacity: 0;
+        transform: translate3d(100%, 0px, 0px);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes anFadeIn {
+    0% {
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}

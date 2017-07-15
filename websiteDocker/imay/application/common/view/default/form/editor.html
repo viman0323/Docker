@@ -1,0 +1,13 @@
+<textarea name="{$field}" id="{$field}">{$value}</textarea>
+<script type="text/javascript">
+var editor = new Simditor({
+  textarea: $('#{$field}'),
+  defaultImage : '__PUBLIC__/images/wechat.jpg',
+  upload       : {
+  	placeholder : '欢迎使用暧魅网络管理系统',
+  	url: "{:url('upload/editor')}",
+  	pasteImage:true,
+  	fileKey: "upload_file"
+  }
+});
+</script>

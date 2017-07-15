@@ -1,0 +1,20 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:47:"/home/web/imay/application/m/view/edg/join.html";i:1499941388;}*/ ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>玩咖直播</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="__CSS__/m-edg.css">
+</head>
+<body id="edg-des">
+<img src="__IMG__/edg/bg03.jpg" class="edg-bg">
+<a class="edg-sign-a" href="imay://com.imay.live/openwith?type=3&uid=1000&feedId=33734">
+    <img src="__IMG__/edg/sign.png" class="edg-sig-i">
+</a>
+
+</body>
+</html>

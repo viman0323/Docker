@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>iMay，分享你的游戏魅力</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="__CSS__/gameDown.css">
+</head>
+<body>
+<div class="g-m-down">
+    <img  class="g-m-logo">
+    <a class="g-down-a">
+        <img class="down-a-i twinkling">
+    </a>
+</div>
+<div class="g-m-txt">
+    <img class="game-i03">
+    <img class="game-i04">
+</div>
+
+<!-- 弹框 -->
+<div class="game-pop" style="display: none;">
+    <div class="game-mask"></div>
+    <div class="game-pop-c">
+        <img class="game-i05">
+        <div class="pop-c-c">
+            <!-- 未绑定 -->
+            <div class="game-pop-no game-phone" style="display: none;">
+                <a class="game-pop-close">
+                    <img class="game-i06">
+                </a>
+                <img class="game-i10">
+                <a class="go-get-a" href="imay://com.imay.live/openwith?type=11">
+                    <img class="game-i07">
+                </a>
+                <a class="go-get-a go-cancel-a" href="javascript:void(0)">
+                    <img class="game-i08">
+                </a>
+            </div>
+            <!-- 去认证 -->
+            <div class="game-pop-no game-real" style="display: none;">
+                <a class="game-pop-close">
+                    <img class="game-i06">
+                </a>
+                <img class="game-i11">
+                <a class="go-get-a" href="imay://com.imay.live/openwith?type=12">
+                    <img class="game-i14">
+                </a>
+                <a class="go-get-a go-cancel-a" href="javascript:void(0)">
+                    <img class="game-i08">
+                </a>
+            </div>
+            <!-- 安卓不能下载提示 -->
+            <div class="game-pop-no game-anri">
+                <a class="game-pop-close">
+                    <img class="game-i06">
+                </a>
+                <img class="game-i13">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript" src="__JS__/gameDown.js"></script>
+<script>
+    var img = '__IMG__/games';
+    var a = '{$a}';
+    $(function () {
+        $(".g-down-a").on("click",function () {
+            locationUrl();
+        });
+    });
+
+    // 点击的时候再请求数据
+    function locationUrl(){
+        var url = "{:url('activity/Games/ajaxindex')}";
+        var uid = '{$uid}', accessToken = '{$accessToken}';
+        $.post(url,{'uid': uid, 'accessToken': accessToken},
+            function(data){
+                if (data['status'] == '1') {
+                    if (data.content.show == '2') { // 手机绑定
+                        $('.game-phone').show();
+                        $('.game-real').hide();
+                        $('.game-pop').show();
+                    } else if (data.content.show == '3') { // 实名认证
+                        $('.game-phone').hide();
+                        $('.game-real').show();
+                        $('.game-pop').show();
+                    } else { // 已实名并绑定手机（安卓机提示，iOS直接下载）
+                        isIos(a);
+                    }
+                } else {
+                    alert('数据错误！');
+                }
+            }, "json");
+    }
+
+</script>
+</body>
+</html>

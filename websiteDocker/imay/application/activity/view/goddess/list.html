@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>女神争霸</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="__CSS__/goddess.css">
+</head>
+<body>
+<header>
+    <img class="god-bg god-pos">
+    <div class="god-header">
+        <img class="god-i01 god-pos">
+        <img class="god-i02 god-pos">
+    </div>
+</header>
+<article>
+    <section>
+        <!-- 头像 -->
+        <div class="god-nav-c god-pos">
+            <img class="god-i03 god-pos">
+            <div class="god-head god-pos goddess-head">
+            </div>
+            <div class="god-head god-pos god-head-a">
+
+            </div>
+        </div>
+        <!-- 呢称 -->
+        <div class="god-nav-ni god-pos">
+            <img class="god-i05 god-pos">
+            <div class="god-ni-c god-pos">
+            </div>
+        </div>
+        <!-- 我的阵营 -->
+        <div class="god-bar god-pos">
+            <img class="god-yun1 god-pos">
+            <div class="god-bar-c god-pos">
+                <img class="god-i06">
+                <img class="god-i07 god-i07b god-pos">
+                <img class="god-i07 god-i07a god-pos">
+                <div class="god-z-c god-pos">
+                </div>
+                <!-- vs -->
+                <div class="god-vs god-pos">
+                    <img class="god-i08 god-pos">
+                    <div class="god-vs-c god-pos god-show">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="god-list god-pos">
+            <img class="god-i09 god-pos">
+            <div class="god-list-c">
+                <img class="god-yun god-pos">
+                <img class="god-i18 god-pos">
+                <div class="god-list-tab">
+                    <ul class="god-list-ul god-pos">
+                        <li class="god-list-check">
+                            <img class="g-tab-c g-tab-f">
+                            <img class="g-tab-a g-tab-e">
+                        </li>
+                        <li>
+                            <img class="g-tab-d g-tab-f">
+                            <img class="g-tab-b g-tab-e">
+                        </li>
+                    </ul>
+                </div>
+                <div class="god-list-d god-pos">
+                    <div class="god-list-b god-list-w">
+                        <img class="g-list-a">
+                        <ul class="god-list-ul1 goddess-a">
+                        </ul>
+                    </div>
+                    <div class="god-list-b">
+                        <img class="g-list-a">
+                        <ul class="god-list-ul1 goddess-b">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</article>
+<footer>
+    <div class="god-footer god-pos">
+        <img class="god-i17 god-pos">
+        <div class="god-footer-c god-pos">
+            <span>关注“iMay服务中心”公众号，充值有惊喜！</span>
+            <span>本活动最终解释权归iMay所有</span>
+            <span>QQ：3383498099</span>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+
+<script type="text/javascript">
+    var uid = "{$uid}";
+
+    setTimeout(locationUrl(), 2000); //加载完页面后ajax请求数据并显示在页面上
+
+    function locationUrl(){
+        var  url = "{:url('activity/Goddess/ajaxindex')}";
+        $.post(url,{'uid': uid},
+                function(data){
+                    if (data['status'] == '1') {
+                        // 直播女神和直播守护昵称
+                        var ni = '';
+                        if (data.ranksC['goddessNick']) {
+                            ni += '<span class="god-ni-t">' + data.ranksC['goddessNick'] + '</span>';
+                            ni += '<span class="god-ni-t">' + data.ranksC['guardianNick'] + '</span>';
+                        }
+                        $('.god-ni-c').html(ni);
+
+                        // 女神头像
+                        var img = '';
+                        if (data.ranksC['goddessImgHead']) {
+                            img += '<img src="' + data.ranksC['goddessImgHead'] + '" class="god-head-i01">';
+                        } else {
+                            img += '<img src="__IMG__/no.png" class="god-head-i01">';
+                        }
+                        img += '<img src="__IMG__/goddess/g-i04.png" class="god-i04 god-pos">';
+                        $('.goddess-head').html(img);
+
+                        // 守护头像
+                        var head = '';
+                        if (data.ranksC['guardianImgHead']) {
+                            head += '<img src="' + data.ranksC['guardianImgHead'] + '" class="god-head-i02">';
+                        } else {
+                            head += '<img src="__IMG__/no.png" class="god-head-i02">';
+                        }
+                        $('.god-head-a').html(head);
+
+                        // 我的阵营
+                        var my = '';
+                        if (data.ranksC['whichCamp']) {
+                            my += '<span class="god-bar-t1"><b>' + data.ranksC['myCampNumber'] + '</b>个</span>';
+                            my += '<span class="god-bar-t2">' + data.ranksC['myCampRank'] + '</span>';
+                        }
+                        if (data.ranksC['whichCamp'] == 'A') {
+                            $('.god-z-c').html(my).show();
+                            $('.god-i07b').show();
+                            $('.god-i07a').hide();
+                        } else if (data.ranksC['whichCamp'] == 'B') {
+                            $('.god-z-c').html(my).show();
+                            $('.god-i07b').hide();
+                            $('.god-i07a').show();
+                        } else {
+                            $('.god-i07b').hide();
+                            $('.god-i07a').hide();
+                            $('.god-z-c').hide();
+                        }
+
+                        // 两个阵营获得礼物总数对比
+                        var vs = '';
+                        vs += '<div class="god-vs-l god-vs-check">';
+                        vs += '<span class="god-vs-t1 god-pos">' + data.ranksC['ACampSum'] + '</span>';
+                        if (data.ranksC['ACampSum'] > data.ranksC['BCampSum']) {
+                            vs += '<img src="__IMG__/goddess/left1.png" class="god-left1 god-left god-pos">';
+                        }
+                        vs += '</div>';
+                        vs += '<div class="god-vs-r">';
+                        vs += '<span class="god-vs-t2 god-pos">' + data.ranksC['BCampSum'] + '</span>';
+                        if (data.ranksC['ACampSum'] < data.ranksC['BCampSum']) {
+                            vs += '<img src="__IMG__/goddess/left2.png" class="god-left2 god-left god-pos">';
+                        }
+                        vs += '</div>';
+
+                        $(".god-show").html(vs);
+
+                        //蕾佳娜排行榜
+                        var total_str = '';
+                        if (data.ACampRank) {
+                            for (var p = 0; p < data.ACampRank.length; p++) {
+                                var num = p + 1;
+                                var a_id = 'rank_' + num;
+                                var nick = '';
+                                if (data.ACampRank[p]['nick']) {
+                                    nick = data.ACampRank[p]['nick'];
+                                } else {
+                                    nick = '';
+                                }
+
+                                if (p == 0) {
+                                    total_str += '<li  class="god-li-a01">';
+                                    total_str += '<div class="god-li-l">';
+                                    total_str += '<img src="__IMG__/goddess/g-i13.png" class="god-i13">';
+                                } else if (p == 1) {
+                                    total_str += '<li  class="god-li-a02">';
+                                    total_str += '<div class="god-li-l">';
+                                    total_str += '<img src="__IMG__/goddess/g-i14.png" class="god-i14">';
+                                } else if (p == 2) {
+                                    total_str += '<li  class="god-li-a03">';
+                                    total_str += '<div class="god-li-l">';
+                                    total_str += '<img src="__IMG__/goddess/g-i15a.png" class="god-i15a">';
+                                } else {
+                                    total_str += "<li>";
+                                    total_str += '<div class="god-li-l">';
+                                    total_str += '<img src="__IMG__/goddess/g-i15.png" class="god-i15">';
+                                }
+
+                                total_str += '<span class="god-pos god-tit">' + num + '</span>';
+                                total_str += '</div>';
+                                total_str += '<div class="god-li-h">';
+
+                                if (data.ACampRank[p]['img_head']) {
+                                    total_str += '<img src="' + data.ACampRank[p]['img_head'] + '?imageView2/2/w/200" class="god-j02">';
+                                } else {
+                                    total_str += '<img src="__IMG__/no.png" class="god-j02">';
+                                }
+
+                                if (p == 0) {
+                                    total_str += '<img src="__IMG__/goddess/g-i10.png" class="god-i10 god-pos">';
+                                } else if (p == 1) {
+                                    total_str += '<img src="__IMG__/goddess/g-i11.png" class="god-i10 god-pos">';
+                                } else if (p == 2) {
+                                    total_str += '<img src="__IMG__/goddess/g-i12.png" class="god-i10 god-pos">';
+                                }
+
+                                total_str += '</div>';
+                                total_str += '<div class="god-li-t">';
+                                total_str += '<span class="god-li-ni">' + nick + '</span>';
+                                total_str += '<span class="god-li-s">' + data.ACampRank[p]['score'] + '</span>';
+
+                                total_str += "</div>";
+                                total_str += "</li>";
+                            }
+                        }
+
+                        $(".goddess-a").html(total_str);
+
+                        //阿斯玛排行榜
+                        var fatten = '';
+                        if (data.BCampRank) {
+                            for (var i = 0; i < data.BCampRank.length; i++) {
+                                var number = i + 1;
+                                var nickName = '';
+                                if (data.BCampRank[i]['nick']) {
+                                    nickName = data.BCampRank[i]['nick'];
+                                } else {
+                                    nickName = '';
+                                }
+
+                                if (i == 0) {
+                                    fatten += '<li  class="god-li-a01">';
+                                    fatten += '<div class="god-li-l">';
+                                    fatten += '<img src="__IMG__/goddess/g-i13.png" class="god-i13">';
+                                } else if (i == 1) {
+                                    fatten += '<li  class="god-li-a02">';
+                                    fatten += '<div class="god-li-l">';
+                                    fatten += '<img src="__IMG__/goddess/g-i14.png" class="god-i14">';
+                                } else if (i == 2) {
+                                    fatten += '<li  class="god-li-a03">';
+                                    fatten += '<div class="god-li-l">';
+                                    fatten += '<img src="__IMG__/goddess/g-i15a.png" class="god-i15a">';
+                                } else {
+                                    fatten += "<li>";
+                                    fatten += '<div class="god-li-l">';
+                                    fatten += '<img src="__IMG__/goddess/g-i15.png" class="god-i15">';
+                                }
+
+                                fatten += '<span class="god-pos god-tit">' + number + '</span>';
+                                fatten += '</div>';
+                                fatten += '<div class="god-li-h">';
+
+                                if (data.BCampRank[i]['img_head']) {
+                                    fatten += '<img src="' + data.BCampRank[i]['img_head'] + '?imageView2/2/w/200" class="god-j02">';
+                                } else {
+                                    fatten += '<img src="__IMG__/no.png" class="god-j02">';
+                                }
+
+                                if (i == 0) {
+                                    fatten += '<img src="__IMG__/goddess/g-i10.png" class="god-i10 god-pos">';
+                                } else if (i == 1) {
+                                    fatten += '<img src="__IMG__/goddess/g-i11.png" class="god-i10 god-pos">';
+                                } else if (i == 2) {
+                                    fatten += '<img src="__IMG__/goddess/g-i12.png" class="god-i10 god-pos">';
+                                }
+
+                                fatten += '</div>';
+                                fatten += '<div class="god-li-t">';
+                                fatten += '<span class="god-li-ni">' + nickName + '</span>';
+                                fatten += '<span class="god-li-s">' + data.BCampRank[i]['score'] + '</span>';
+
+                                fatten += "</div>";
+                                fatten += "</li>";
+
+                            }
+                        }
+
+                        $(".goddess-b").html(fatten);
+
+                    }
+                }, "json");
+    }
+    setInterval("locationUrl()",15000);
+
+</script>
+<script type="text/javascript" src="__JS__/goddess.js"></script>
+
+<script type="text/javascript">
+    var _hmt = _hmt || [];
+    $(function () {
+
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?92271316ab45db908e0b6763467fea57";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })
+</script>
+</body>
+</html>

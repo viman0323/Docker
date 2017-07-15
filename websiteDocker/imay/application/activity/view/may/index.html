@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>排行榜</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="__CSS__/beauty.css">
+</head>
+<body>
+<header>
+    <img class="b-i01">
+</header>
+<article>
+    <section>
+        <div class="b-gift">
+        </div>
+    </section>
+    <section>
+        <div class="b-luck">
+            <img class="b-i08">
+            <div class="b-luck-c b-pos">
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="b-list">
+            <img class="b-i03">
+            <div class="b-list-c b-pos">
+                <div class="b-list-top">
+                    <img class="b-i09">
+                    <ul class="b-list-ul b-pos">
+                        <li class="b-checked b-first">
+                            <img src="__IMG__/may/b-i09a.png" class="b-i09a" >
+                        </li>
+                        <li class="b-second">
+                            <img src="__IMG__/may/b-i09b.png" class="b-i09b">
+                        </li>
+                        <li class="b-third">
+                            <img src="__IMG__/may/b-i09c.png" class="b-i09c">
+                        </li>
+                    </ul>
+                </div>
+                <div class="b-list-info">
+                    <div class="list-info-a">
+                        <ul class="list-info-ul list-first">
+                        </ul>
+                    </div>
+                    <div class="list-info-a" style="display: none;">
+                        <ul class="list-info-ul list-second">
+                        </ul>
+                    </div>
+                    <div class="list-info-a" style="display: none;">
+                        <ul class="list-info-ul list-third">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</article>
+<footer>
+    <div class="b-pager">
+        <span>关注“iMay服务中心”公众号，充值有惊喜！</span>
+        <span> 本活动最终解释权归iMay所有</span>
+        <span> QQ：3383498099</span>
+    </div>
+</footer>
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript">
+    var img = "__IMG__/may";
+    var uid = "{$uid}";
+    var count = 1;
+    setTimeout(locationUrl(), 2000); //加载完页面后ajax请求数据并显示在页面上
+
+    // ajax请求数据
+    function locationUrl() {
+        var url = "{:url('activity/May/ajaxIndex')}";
+        $.post(url, {'uid': uid},
+            function (data) {
+                if (data['status'] == '1') {
+                    // 个人信息和奖励池
+                    var information = '';
+                    var meili = '';
+                    if (data.rankA) {
+                        if (data.rankA['show'] == 1) { // 当所有的数量都为0的时候才显示个人信息
+                            information += '<img src="__IMG__/may/b-i02a.png" class="b-i02 b-i02a">' + '<div class="b-gift-a">';
+                            information += '<img class="b-i02" src="__IMG__/may/b-i02b.png">';
+                            information += '<div class="b-gift-t b-pos">' + '<span>' + data.rankA['myANumber'];
+                            information += '</span><span>' + data.rankA['myARank'] + '</span>' + '</div>' + '</div>';
+                            if (data['time'] > '1493654400') { // 5.2号和5.3号都要显示的数据
+                                information += '<div class="b-gift-a">' + '<img class="b-i02" src="__IMG__/may/b-i02c.png">';
+                                information += '<div class="b-gift-t b-pos">' + '<span>' + data.rankA['myBNumber'];
+                                information += '</span><span>' + data.rankA['myBRank'] + '</span>' + '</div>' + '</div>';
+                            }
+                            if (data['time'] > '1493740800') { // 只有5.3号显示的数据
+                                information += '<div class="b-gift-a">' + '<img class="b-i02" src="__IMG__/may/b-i02d.png">';
+                                information += '<div class="b-gift-t b-pos">' + '<span>' + data.rankA['myCNumber'];
+                                information += '</span>' + '</div>' + '</div>' + '<div class="b-gift-a">';
+                                information += '<img class="b-i02" src="__IMG__/may/b-i02e.png">';
+                                information += '<div class="b-gift-t b-pos">' + '<span>' + data.rankA['myDressUpNumber'];
+                                information += '</span><span>' + data.rankA['myDressUpRank'] + '</span>' + '</div>' + '</div>';
+                            }
+                            information += '<img src="__IMG__/may/b-i02f.png" class="b-i02 b-i02f">';
+                            $('.b-gift').html(information); // 个人信息显示
+                        }
+                        // 奖励池不需要判断，所有数据都显示出来
+                        meili += '<span class="luck-t1">' + data.rankA['totalNumber'] + '</span><span class="luck-t2">魅力</span>';
+                        $('.b-luck-c').html(meili); // 奖励池
+                    }
+
+                    // 5.1号数据处理
+                    var total = '';
+                    if (data.rankB) {
+                        for (var i = 0; i < data.rankB.length; i++) {
+                            var s_id = i + 1;
+                            total += '<li>' + '<div class="info-c clearfix">' + '<div class="info-l">';
+                            if (i == 0) { // 第一名
+                                total += '<img src="__IMG__/may/b-i05.png" class="b-i05 b-pos">';
+                                total += '<img src="__IMG__/may/b-i07.png" class="b-i07 b-pos">';
+                            } else if (i == 1) { // 第二名
+                                total += '<img src="__IMG__/may/b-i05a.png" class="b-i05 b-pos">';
+                                total += '<img src="__IMG__/may/b-i07a.png" class="b-i07 b-pos">';
+                            } else if (i == 2) { // 第三名
+                                total += '<img src="__IMG__/may/b-i05b.png" class="b-i05 b-pos">';
+                                total += '<img src="__IMG__/may/b-i07b.png" class="b-i07 b-pos">';
+                            } else if (i == 3) { // 第四名
+                                total += '<img src="__IMG__/may/b-i05c.png" class="b-i05 b-pos">';
+                            } else if (i == 4) { // 第五名
+                                total += '<img src="__IMG__/may/b-i05d.png" class="b-i05 b-pos">';
+                            } else if (i == 5) { // 第六名
+                                total += '<img src="__IMG__/may/b-i05e.png" class="b-i05 b-pos">';
+                            } else if (i == 6) { // 第七名
+                                total += '<img src="__IMG__/may/b-i05f.png" class="b-i05 b-pos">';
+                            } else if (i == 7) { // 第八名
+                                total += '<img src="__IMG__/may/b-i05g.png" class="b-i05 b-pos">';
+                            } else if (i == 8) { // 第九名
+                                total += '<img src="__IMG__/may/b-i05h.png" class="b-i05 b-pos">';
+                            } else if (i == 9) { // 第十名
+                                total += '<img src="__IMG__/may/b-i05i.png" class="b-i05 b-pos">';
+                            }
+                            total += '<img src="__IMG__/may/b-i06.png" class="b-i06 b-pos">';
+                            total += '<img src="' + data.rankB[i]['img_head'] + '?imageView2/5/w/200/h/200" class="b-head b-pos">';
+                            total += '</div>' + '<div class="info-m">' + '<h5>' + data.rankB[i]['nick'] + '</h5>';
+                            total += '<h6>礼物数：' + data.rankB[i]['score'] + '</h6></div>' + '<div class="info-r">';
+                            if (data.rankB[i]['live_status'] == 1) { // 在直播中的可以直接跳转到APP直播间
+                                total += '<a class="info-in" id="rank_' + s_id + '" onclick="_hmt.push([\'_trackEvent\', \'ranking_list\', \'click\', \'' + s_id + '\'])" href="' + data.rankB[i]['url'] + '">';
+                                total += '<img src="__IMG__/may/b-i04.png" class="b-i04"></a>';
+                            } else {
+                                total += '<img src="__IMG__/may/b-i04b.png" class="b-i04">'
+                            }
+                            total += '</div>' + '</div>' + '<div class="b-line"></div>' + '</li>';
+                        }
+                        $('.list-first').html(total);
+                        // 将第二和第三切换注释
+                        $('.b-second').hide();
+                        $('.b-third').hide();
+                    }
+
+                    // 5.2号数据处理
+                    var total_str = '';
+                    if (data['time'] > '1493654400') {
+                        if (data.rankC) {
+                            for (var j = 0; j < data.rankC.length; j++) {
+                                var f_id = j + 1;
+                                total_str += '<li>' + '<div class="info-c clearfix">' + '<div class="info-l">';
+                                if (j == 0) { // 第一名
+                                    total_str += '<img src="__IMG__/may/b-i05.png" class="b-i05 b-pos">';
+                                    total_str += '<img src="__IMG__/may/b-i07.png" class="b-i07 b-pos">';
+                                } else if (j == 1) { // 第二名
+                                    total_str += '<img src="__IMG__/may/b-i05a.png" class="b-i05 b-pos">';
+                                    total_str += '<img src="__IMG__/may/b-i07a.png" class="b-i07 b-pos">';
+                                } else if (j == 2) { // 第三名
+                                    total_str += '<img src="__IMG__/may/b-i05b.png" class="b-i05 b-pos">';
+                                    total_str += '<img src="__IMG__/may/b-i07b.png" class="b-i07 b-pos">';
+                                } else if (j == 3) { // 第四名
+                                    total_str += '<img src="__IMG__/may/b-i05c.png" class="b-i05 b-pos">';
+                                } else if (j == 4) { // 第五名
+                                    total_str += '<img src="__IMG__/may/b-i05d.png" class="b-i05 b-pos">';
+                                } else if (j == 5) { // 第六名
+                                    total_str += '<img src="__IMG__/may/b-i05e.png" class="b-i05 b-pos">';
+                                } else if (j == 6) { // 第七名
+                                    total_str += '<img src="__IMG__/may/b-i05f.png" class="b-i05 b-pos">';
+                                } else if (j == 7) { // 第八名
+                                    total_str += '<img src="__IMG__/may/b-i05g.png" class="b-i05 b-pos">';
+                                } else if (j == 8) { // 第九名
+                                    total_str += '<img src="__IMG__/may/b-i05h.png" class="b-i05 b-pos">';
+                                } else if (j == 9) { // 第十名
+                                    total_str += '<img src="__IMG__/may/b-i05i.png" class="b-i05 b-pos">';
+                                }
+                                total_str += '<img src="__IMG__/may/b-i06.png" class="b-i06 b-pos">';
+                                total_str += '<img src="' + data.rankC[j]['img_head'] + '?imageView2/5/w/200/h/200" class="b-head b-pos">';
+                                total_str += '</div>' + '<div class="info-m">' + '<h5>' + data.rankC[j]['nick'] + '</h5>';
+                                total_str += '<h6>礼物数：' + data.rankC[j]['score'] + '</h6></div>' + '<div class="info-r">';
+                                if (data.rankC[j]['live_status'] == 1) { // 在直播中的可以直接跳转到APP直播间
+                                    total_str += '<a class="info-in" id="rank_' + f_id + '" onclick="_hmt.push([\'_trackEvent\', \'ranking_list\', \'click\', \'' + f_id + '\'])" href="' + data.rankC[j]['url'] + '">';
+                                    total_str += '<img src="__IMG__/may/b-i04.png" class="b-i04"></a>';
+                                } else {
+                                    total_str += '<img src="__IMG__/may/b-i04b.png" class="b-i04">'
+                                }
+                                total_str += '</div>' + '</div>' + '<div class="b-line"></div>' + '</li>';
+                            }
+                        }
+                        $('.list-second').html(total_str);
+                        // 5.2号时5.3不能切换
+                        $('.b-second').show();
+                        $('.b-third').hide();
+                        if (count == 1) {
+                            $('.list-info-a').show();
+                            $('.list-first').parent().hide();
+                            $('.list-third').parent().hide();
+                            $('.b-first').removeClass("b-checked");
+                            $('.b-second').addClass("b-checked");
+                        }
+                    }
+
+                    // 5.3 装扮排行榜数据处理
+                    var dress_up = '';
+                    if (data['time'] > '1493740800') {
+                        if (data.rankD) {
+                            for (var k = 0; k < data.rankD.length; k++) {
+                                var k_id = k + 1;
+                                dress_up += '<li>' + '<div class="info-c clearfix">' + '<div class="info-l">';
+                                if (k == 0) { // 第一名
+                                    dress_up += '<img src="__IMG__/may/b-i05.png" class="b-i05 b-pos">';
+                                    dress_up += '<img src="__IMG__/may/b-i07.png" class="b-i07 b-pos">';
+                                } else if (k == 1) { // 第二名
+                                    dress_up += '<img src="__IMG__/may/b-i05a.png" class="b-i05 b-pos">';
+                                    dress_up += '<img src="__IMG__/may/b-i07a.png" class="b-i07 b-pos">';
+                                } else if (k == 2) { // 第三名
+                                    dress_up += '<img src="__IMG__/may/b-i05b.png" class="b-i05 b-pos">';
+                                    dress_up += '<img src="__IMG__/may/b-i07b.png" class="b-i07 b-pos">';
+                                } else if (k == 3) { // 第四名
+                                    dress_up += '<img src="__IMG__/may/b-i05c.png" class="b-i05 b-pos">';
+                                } else if (k == 4) { // 第五名
+                                    dress_up += '<img src="__IMG__/may/b-i05d.png" class="b-i05 b-pos">';
+                                } else if (k == 5) { // 第六名
+                                    dress_up += '<img src="__IMG__/may/b-i05e.png" class="b-i05 b-pos">';
+                                } else if (k == 6) { // 第七名
+                                    dress_up += '<img src="__IMG__/may/b-i05f.png" class="b-i05 b-pos">';
+                                } else if (k == 7) { // 第八名
+                                    dress_up += '<img src="__IMG__/may/b-i05g.png" class="b-i05 b-pos">';
+                                } else if (k == 8) { // 第九名
+                                    dress_up += '<img src="__IMG__/may/b-i05h.png" class="b-i05 b-pos">';
+                                } else if (k == 9) { // 第十名
+                                    dress_up += '<img src="__IMG__/may/b-i05i.png" class="b-i05 b-pos">';
+                                }
+                                dress_up += '<img src="__IMG__/may/b-i06.png" class="b-i06 b-pos">';
+                                dress_up += '<img src="' + data.rankD[k]['img_head'] + '?imageView2/5/w/200/h/200" class="b-head b-pos">';
+                                dress_up += '</div>' + '<div class="info-m">' + '<h5>' + data.rankD[k]['nick'] + '</h5>';
+                                dress_up += '<h6>礼物数：' + data.rankD[k]['score'] + '</h6></div>' + '<div class="info-r">';
+                                if (data.rankD[k]['live_status'] == 1) { // 在直播中的可以直接跳转到APP直播间
+                                    dress_up += '<a class="info-in" id="rank_' + k_id + '" onclick="_hmt.push([\'_trackEvent\', \'ranking_list\', \'click\', \'' + k_id + '\'])" href="' + data.rankD[k]['url'] + '">';
+                                    dress_up += '<img src="__IMG__/may/b-i04.png" class="b-i04"></a>';
+                                } else {
+                                    dress_up += '<img src="__IMG__/may/b-i04b.png" class="b-i04">'
+                                }
+                                dress_up += '</div>' + '</div>' + '<div class="b-line"></div>' + '</li>';
+                            }
+                        }
+                        $('.list-third').html(dress_up);
+                        $('.b-third').show();
+                        if (count == 1) {
+                            $('.list-info-a').show();
+                            $('.list-first').parent().hide();
+                            $('.list-second').parent().hide();
+                            $('.b-first').removeClass("b-checked");
+                            $('.b-second').removeClass("b-checked");
+                            $('.b-third').addClass("b-checked");
+                        }
+                    }
+                    count = count + 1;
+                }
+            }, 'json')
+    }
+
+    setInterval('locationUrl()', 15000);
+
+</script>
+<script type="text/javascript" src="__JS__/beauty.js"></script>
+
+<script type="text/javascript">
+    var _hmt = _hmt || [];
+    $(function () {
+
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?92271316ab45db908e0b6763467fea57";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })
+</script>
+</body>
+</html>

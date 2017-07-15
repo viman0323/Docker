@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>排行榜</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="__CSS__/singer.css">
+</head>
+<body>
+<header>
+    <div class="s-header">
+        <img src="" class="s-j01">
+    </div>
+</header>
+<article>
+    <!-- 动态分析排行榜 -->
+    <section>
+        <div class="s-d">
+            <img class="s-i01">
+            <div class="feed-top">
+            </div>
+            <div class="s-list">
+                <ul class="s-ul feed-ul">
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="s-l">
+            <img class="s-i07">
+            <img class="s-i06">
+            <div class="s-l-c clearfix">
+                <img class="s-i08">
+                <ul class="s-l-ul clearfix help-first-list">
+                </ul>
+            </div>
+            <div class="s-l-c clearfix">
+                <img class="s-i09">
+                <ul class="s-l-ul clearfix feed-second-list">
+                </ul>
+            </div>
+            <div class="s-l-c clearfix">
+                <img class="s-i10">
+                <ul class="s-l-ul clearfix feed-third-list">
+                </ul>
+            </div>
+            <div class="s-list s-b-list">
+                <img class="s-i12" src="__IMG__/sing/s-i12.png">
+                <ul class="s-ul s-b-ul help-four-list">
+                </ul>
+            </div>
+        </div>
+    </section>
+</article>
+<footer>
+    <div class="s-footer">
+        <span>本次活动最终解释权归iMay所有</span>
+        <span>发布未经授权内容引发的法律责任，由发布者自行负责</span>
+    </div>
+</footer>
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript" src="__JS__/singer.js"></script>
+<script>
+    var img = "__IMG__/sing";
+
+    setTimeout(locationUrl(), 2000); //加载完页面后ajax请求数据并显示在页面上
+
+    // ajax请求数据
+    function locationUrl() {
+        var url = "{:url('activity/Sing/ajaxIndex')}";
+        $.post(url,
+            function (data) {
+                if (data['status'] == '1') {
+                    // 动态排行榜数据
+                    var feed_data = '', feed_list = '';
+                    if (data.rankA) {
+                        for (var p = 0; p < data.rankA.length; p++) {
+                            var s_id = num = p + 1;
+                            if (p < 3) {
+                                feed_data += '<div class="s-d-c">' + '<div class="d-c-top clearfix">';
+                                feed_data += '<a class="info-in" id="rank_' + s_id + '" onclick="_hmt.push([\'_trackEvent\', \'ranking_list\', \'click\', \'' + s_id + '\'])" href="' + data.rankA[p]['url'] + '">';
+                                feed_data += '<img src="' + data.rankA[p]['ImgHead'] + '?imageView2/5/w/200/h/200" class="s-head"></a>';
+                                feed_data += '<div class="d-top-t">';
+                                if (p == 0) {
+                                    feed_data += '<h3 class="tit-c1">';
+                                } else if (p == 1) {
+                                    feed_data += '<h3 class="tit-c2">';
+                                } else {
+                                    feed_data += '<h3 class="tit-c3">';
+                                }
+                                feed_data += data.rankA[p]['Nick'] + '</h3><h4>魅号：' + data.rankA[p]['RoomId'] + '</h4></div>';
+                                feed_data += '<div class="d-top-d"><div class="list-r-t"><img class="s-i04" src="__IMG__/sing/s-i04.png">';
+                                feed_data += '<span>' + data.rankA[p]['CountPraise'] + '</span></div><div class="list-r-b">';
+                                feed_data += '<img class="s-i05" src="__IMG__/sing/s-i05.png"><span>' + data.rankA[p]['GiftCountPraise'];
+                                feed_data += '</span></div></div>';
+                                if (p == 0) {
+                                    feed_data += '<img src="__IMG__/sing//s-i11a.png" class="s-i11a s-i11">';
+                                } else if (p == 1) {
+                                    feed_data += '<img src="__IMG__/sing//s-i11b.png" class="s-i11b s-i11">';
+                                } else {
+                                    feed_data += '<img src="__IMG__/sing//s-i11c.png" class="s-i11c s-i11">';
+                                }
+                                feed_data += '</div><div class="d-c-bot"><div class="d-film">';
+                                feed_data += '<video class="s-video" src="' + data.rankA[p]['VideoUrl'] + '" playsinline webkit-playsinline></video>';
+                                feed_data += '<img src="' + data.rankA[p]['VideoUrl'] + '?vframe/jpg/offset/0/w/450" class="d-f-i">';
+                                feed_data += '<a class="s-i02-a"><img src="__IMG__/sing/s-i02.png" class="s-i02"></a>';
+                                feed_data += '<img src="__IMG__/sing/loading.gif" class="loading"></div>';
+                                feed_data += '<p class="d-txt1">' + data.rankA[p]['Msg'] + '</p>' + '</div></div>';
+                            } else {
+                                feed_list += '<li><div class="list-l"><span class="list-num">' + num + '</span>';
+                                feed_list += '<img src="__IMG__/sing/s-i03.png" class="s-i03"></div><div class="list-mid">';
+                                feed_list += '<a class="info-in" id="rank_' + s_id + '" onclick="_hmt.push([\'_trackEvent\', \'ranking_list\', \'click\', \'' + s_id + '\'])" href="' + data.rankA[p]['url'] + '">';
+                                feed_list += '<img src="' + data.rankA[p]['ImgHead'] + '?imageView2/5/w/200/h/200" class="s-head"></a>';
+                                feed_list += '<div class="d-top-t"><h3 class="tit-c4">' + data.rankA[p]['Nick'] + '</h3>';
+                                feed_list += '<h4>魅号：' + data.rankA[p]['RoomId'] + '</h4></div></div><div class="list-r">';
+                                feed_list += '<div class="list-r-t"><img src="__IMG__/sing/s-i04.png" class="s-i04">';
+                                feed_list += '<span>' + data.rankA[p]['CountPraise'] + '</span></div><div class="list-r-b">';
+                                feed_list += '<img src="__IMG__/sing/s-i05.png" class="s-i05">';
+                                feed_list += '<span>' + data.rankA[p]['GiftCountPraise'] + '</span>';
+                                feed_list += '</div></div></li>';
+                            }
+                        }
+                        $('.feed-top').html(feed_data); // 动态前3名
+                        $('.feed-ul').html(feed_list); // 动态后七名排行榜
+
+                        // 动态视频播放
+                        $(".s-i02-a").on("click",function () {
+                            $(".f-loading").hide();
+                            $(this).hide();
+                            $(".s-video").attr("id","").removeClass("videoCheck aniLeft");
+                            $(this).parent().find(".s-video").attr("id","iMayVideo").addClass("videoCheck aniLeft");
+                            var iMayPlay = document.getElementById("iMayVideo");
+                            iMayPlay.play();
+                            iMayPlay.onplay=function () {
+                                $(".f-loading").hide();
+                            };
+                            iMayPlay.onplaying=function () {
+                                $(".f-loading").hide();
+                            };
+                            iMayPlay.onwaiting=function () {
+                                $(".f-loading").show();
+                            };
+                            iMayPlay.onended =function () {
+                                $(".f-loading").hide();
+                                $(".s-i02-a").show();
+                                $(".s-video").removeClass("videoCheck");
+                            };
+                            iMayPlay.onpause=function () {
+                                $(".f-loading").hide();
+                                $(".s-i02-a").show();
+                                $(".s-video").removeClass("videoCheck");
+                            };
+                        });
+                    }
+
+                    // 动态第一名送礼最多前10名
+                    var total = '';
+                    if (data.rankB) {
+                        for (var i = 0; i < data.rankB.length; i++) {
+                            total += '<li>';
+                            total += '<img src="' + data.rankB[i]['ImgHead'] + '?imageView2/5/w/200/h/200" class="s-head">';
+                            total += '<div class="d-top-t"><h3 class="tit-c5">' + data.rankB[i]['Nick'] + '</h3>';
+                            total += '<h4>魅号：' + data.rankB[i]['RoomId'] + '</h4>';
+                            total += '<h5 class="tit-c6"><img class="s-i05" src="__IMG__/sing/s-i05.png">';
+                            total += '<span>' + data.rankB[i]['Summeili'] + '</span></h5></div></li>';
+                        }
+                        $('.help-first-list').html(total);
+                    }
+
+                    // 动态第二名送礼最多前5名
+                    var total_str = '', leng = 0;
+                    if (data.rankC) {
+                        // 第二名送礼最多显示5个，超过5个的不显示
+                        if (data.rankC.length > 5) {
+                            leng = 5;
+                        } else {
+                            leng = data.rankC.length;
+                        }
+                        for (var j = 0; j < leng; j++) {
+                            total_str += '<li>';
+                            total_str += '<img src="' + data.rankC[j]['ImgHead'] + '?imageView2/5/w/200/h/200" class="s-head">';
+                            total_str += '<div class="d-top-t"><h3 class="tit-c5">' + data.rankC[j]['Nick'] + '</h3>';
+                            total_str += '<h4>魅号：' + data.rankC[j]['RoomId'] + '</h4>';
+                            total_str += '<h5 class="tit-c6"><img class="s-i05" src="__IMG__/sing/s-i05.png">';
+                            total_str += '<span>' + data.rankC[j]['Summeili'] + '</span></h5></div></li>';
+                        }
+                        $('.feed-second-list').html(total_str);
+                    }
+
+                    // 动态第三名送礼最多前3名
+                    var total_data = '', length = 0;
+                    if (data.rankD) {
+                        // 第三名送礼人最多显示3个，超过3个的不显示
+                        if (data.rankD.length > 3) {
+                            length = 3;
+                        } else {
+                            length = data.rankD.length;
+                        }
+                        for (var k = 0; k < length; k++) {
+                            total_data += '<li>';
+                            total_data += '<img src="' + data.rankD[k]['ImgHead'] + '?imageView2/5/w/200/h/200" class="s-head">';
+                            total_data += '<div class="d-top-t"><h3 class="tit-c5">' + data.rankD[k]['Nick'] + '</h3>';
+                            total_data += '<h4>魅号：' + data.rankD[k]['RoomId'] + '</h4>';
+                            total_data += '<h5 class="tit-c6"><img class="s-i05" src="__IMG__/sing/s-i05.png">';
+                            total_data += '<span>' + data.rankD[k]['Summeili'] + '</span></h5></div></li>';
+                        }
+                        $('.feed-third-list').html(total_data);
+                    }
+
+                    // 动态后七名送礼最多的用户
+                    var help_data = '';
+                    if (data.rankE) {
+                        // 第四名到第十名都只显示送礼最多的那个人
+                        for (var b = 0; b < data.rankE.length; b++) {
+                            var number = b + 4;
+                            help_data += '<li><div class="list-l"><span class="list-num">' + number + '</span>';
+                            help_data += '<img src="__IMG__/sing/s-i03.png" class="s-i03"></div><div class="list-mid">';
+                            help_data += '<img src="' + data.rankE[b]['ImgHead'] + '?imageView2/5/w/200/h/200" class="s-head">';
+                            help_data += '<div class="d-top-t">';
+                            help_data += '<h3 class="tit-c4">' + data.rankE[b]['Nick'] + '</h3>';
+                            help_data += '<h4>魅号：' + data.rankE[b]['RoomId'] + '</h4></div></div><div class="list-r">';
+                            help_data += '<div class="list-r-b s-l-b"><img src="__IMG__/sing/s-i05.png" class="s-i05">';
+                            help_data += '<span>' + data.rankE[b]['Summeili'] + '</span></div></div></li>';
+                        }
+                        $('.help-four-list').html(help_data);
+                    }
+                }
+            }, 'json')
+    }
+
+</script>
+
+
+<script type="text/javascript">
+    var _hmt = _hmt || [];
+    $(function () {
+
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?92271316ab45db908e0b6763467fea57";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })
+</script>
+</body>
+</html>

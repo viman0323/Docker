@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>支付-iMay</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <link type="text/css" rel="stylesheet" href="__PC_CSS__/common.css">
+    <link type="text/css" rel="stylesheet" href="__PC_CSS__/default.css">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+    <script type="text/javascript" src="__BJS__/bootstrap.min.js"></script>
+    <script type="text/javascript" src="__PJS__/plugins.js"></script>
+</head>
+<body>
+<!--头部信息-->
+{include file="../../common/view/default/header" /}
+<div class="g-wrap">
+    <div class="g-con">
+        <h3 class="g-h3-bg">魅钻充值</h3>
+        <!-- 充值登录bar -->
+        <div class="g-c-log">
+            <div class="pay-con">
+                {if condition="$type == 'weixin'"}
+                    <h5>正在使用微信支付</h5>
+                {else /}
+                    <h5>正在使用支付宝支付</h5>
+                {/if}
+                <div class="pay-c-m">
+                    {if condition="$type == 'weixin'"}
+                        <img src="__PC_IMG__/g-img01.jpg" class="pay-img0">
+                    {else /}
+                        <img src="__PC_IMG__/g-img.jpg" class="pay-img0">
+                    {/if}
+                    <span class="g-arrow"></span>
+                    <div class="g-code">
+                        <span class="g-code-t1">支付金额：<b>{$money}</b>元</span>
+                        <span class="g-code-t2">为了确保安全，请尽快完成支付</span>
+                        <img src="{$img_url}" class="pay-img01">
+                        {if condition="$type == 'weixin'"}
+                            <span class="g-code-t3">请使用微信扫码二维码进行支付</span>
+                        {else /}
+                            <span class="g-code-t3">请使用支付宝二维码进行支付</span>
+                        {/if}
+                    </div>
+                </div>
+                <div class="pay-go-back">
+                    <a class="pay-go-a" href="javascript:history.go(-1);">
+                        <b></b>
+                        <span>返回修改支付信息</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 支付成功 -->
+        <div class="g-c-log-success">
+            <div class="pay-con">
+                <div class="pay-txt pay-txt-g"><b class="pay-s-icon"></b>充值成功！</div>
+                <div class="pay-t-but pay-but-a">
+                    <a href="{:url('user/recharge/index')}" class="imay-rc">确定</a>
+                </div>
+            </div>
+        </div>
+        <!--支付失败-->
+        <div class="g-c-log-fail">
+            <div class="pay-con">
+                <div class="pay-txt"><b class="pay-t-icon"></b>充值失败！</div>
+                <div class="pay-t-but">
+                    <a href="javascript:history.go(-1);" class="imay-sw-ac">返回</a>
+                    <a href="javascript:location.reload()" class="imay-rc">继续支付</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--底部信息-->
+{include file="../../common/view/default/footer" /}
+<!--登录、注册、忘记密码-->
+{include file="../../common/view/default/login" /}
+<div class="g-mask"></div>
+<!-- 订单超时 -->
+<div class="g-pop g-pop-a">
+    <div class="pop-close"></div>
+    <div class="pop-a-con">
+        <span class="pop-a-txt  pop-txt1">订单已超时，若未完成支付，请重新支付！</span>
+        <div class="pop-a-but">
+                <a class="pop-a-a" href="javascript:location.reload()">重新支付</a><!--  pop-a-c1 -->
+            <a class="pop-a-b pop-a-c2" href="{:url('/about/connect')}">遇到问题?</a>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/js/common.js"></script>
+<script type="text/javascript" src="__PUBLIC__/pc/js/g-index.js"></script>
+<script type="text/javascript">
+    var i = 0;
+    var num = 0;
+    var wait = 60;
+
+    setTimeout("getStatus();", 5000);
+    //获取微信支付或者支付宝支付是否成功
+    function getStatus() {
+        var out_trade_no = '{$out_trade_no}';
+        var type = '{$type}';
+        if (num != 2) {
+            $.post("{:url('user/recharge/notice')}", {'out_trade_no': out_trade_no, 'type': type}, function (data) { //查询是否支付
+                if (data['status'] == '1') { //成功就提示并结束掉js
+                    $('.g-c-log').hide();
+                    $('.g-c-log-success').show();
+                    num = 2;
+                } else {
+                    if (i == 60) { // 如果x次后还没有支付成功，每次5000ms
+//                        $('.g-c-log').hide();
+//                        $('.g-c-log-fail').show();
+                        $(".g-pop-a").show();
+                        $(".g-mask").show();
+                        num = 2;
+                    } else {
+                        i++;
+                        setTimeout("getStatus();", 5000);
+                    }
+                }
+            }, "json");
+        }
+    }
+</script>
+</body>
+</html>
