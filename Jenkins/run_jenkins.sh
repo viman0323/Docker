@@ -1,0 +1,1 @@
+docker run --name donhui_jenkins -p 8080:8080 -v /var/jenkins_home donhui/jenkins

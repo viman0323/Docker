@@ -1,0 +1,5 @@
+1. git clone源码到本地：
+git clone https://github.com/jenkinsci/docker.git
+
+2.构建镜像
+docker build -t donhui/jenkins .
